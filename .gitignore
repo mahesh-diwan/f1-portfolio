@@ -50,3 +50,13 @@ next-env.d.ts
 /docs/
 .opencode/
 MASTER_PROMPT.md
+
+# Generated audit screenshots
+audit/
+audit-*.png
+sprint*.png
+screenshot-*.png
+dark-theme-*.png
+light-theme-*.png
+easter-egg-*.png
+konami-code.png
