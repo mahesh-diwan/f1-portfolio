@@ -96,7 +96,7 @@ export const portfolioConfig = {
     instagram: "https://www.instagram.com/mahesh_diwan1",
     coffee: "https://buymeacoffee.com/mahesh-diwan",
     upi: "diwanmahesh11@ybl",
-    resume: "./Mahesh_Diwan_Resume.pdf",
+    resume: "./MAHESH_DIWAN.pdf",
     hashnode: "https://mahesh1215.hashnode.dev/",
     twitter: "https://x.com/mahesh_diwan1",
   },
