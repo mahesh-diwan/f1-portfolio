@@ -31,6 +31,9 @@ function ProjectCard({ project, index }: { project: ReturnType<typeof getProject
   const [expanded, setExpanded] = useState(false);
   if (!project) return null;
 
+  const heights = ["min-h-[220px]", "min-h-[260px]", "min-h-[240px]"];
+  const cardHeight = heights[index % 3];
+
   const metrics: { label: string; value: number; color: string }[] = [];
   if (project.metrics && Array.isArray(project.metrics)) {
     project.metrics.forEach((m) => {
@@ -49,7 +52,7 @@ function ProjectCard({ project, index }: { project: ReturnType<typeof getProject
 
   return (
     <StaggerItem>
-      <MotionCard tiltAmount={5} className="h-full">
+      <MotionCard tiltAmount={5} className={`h-full ${cardHeight}`}>
         <TelemetryPanel label={project.type?.toUpperCase() ?? "PROJECT"} accent={project.accent} className="group h-full hover-lift">
         <div className="flex flex-col h-full">
           <div className="flex items-start gap-3 mb-3">
@@ -69,7 +72,11 @@ function ProjectCard({ project, index }: { project: ReturnType<typeof getProject
               <div className="flex items-center gap-2 mb-0.5">
                 <h3 className="heading-sm text-sm text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">{project.name}</h3>
                 {status && (
-                  <span className={`inline-flex items-center px-1.5 py-0.5 text-[7px] font-mono uppercase tracking-wider rounded-sm border ${status.bgClass}`}>
+                  <span className={`inline-flex items-center gap-1 px-1.5 py-0.5 text-[7px] font-mono uppercase tracking-wider rounded-sm border ${status.bgClass}`}>
+                    <span className="relative inline-flex h-1.5 w-1.5 flex-shrink-0" aria-hidden="true">
+                      <span className="absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping" style={{ backgroundColor: status.color }} />
+                      <span className="relative inline-flex h-1.5 w-1.5 rounded-full" style={{ backgroundColor: status.color }} />
+                    </span>
                     {status.label}
                   </span>
                 )}
@@ -182,9 +189,11 @@ export function Projects() {
         </div>
 
         <StaggerReveal staggerDelay={0.1} direction="up">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-auto">
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
             {portfolio.projects.map((project, idx) => (
-              <ProjectCard key={project.id} project={project} index={idx} />
+              <div key={project.id} className="break-inside-avoid">
+                <ProjectCard project={project} index={idx} />
+              </div>
             ))}
           </div>
         </StaggerReveal>
