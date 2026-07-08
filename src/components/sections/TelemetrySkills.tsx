@@ -3,8 +3,8 @@
 import { Zap } from "lucide-react";
 import { portfolio } from "@/lib/portfolio";
 import { TelemetryPanel } from "@/components/ui/TelemetryPanel";
+import { TelemetryBar } from "@/components/ui/TelemetryBar";
 import { Gauge } from "@/components/ui/Gauge";
-import { PerformanceMeter } from "@/components/ui/PerformanceMeter";
 import { DRSIndicator } from "@/components/ui/DRSIndicator";
 import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/SectionReveal";
 import { EasterEgg } from "@/components/ui/EasterEgg";
@@ -15,7 +15,7 @@ export function TelemetrySkills() {
   if (portfolio.skills.length === 0) return null;
 
   return (
-    <section id="skills" className="py-24 px-4 relative" aria-label="Skills telemetry">
+    <section id="skills" className="py-24 px-4 relative section-carbon" aria-label="Skills telemetry">
       <SectionReveal>
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-4 mb-12">
@@ -28,33 +28,32 @@ export function TelemetrySkills() {
 
         <StaggerReveal staggerDelay={0.1} direction="up">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {portfolio.skills.map((group, idx) => (
-              <StaggerItem key={group.group}>
-                <TelemetryPanel label={group.group.toUpperCase()} accent={group.items[0]?.color ?? "var(--accent-primary)"} className="h-full hover-lift">
-                  <div className="flex flex-wrap gap-3 justify-center mb-4">
-                    {group.items.map((skill) => (
-                      <div key={skill.name} className="relative">
-                        <Gauge value={skill.pct} label={skill.name} color={skill.color} size={70} />
+            {portfolio.skills.map((group, idx) => {
+              const avg = Math.round(group.items.reduce((sum, s) => sum + s.pct, 0) / group.items.length);
+              return (
+                <StaggerItem key={group.group}>
+                  <TelemetryPanel label={group.group.toUpperCase()} accent={group.items[0]?.color ?? "var(--accent-primary)"} className="h-full hover-lift">
+                    <div className="flex items-start gap-4 mb-4">
+                      <Gauge value={avg} label="AVG" color={avg >= 85 ? "#a855f7" : avg >= 70 ? "#22c55e" : "#eab308"} size={80} />
+                      <div className="space-y-2.5 flex-1 min-w-0">
+                        {group.items.map((skill) => (
+                          <TelemetryBar key={skill.name} value={skill.pct} label={skill.name} color={skill.color} size="sm" />
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                  <div className="space-y-2 mt-3 pt-3 border-t border-[var(--border-default)]/60">
-                    {group.items.map((skill) => (
-                      <PerformanceMeter key={skill.name} value={skill.pct} label={skill.name} color={skill.color} size="sm" />
-                    ))}
-                  </div>
-                  <div className="flex items-center justify-between mt-3 pt-3 border-t border-[var(--border-default)]/60">
-                    <EasterEgg message="DRS ENABLED — Maximum power! Forza Ferrari! 🐎" icon="🏎️" trigger="click" size="lg">
-                      <DRSIndicator active={group.items.some((s) => s.pct >= 85)} />
-                    </EasterEgg>
-                    <span className="text-[7px] font-mono uppercase tracking-wider text-[var(--text-dim)] flex items-center gap-1">
-                      <Zap className="w-2.5 h-2.5" aria-hidden="true" />
-                      MODE: {engineModes[idx] ?? "RACE"}
-                    </span>
-                  </div>
-                </TelemetryPanel>
-              </StaggerItem>
-            ))}
+                    </div>
+                    <div className="flex items-center justify-between pt-3 border-t border-[var(--border-default)]/60">
+                      <EasterEgg message="DRS ENABLED — Maximum power! Forza Ferrari! 🐎" icon="🏎️" trigger="click" size="lg">
+                        <DRSIndicator active={group.items.some((s) => s.pct >= 85)} />
+                      </EasterEgg>
+                      <span className="text-[7px] font-mono uppercase tracking-wider text-[var(--text-dim)] flex items-center gap-1">
+                        <Zap className="w-2.5 h-2.5" aria-hidden="true" />
+                        MODE: {engineModes[idx] ?? "RACE"}
+                      </span>
+                    </div>
+                  </TelemetryPanel>
+                </StaggerItem>
+              );
+            })}
           </div>
         </StaggerReveal>
 

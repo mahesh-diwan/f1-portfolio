@@ -8,11 +8,20 @@ interface StatusIndicatorProps {
   className?: string;
 }
 
-const statusColors: Record<string, string> = {
-  active: "bg-[var(--color-accent-green)] shadow-[0_0_8px_rgba(152,195,121,0.5)]",
-  inactive: "bg-[var(--text-dim)]",
-  warning: "bg-[var(--color-accent-gold)] shadow-[0_0_8px_rgba(229,192,123,0.5)]",
-  error: "bg-[var(--accent-primary)] shadow-[0_0_8px_var(--accent-glow)]",
+const statusColors: Record<string, { dot: string; ring: string }> = {
+  active: {
+    dot: "bg-[var(--color-accent-green)]",
+    ring: "shadow-[0_0_8px_rgba(152,195,121,0.5)]",
+  },
+  inactive: { dot: "bg-[var(--text-dim)]", ring: "" },
+  warning: {
+    dot: "bg-[var(--color-accent-gold)]",
+    ring: "shadow-[0_0_8px_rgba(229,192,123,0.5)]",
+  },
+  error: {
+    dot: "bg-[var(--accent-primary)]",
+    ring: "shadow-[0_0_8px_var(--accent-glow)]",
+  },
 };
 
 export function StatusIndicator({
@@ -20,19 +29,25 @@ export function StatusIndicator({
   label,
   className,
 }: StatusIndicatorProps) {
+  const colors = statusColors[status];
   return (
     <div
       className={cn("flex items-center gap-2", className)}
       role="status"
       aria-label={`${label}: ${status}`}
     >
-      <span
-        className={cn(
-          "inline-block w-1.5 h-1.5 rounded-full flex-shrink-0",
-          statusColors[status],
+      <span className="relative inline-flex h-2 w-2 flex-shrink-0" aria-hidden="true">
+        {status === "active" && (
+          <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--color-accent-green)] opacity-75 animate-ping" />
         )}
-        aria-hidden="true"
-      />
+        <span
+          className={cn(
+            "relative inline-flex h-2 w-2 rounded-full",
+            colors.dot,
+            colors.ring,
+          )}
+        />
+      </span>
       <span className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">
         {label}
       </span>

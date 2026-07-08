@@ -11,7 +11,7 @@ export function Contact() {
   const links = portfolio.links;
 
   return (
-    <section id="contact" className="py-24 px-4 relative" aria-label="Contact">
+    <section id="contact" className="py-24 px-4 relative section-carbon" aria-label="Contact">
       <SectionReveal>
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-4 mb-12">
@@ -27,7 +27,7 @@ export function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
           <TelemetryPanel label="DIRECT LINE" accent="var(--accent-primary)" className="md:col-span-2">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-              <StatusIndicator status="active" label="RADIO ACTIVE" />
+              <StatusIndicator status="active" label="AVAILABLE" />
               <a
                 href={`mailto:${portfolio.email}`}
                 className="font-mono text-sm text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors"

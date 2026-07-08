@@ -8,6 +8,7 @@ export interface Project {
   demo?: string;
   accent: string;
   icon: string;
+  status?: "in-production" | "experimental" | "archived";
   problem?: string;
   solution?: string;
   challenges?: string;
@@ -182,6 +183,7 @@ export const portfolioConfig = {
       link: "https://github.com/mahesh-diwan/LinkedIn-Clone-EKS",
       accent: "#61afef",
       icon: "🐳",
+      status: "in-production",
       problem:
         "Deploying a multi-service MERN application manually to production caused massive downtime, environment inconsistency, and lack of scaling capabilities under high traffic.",
       solution:
@@ -215,6 +217,7 @@ export const portfolioConfig = {
       link: "https://github.com/mahesh-diwan/Distributed-Voting-App",
       accent: "#98c379",
       icon: "☸️",
+      status: "experimental",
       problem:
         "Traditional monolithic voting systems suffer from single points of failure, scaling constraints, and lack multi-language service interoperability.",
       solution:
@@ -240,6 +243,7 @@ export const portfolioConfig = {
       link: "https://github.com/mahesh-diwan/Flask-App",
       accent: "#d19a66",
       icon: "⚙️",
+      status: "in-production",
       problem:
         "Lack of automated test verification and slow manual SSH deployment steps on AWS EC2 instances increased deployment errors and slowed feature iteration.",
       solution:
@@ -265,6 +269,7 @@ export const portfolioConfig = {
       link: "https://github.com/mahesh-diwan/chat-with-pdf",
       accent: "#fe8019",
       icon: "📖",
+      status: "experimental",
       problem:
         "Extracting reference answers and reading through massive multi-page PDF documents is time-consuming and inefficient for researchers.",
       solution:
@@ -290,6 +295,7 @@ export const portfolioConfig = {
       link: "https://github.com/mahesh-diwan/AWS-Resource-Tracker",
       accent: "#c678dd",
       icon: "☁️",
+      status: "archived",
       problem:
         "Forgotten cloud resources (idle EC2 instances, unattached EBS volumes, legacy Lambda functions) lead to silent monthly AWS cost leakages.",
       solution:
@@ -315,6 +321,7 @@ export const portfolioConfig = {
       link: "https://github.com/mahesh-diwan/Web-Scraper",
       accent: "#56b6c2",
       icon: "🕸️",
+      status: "archived",
       problem:
         "Extracting nested directories and dynamic JavaScript data from websites for analytical models is slow when done manually.",
       solution:
@@ -337,28 +344,28 @@ export const portfolioConfig = {
     {
       group: "Languages",
       items: [
-        { name: "Python", pct: 90, color: "#3572a5" },
-        { name: "Bash", pct: 85, color: "#eedd11" },
-        { name: "JavaScript", pct: 75, color: "#f1e05a" },
-        { name: "C++", pct: 65, color: "#f34b7d" },
-        { name: "Java", pct: 60, color: "#b07219" },
+        { name: "Python", pct: 90, color: "#a855f7" },
+        { name: "Bash", pct: 85, color: "#a855f7" },
+        { name: "JavaScript", pct: 75, color: "#22c55e" },
+        { name: "C++", pct: 65, color: "#eab308" },
+        { name: "Java", pct: 60, color: "#eab308" },
       ],
     },
     {
       group: "Cloud & Infra",
       items: [
-        { name: "AWS (ECS, EKS, EC2)", pct: 85, color: "#ff9900" },
-        { name: "Terraform", pct: 70, color: "#7b42bc" },
-        { name: "Linux Administration", pct: 85, color: "#eedd11" },
+        { name: "AWS (ECS, EKS, EC2)", pct: 85, color: "#a855f7" },
+        { name: "Terraform", pct: 70, color: "#22c55e" },
+        { name: "Linux Administration", pct: 85, color: "#a855f7" },
       ],
     },
     {
       group: "Containers & CI/CD",
       items: [
-        { name: "Docker & Compose", pct: 90, color: "#3897f0" },
-        { name: "Kubernetes Manifests", pct: 80, color: "#326ce5" },
-        { name: "GitHub Actions", pct: 90, color: "#f05032" },
-        { name: "Jenkins & SonarQube", pct: 75, color: "#d24939" },
+        { name: "Docker & Compose", pct: 90, color: "#a855f7" },
+        { name: "Kubernetes Manifests", pct: 80, color: "#22c55e" },
+        { name: "GitHub Actions", pct: 90, color: "#a855f7" },
+        { name: "Jenkins & SonarQube", pct: 75, color: "#22c55e" },
       ],
     },
   ] as SkillGroup[],

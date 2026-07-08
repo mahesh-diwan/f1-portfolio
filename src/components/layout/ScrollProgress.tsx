@@ -33,7 +33,7 @@ export function ScrollProgress() {
           style={{ height: `${progress}%` }}
         />
       </div>
-      <span className="font-mono text-[8px] tracking-wider text-[var(--text-dim)]">
+      <span className="font-mono text-[8px] tracking-wider text-[var(--text-dim)]" title="Page scroll progress">
         LAP
       </span>
     </div>

@@ -27,7 +27,7 @@ export function TelemetryPanel({
         "relative rounded-md overflow-hidden transition-all duration-300",
         glass
           ? "glass hover:border-[var(--border-strong)]"
-          : "border border-[var(--border-default)] bg-gradient-to-b from-[var(--bg-surface)] via-color-[var(--bg-elevated)]/80 to-[var(--bg-surface)] hover:border-[var(--border-strong)]",
+          : "border border-[var(--border-default)] bg-gradient-to-b from-[var(--bg-surface)] via-[var(--bg-elevated)]/80 to-[var(--bg-surface)] hover:border-[var(--border-strong)]",
         fullHeight && "h-full",
         className,
       )}

@@ -81,7 +81,7 @@ export function Gauge({
           cy="36"
           r={radius}
           fill="none"
-          stroke="#222222"
+          stroke="var(--border-default)"
           strokeWidth="4"
         />
         <circle

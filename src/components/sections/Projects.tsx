@@ -9,6 +9,24 @@ import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/Secti
 import { EasterEgg } from "@/components/ui/EasterEgg";
 import { MotionCard } from "@/components/ui/MotionCard";
 
+const statusConfig: Record<string, { label: string; color: string; bgClass: string }> = {
+  "in-production": {
+    label: "IN PRODUCTION",
+    color: "#66d9a0",
+    bgClass: "bg-[var(--color-accent-green)]/10 border-[var(--color-accent-green)]/30 text-[var(--color-accent-green)]",
+  },
+  experimental: {
+    label: "EXPERIMENTAL",
+    color: "#b388ff",
+    bgClass: "bg-[var(--color-accent-purple)]/10 border-[var(--color-accent-purple)]/30 text-[var(--color-accent-purple)]",
+  },
+  archived: {
+    label: "ARCHIVED",
+    color: "#8a8a9a",
+    bgClass: "bg-[var(--text-dim)]/10 border-[var(--text-dim)]/30 text-[var(--text-dim)]",
+  },
+};
+
 function ProjectCard({ project, index }: { project: ReturnType<typeof getProject>; index: number }) {
   const [expanded, setExpanded] = useState(false);
   if (!project) return null;
@@ -26,6 +44,8 @@ function ProjectCard({ project, index }: { project: ReturnType<typeof getProject
       }
     });
   }
+
+  const status = project.status ? statusConfig[project.status] : null;
 
   return (
     <StaggerItem>
@@ -45,8 +65,15 @@ function ProjectCard({ project, index }: { project: ReturnType<typeof getProject
                 <span className="text-base cursor-pointer hover:scale-125 transition-transform inline-block">{project.icon}</span>
               </EasterEgg>
             </div>
-            <div className="min-w-0">
-              <h3 className="heading-sm text-sm text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">{project.name}</h3>
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-2 mb-0.5">
+                <h3 className="heading-sm text-sm text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">{project.name}</h3>
+                {status && (
+                  <span className={`inline-flex items-center px-1.5 py-0.5 text-[7px] font-mono uppercase tracking-wider rounded-sm border ${status.bgClass}`}>
+                    {status.label}
+                  </span>
+                )}
+              </div>
               <p className="text-[11px] font-mono text-[var(--text-secondary)] mt-0.5 line-clamp-2 leading-relaxed">{project.desc}</p>
             </div>
           </div>
@@ -143,19 +170,19 @@ export function Projects() {
   if (portfolio.projects.length === 0) return null;
 
   return (
-    <section id="projects" className="py-24 px-4 relative" aria-label="Projects">
+    <section id="projects" className="py-24 px-4 relative section-carbon" aria-label="Projects">
       <SectionReveal>
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-4 mb-12">
           <div className="section-accent-bar bg-gradient-to-b from-[var(--color-accent-blue)] to-[var(--color-accent-teal)]" aria-hidden="true" />
           <div>
-            <p className="label-sm tracking-[0.2em]">RACE GARAGE</p>
+            <p className="label-sm tracking-[0.2em]">PIT WALL MONITOR</p>
             <h2 className="heading-md text-3xl sm:text-4xl text-[var(--text-primary)] mt-0.5">Projects</h2>
           </div>
         </div>
 
         <StaggerReveal staggerDelay={0.1} direction="up">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-auto">
             {portfolio.projects.map((project, idx) => (
               <ProjectCard key={project.id} project={project} index={idx} />
             ))}

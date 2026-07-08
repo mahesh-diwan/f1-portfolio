@@ -35,7 +35,7 @@ export function Experience() {
   const seasons = Math.max(0, yearEnd - yearStart + 1);
 
   return (
-    <section id="experience" className="py-24 px-4 relative" aria-label="Career experience">
+    <section id="experience" className="py-24 px-4 relative section-carbon" aria-label="Career experience">
       <SectionReveal>
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-4 mb-12">
@@ -47,7 +47,7 @@ export function Experience() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-          <TelemetryPanel label="DRIVER STATS" accent="var(--accent-primary)" className="lg:col-span-4">
+          <TelemetryPanel label="PROFILE OVERVIEW" accent="var(--accent-primary)" className="lg:col-span-4">
             <div className="flex flex-col gap-5">
               <div className="grid grid-cols-2 gap-3">
                 <EasterEgg message="Every position on the grid counts — just like every commit! 🏆" icon="🏆" trigger="click" size="lg">
@@ -79,7 +79,7 @@ export function Experience() {
             </div>
           </TelemetryPanel>
 
-          <TelemetryPanel label="CAREER LAPS" className="lg:col-span-8">
+          <TelemetryPanel label="WORK HISTORY" className="lg:col-span-8">
             <RaceTimeline items={items} />
           </TelemetryPanel>
         </div>

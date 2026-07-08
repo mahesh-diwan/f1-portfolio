@@ -5,23 +5,50 @@ import { motion } from "framer-motion";
 import { FileText } from "lucide-react";
 import { portfolio } from "@/lib/portfolio";
 import { usePageTransition } from "@/lib/transition-context";
-import { DigitalReadout } from "@/components/ui/DigitalReadout";
-import { StatusIndicator } from "@/components/ui/StatusIndicator";
 import { TelemetryPanel } from "@/components/ui/TelemetryPanel";
 import { GlowEffect } from "@/components/ui/GlowEffect";
 import { EasterEgg } from "@/components/ui/EasterEgg";
 import { TypingEffect } from "@/components/ui/TypingEffect";
+import { StatusIndicator } from "@/components/ui/StatusIndicator";
 
 function HeroStat({ label, value, accent, prefix }: { label: string; value: number; accent: string; prefix?: string }) {
+  const [display, setDisplay] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const startTime = useRef<number | null>(null);
+  const animFrame = useRef<number>(0);
+  const duration = 1200;
+
+  useEffect(() => {
+    const animate = (timestamp: number) => {
+      if (!startTime.current) startTime.current = timestamp;
+      const elapsed = timestamp - startTime.current;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplay(Math.round(eased * value));
+      if (progress < 1) {
+        animFrame.current = requestAnimationFrame(animate);
+      }
+    };
+    animFrame.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animFrame.current);
+  }, [value]);
+
   return (
     <motion.div
+      ref={ref}
       className="flex-1 min-w-[140px]"
       whileHover={{ scale: 1.03, y: -4 }}
       whileTap={{ scale: 0.97 }}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
     >
       <TelemetryPanel label={label}>
-        <DigitalReadout label="" value={value} accent={accent} prefix={prefix} large animated />
+        <div className="flex flex-col" role="status" aria-label={`${label}: ${value}`}>
+          <span className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono" />
+          <span className="font-mono tabular-nums tracking-tight text-3xl md:text-4xl" style={{ color: accent }}>
+            {prefix && <span className="text-sm text-[var(--text-muted)] mr-0.5">{prefix}</span>}
+            {display}
+          </span>
+        </div>
       </TelemetryPanel>
     </motion.div>
   );

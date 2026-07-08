@@ -151,7 +151,7 @@
 }
 
 .light {
-  /* Deep parchment base */
+  /* Deep parchment base — warmer than pure white */
   --color-bg-base: #f0e4c8;
   --color-bg-surface: #f7edd4;
   --color-bg-elevated: #e8dab8;
@@ -164,14 +164,14 @@
   --color-border-strong: #a89460;
   --color-border-focus: #c9302c;
 
-  /* Rich dark brown text */
+  /* Rich dark brown text — high contrast on parchment */
   --color-text-primary: #1e1005;
-  --color-text-secondary: #3d2c18;
-  --color-text-muted: #5a4828;
-  --color-text-dim: #7a6840;
+  --color-text-secondary: #3a2810;
+  --color-text-muted: #4d3a1c;
+  --color-text-dim: #6b5530;
   --color-text-inverse: #f0e4c8;
 
-  /* Warmer red accent */
+  /* Warmer red accent — tuned for light parchment */
   --color-accent-primary: #b8201c;
   --color-accent-primary-hover: #d42820;
   --color-accent-primary-dim: #941a16;
@@ -179,9 +179,34 @@
   --color-accent-primary-muted: rgba(184, 32, 28, 0.08);
 
   /* Warm gold accent */
-  --color-accent-gold: #c8960c;
-  --color-accent-gold-dim: #a87e0a;
-  --color-accent-gold-muted: rgba(200, 150, 12, 0.1);
+  --color-accent-gold: #b5850a;
+  --color-accent-gold-dim: #9a6f08;
+  --color-accent-gold-muted: rgba(181, 133, 10, 0.1);
+
+  /* Warm teal — slightly deeper for light bg */
+  --color-accent-teal: #0a8a6e;
+  --color-accent-teal-dim: #087560;
+  --color-accent-teal-muted: rgba(10, 138, 110, 0.08);
+
+  /* Warm blue — deeper for light bg */
+  --color-accent-blue: #2878c8;
+  --color-accent-blue-dim: #2068b0;
+  --color-accent-blue-muted: rgba(40, 120, 200, 0.08);
+
+  /* Warm green — deeper for light bg */
+  --color-accent-green: #2a8a5a;
+  --color-accent-green-dim: #227a4e;
+  --color-accent-green-muted: rgba(42, 138, 90, 0.08);
+
+  /* Warm purple — deeper for light bg */
+  --color-accent-purple: #7a4ec0;
+  --color-accent-purple-dim: #6a42a8;
+  --color-accent-purple-muted: rgba(122, 78, 192, 0.08);
+
+  /* Warm orange — F1 brake-glow inspired */
+  --color-accent-orange: #d06a20;
+  --color-accent-orange-dim: #b85c18;
+  --color-accent-orange-muted: rgba(208, 106, 32, 0.08);
 
   --bg-nav: rgba(240, 228, 200, 0.95);
 
@@ -210,15 +235,19 @@
 
   --scrollbar-thumb: var(--color-border-default);
   --scrollbar-track: var(--color-bg-surface);
+
+  --shadow-glow: 0 0 24px rgba(184, 32, 28, 0.15);
+  --shadow-glow-gold: 0 0 24px rgba(200, 150, 12, 0.12);
+  --shadow-glow-teal: 0 0 24px rgba(0, 150, 120, 0.12);
 }
 
 .light body {
   background:
     radial-gradient(ellipse 80% 50% at 50% -10%, rgba(184, 32, 28, 0.04) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 45% at 80% 15%, rgba(200, 150, 12, 0.12) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 35% at 15% 50%, rgba(180, 130, 50, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(160, 120, 40, 0.1) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 30% at 90% 80%, rgba(140, 100, 30, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 70% 45% at 80% 15%, rgba(200, 150, 12, 0.15) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 35% at 15% 50%, rgba(208, 106, 32, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(181, 133, 10, 0.1) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 90% 80%, rgba(208, 106, 32, 0.06) 0%, transparent 50%),
     var(--bg-base);
   background-attachment: fixed;
 }
@@ -273,12 +302,15 @@
     position: fixed;
     inset: 0;
     background-image:
+      /* Carbon-fiber micro weave — tiny diamonds */
+      radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--text-primary) 2%, transparent) 1px, transparent 1px),
+      /* Larger grid overlay */
       linear-gradient(color-mix(in srgb, var(--text-primary) 1.5%, transparent) 1px, transparent 1px),
       linear-gradient(90deg, color-mix(in srgb, var(--text-primary) 1.5%, transparent) 1px, transparent 1px);
-    background-size: 64px 64px;
+    background-size: 8px 8px, 64px 64px, 64px 64px;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.6;
+    opacity: 0.7;
   }
 
   ::selection {
@@ -968,4 +1000,23 @@
 .hover-glow-accent:hover {
   box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 12%, transparent), var(--shadow-inset);
   border-color: color-mix(in srgb, var(--accent) 30%, var(--border-strong));
+}
+
+/* Carbon-fiber section texture — applied via ::before on section elements */
+.section-carbon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--text-primary) 1.5%, transparent) 1px, transparent 1px);
+  background-size: 6px 6px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.light .section-carbon::before {
+  background-image:
+    radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--text-primary) 3%, transparent) 1px, transparent 1px);
+  opacity: 0.4;
 }
