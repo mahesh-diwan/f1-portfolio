@@ -1,0 +1,197 @@
+"use client";
+
+import { useState, useCallback } from "react";
+import { cn } from "@/lib/utils";
+import { usePageTransition } from "@/lib/transition-context";
+import { useTheme } from "@/lib/theme-context";
+import { MagneticHover } from "@/components/ui/MagneticHover";
+import { EasterEgg } from "@/components/ui/EasterEgg";
+
+const navItems = [
+  { label: "Profile", id: "hero" },
+  { label: "Experience", id: "experience" },
+  { label: "Education", id: "education" },
+  { label: "Projects", id: "projects" },
+  { label: "Skills", id: "skills" },
+  { label: "Contact", id: "contact" },
+];
+
+export function Navigation() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const { navigateTo, isAnimating, activeSection } = usePageTransition();
+  const { theme, toggleTheme } = useTheme();
+
+  const handleNav = useCallback((e: React.MouseEvent, sectionId: string) => {
+    e.preventDefault();
+    if (isAnimating) return;
+    setMobileOpen(false);
+    navigateTo(sectionId);
+  }, [navigateTo, isAnimating]);
+
+  return (
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        "bg-[var(--bg-nav)] backdrop-blur-xl border-b border-[var(--border-default)]",
+      )}
+      role="banner"
+    >
+      <div className="max-w-7xl mx-auto px-5 h-14 flex items-center justify-between">
+        <button
+          onClick={(e) => handleNav(e, "hero")}
+          className="flex items-center gap-2.5 text-xs font-mono uppercase tracking-[0.2em] text-[var(--accent)]/80 hover:text-[var(--accent)] transition-colors group"
+          aria-label="Go to home"
+        >
+          <span className="relative flex h-2 w-2 items-center justify-center">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75 animate-ping" aria-hidden="true" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[var(--accent)]" aria-hidden="true" />
+          </span>
+          <EasterEgg message="Welcome to the pit wall, driver!" icon="🏎️" trigger="click">
+            PIT WALL
+          </EasterEgg>
+        </button>
+
+        <div className="hidden md:flex items-center gap-1">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <MagneticHover key={item.id} strength={0.2}>
+                <button
+                  onClick={(e) => handleNav(e, item.id)}
+                  className={cn(
+                    "relative px-3 py-1.5 text-[11px] font-mono uppercase tracking-[0.12em] transition-all duration-200 rounded-sm",
+                    isActive
+                      ? "text-[var(--accent)] bg-[var(--accent-muted)]"
+                      : "text-[var(--text-muted)] hover:text-[var(--text-secondary)] hover:bg-[var(--bg-elevated)]",
+                  )}
+                  aria-current={isActive ? "page" : undefined}
+                >
+                  {isActive && (
+                    <span className="absolute inset-x-2 -bottom-px h-[2px] bg-[var(--accent)] shadow-[0_0_6px_var(--accent-glow)] rounded-full" aria-hidden="true" />
+                  )}
+                  {item.label}
+                </button>
+              </MagneticHover>
+            );
+          })}
+
+          <div className="w-px h-5 mx-2 bg-[var(--border-default)]" />
+
+          <button
+            onClick={toggleTheme}
+            className="p-1.5 text-[var(--text-muted)] hover:text-[var(--text-secondary)] transition-colors rounded-sm"
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+            title={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+          >
+            {theme === "dark" ? (
+              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+            ) : (
+              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            )}
+          </button>
+
+          <button
+            onClick={() => {
+              const event = new KeyboardEvent("keydown", {
+                key: "k",
+                metaKey: true,
+                bubbles: true,
+              });
+              window.dispatchEvent(event);
+            }}
+            className="ml-1 px-2.5 py-1 text-[10px] font-mono text-[var(--text-dim)] border border-[var(--border-default)] rounded-sm hover:text-[var(--text-secondary)] hover:border-[var(--border-strong)] transition-all"
+            aria-label="Open command palette"
+            title="Ctrl+K to open command palette"
+          >
+            <span className="flex items-center gap-1">
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              K
+            </span>
+          </button>
+        </div>
+
+        <div className="flex md:hidden items-center gap-1">
+          <button
+            onClick={toggleTheme}
+            className="p-2 text-[var(--text-muted)] hover:text-[var(--text-secondary)] transition-colors"
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+            title={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+          >
+            {theme === "dark" ? (
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              </svg>
+            ) : (
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            )}
+          </button>
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="p-2 -mr-1 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+            aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileOpen}
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
+              {mobileOpen ? (
+                <>
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </>
+              ) : (
+                <>
+                  <line x1="4" y1="8" x2="20" y2="8" />
+                  <line x1="4" y1="16" x2="20" y2="16" />
+                </>
+              )}
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {mobileOpen && (
+        <div className="md:hidden border-b border-[var(--border-default)] animate-fade-in bg-[var(--bg-nav)] backdrop-blur-xl">
+          <nav className="px-5 py-3 flex flex-col gap-0.5" aria-label="Mobile navigation">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={(e) => handleNav(e, item.id)}
+                  className={cn(
+                    "px-3 py-3 text-sm font-mono uppercase tracking-wider transition-colors rounded-sm text-left",
+                    isActive
+                      ? "text-[var(--accent)] bg-[var(--accent-muted)]"
+                      : "text-[var(--text-muted)] hover:text-[var(--text-secondary)] hover:bg-[var(--bg-elevated)]",
+                  )}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </nav>
+        </div>
+      )}
+    </header>
+  );
+}
