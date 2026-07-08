@@ -11,12 +11,12 @@ interface StatusIndicatorProps {
 const statusColors: Record<string, { dot: string; ring: string }> = {
   active: {
     dot: "bg-[var(--color-accent-green)]",
-    ring: "shadow-[0_0_8px_rgba(152,195,121,0.5)]",
+    ring: "shadow-[0_0_8px_color-mix(in_srgb,var(--color-accent-green)_50%,transparent)]",
   },
   inactive: { dot: "bg-[var(--text-dim)]", ring: "" },
   warning: {
     dot: "bg-[var(--color-accent-gold)]",
-    ring: "shadow-[0_0_8px_rgba(229,192,123,0.5)]",
+    ring: "shadow-[0_0_8px_color-mix(in_srgb,var(--color-accent-gold)_50%,transparent)]",
   },
   error: {
     dot: "bg-[var(--accent-primary)]",

@@ -35,9 +35,9 @@ export function TelemetrySkills() {
                   <TelemetryPanel label={group.group.toUpperCase()} accent={group.items[0]?.color ?? "var(--accent-primary)"} className="h-full hover-lift">
                     <div className="flex items-start gap-4 mb-4">
                       <Gauge value={avg} label="AVG" color={avg >= 85 ? "#a855f7" : avg >= 70 ? "#22c55e" : "#eab308"} size={80} />
-                      <div className="space-y-2.5 flex-1 min-w-0">
+                      <div className="space-y-1.5 flex-1 min-w-0">
                         {group.items.map((skill) => (
-                          <TelemetryBar key={skill.name} value={skill.pct} label={skill.name} color={skill.color} size="sm" />
+                          <TelemetryBar key={skill.name} value={skill.pct} label={skill.name} color={skill.color} size="xs" />
                         ))}
                       </div>
                     </div>
