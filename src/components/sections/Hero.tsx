@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { portfolio } from "@/lib/portfolio";
 import { StatusIndicator } from "@/components/ui/primitives/StatusIndicator";
 import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
@@ -44,24 +44,6 @@ export function Hero() {
     { label: "CONFIDENCE", value: 98, accent: "var(--color-display-green)" },
   ];
 
-  const [racePhase, setRacePhase] = useState<"off" | "lights" | "text" | "pulse">("off");
-  const reducedMotion = useReducedMotion();
-
-  const handleRaceStart = () => {
-    if (racePhase !== "off") return;
-    if (reducedMotion) {
-      setRacePhase("lights");
-      setTimeout(() => setRacePhase("text"), 1000);
-      setTimeout(() => setRacePhase("pulse"), 1500);
-      setTimeout(() => setRacePhase("off"), 2500);
-      return;
-    }
-    setRacePhase("lights");
-    setTimeout(() => setRacePhase("text"), 2000);
-    setTimeout(() => setRacePhase("pulse"), 2400);
-    setTimeout(() => setRacePhase("off"), 3000);
-  };
-
   return (
     <section id="hero" className="min-h-screen flex flex-col justify-center relative overflow-hidden" aria-label="Hero introduction">
       {/* Grid background */}
@@ -84,74 +66,16 @@ export function Hero() {
           {portfolio.role}
         </motion.p>
 
-        {/* Name with scan line — click for race start lights */}
+        {/* Name with scan line */}
         <motion.div
           className="relative inline-block"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.4, type: "spring", stiffness: 100 }}
         >
-          {/* Race start lights */}
-          <AnimatePresence>
-            {racePhase !== "off" && (
-              <motion.div
-                className="flex items-center justify-center gap-3 mb-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              >
-                {[0, 1, 2, 3, 4].map((i) => (
-                  <motion.div
-                    key={i}
-                    className="w-3 h-3 rounded-full"
-                    initial={{ backgroundColor: "rgba(163, 24, 21, 0.15)" }}
-                    animate={{
-                      backgroundColor:
-                        racePhase === "lights"
-                          ? "rgba(163, 24, 21, 1)"
-                          : racePhase === "text" || racePhase === "pulse"
-                            ? "rgba(32, 122, 64, 1)"
-                            : "rgba(163, 24, 21, 0.15)",
-                    }}
-                    transition={
-                      reducedMotion
-                        ? { duration: 0.1 }
-                        : { delay: racePhase === "lights" ? i * 0.4 : 0, duration: 0.1 }
-                    }
-                  />
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold text-[var(--text-primary)] tracking-tight cursor-pointer select-none"
-            onClick={handleRaceStart}
-            animate={
-              racePhase === "pulse"
-                ? { scale: [1, 1.02, 1], filter: ["brightness(1)", "brightness(1.3)", "brightness(1)"] }
-                : {}
-            }
-            transition={{ duration: 0.4 }}
-          >
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold text-[var(--text-primary)] tracking-tight">
             {portfolio.titleName}
-          </motion.h1>
-
-          {/* LIGHTS OUT text */}
-          <AnimatePresence>
-            {racePhase === "text" && (
-              <motion.p
-                className="text-xs uppercase tracking-[0.3em] text-[var(--accent)] font-mono mt-2"
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                LIGHTS OUT AND AWAY WE GO
-              </motion.p>
-            )}
-          </AnimatePresence>
-
+          </h1>
           {/* Scan line */}
           <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--accent)] to-transparent animate-scanline opacity-60" style={{ filter: "drop-shadow(0 0 6px var(--accent-glow))" }} aria-hidden="true" />
         </motion.div>
