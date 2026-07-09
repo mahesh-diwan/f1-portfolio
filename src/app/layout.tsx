@@ -1,20 +1,15 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
-import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
-import { LoadingScreen } from "@/components/ui/LoadingScreen";
+import { Sora, IBM_Plex_Mono } from "next/font/google";
+import { ErrorBoundary } from "@/components/providers/ErrorBoundary";
+import { LoadingScreen } from "@/components/providers/LoadingScreen";
 import { ThemeProvider } from "@/lib/theme-context";
 import { TransitionProvider } from "@/lib/transition-context";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-heading",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const inter = Inter({
+const sora = Sora({
   variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -87,7 +82,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${ibmPlexMono.variable}`}
+      className={`${sora.variable} ${ibmPlexMono.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] font-sans antialiased">
