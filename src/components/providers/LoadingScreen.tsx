@@ -6,13 +6,15 @@ import { cn } from "@/lib/utils";
 export function LoadingScreen() {
   const [visible, setVisible] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
+  const [lightsOut, setLightsOut] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const t1 = setTimeout(() => setLightsOut(true), 2000);
+    const t2 = setTimeout(() => {
       setFadeOut(true);
-      setTimeout(() => setVisible(false), 500);
-    }, 1200);
-    return () => clearTimeout(timer);
+      setTimeout(() => setVisible(false), 600);
+    }, 2200);
+    return () => { clearTimeout(t1); clearTimeout(t2); };
   }, []);
 
   if (!visible) return null;
@@ -20,48 +22,43 @@ export function LoadingScreen() {
   return (
     <div
       className={cn(
-        "fixed inset-0 z-[200] bg-[var(--bg-base)] flex flex-col items-center justify-center transition-opacity duration-500",
+        "fixed inset-0 z-[200] bg-[#0a0e14] flex items-center justify-center transition-opacity duration-500",
         fadeOut ? "opacity-0" : "opacity-100",
       )}
       role="progressbar"
       aria-label="Loading"
     >
-      <div className="flex flex-col items-center gap-4">
-        <div className="relative w-16 h-16">
-          <svg className="w-16 h-16 -rotate-90" viewBox="0 0 64 64">
-            <circle
-              cx="32" cy="32" r="28"
-              fill="none" stroke="#222222" strokeWidth="3"
-            />
-            <circle
-              cx="32" cy="32" r="28"
-              fill="none" stroke="#dc0000" strokeWidth="3"
-              strokeLinecap="round"
-              strokeDasharray="176"
-              strokeDashoffset="44"
-              className="animate-spin"
-              style={{ animationDuration: "1.5s" }}
-            />
-          </svg>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)] animate-pulse" aria-hidden="true" />
-          </div>
-        </div>
-        <div className="flex flex-col items-center gap-1">
-          <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-[var(--text-muted)]">
-            INITIALIZING TELEMETRY
-          </p>
-          <div className="flex gap-1">
-            {[0, 1, 2].map((i) => (
-              <span
-                key={i}
-                className="w-1 h-1 rounded-full bg-[var(--accent-primary)]"
-                style={{ animationDelay: `${i * 0.2}s` }}
-                aria-hidden="true"
-              />
-            ))}
-          </div>
-        </div>
+      <style>{`
+        @keyframes lightOn {
+          0% { background-color: #1a1a2e; box-shadow: none; }
+          100% { background-color: #dc0000; box-shadow: 0 0 20px #dc0000, 0 0 40px rgba(220, 0, 0, 0.3); }
+        }
+        .f1-light {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background-color: #1a1a2e;
+          border: 2px solid #333;
+          transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .f1-light.on {
+          background-color: #dc0000;
+          box-shadow: 0 0 20px #dc0000, 0 0 40px rgba(220, 0, 0, 0.3);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .f1-light { animation: none !important; }
+          .f1-light.on { background-color: #dc0000; box-shadow: 0 0 20px #dc0000; }
+        }
+      `}</style>
+      <div className="flex items-center gap-4">
+        {[0, 1, 2, 3, 4].map((i) => (
+          <div
+            key={i}
+            className={cn("f1-light", !lightsOut && "on")}
+            style={!lightsOut ? { animation: `lightOn 0.1s ${i * 400}ms forwards` } : undefined}
+            aria-hidden="true"
+          />
+        ))}
       </div>
     </div>
   );
