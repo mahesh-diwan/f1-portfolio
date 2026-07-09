@@ -31,7 +31,7 @@ export function TelemetrySkills() {
                 const avg = Math.round(group.items.reduce((sum, s) => sum + s.pct, 0) / group.items.length);
                 return (
                   <StaggerItem key={group.group}>
-                    <div className="glass p-4 h-full">
+                    <div className="glass shadow-card hover-lift p-4 h-full">
                       <p className="text-[8px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">{group.group}</p>
                       <div className="flex items-start gap-3">
                         <Gauge value={avg} label="AVG" color={avg >= 85 ? "#a855f7" : avg >= 70 ? "#22c55e" : "#eab308"} size={56} />
@@ -60,7 +60,7 @@ export function TelemetrySkills() {
           {portfolio.otherSkills && portfolio.otherSkills.length > 0 && (
             <div className="mt-6">
               <SectionReveal delay={0.2}>
-                <div className="glass p-4">
+                <div className="glass shadow-card p-4">
                   <p className="text-[8px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">Additional Capabilities</p>
                   <div className="flex flex-wrap gap-1.5">
                     {portfolio.otherSkills.map((skill) => (

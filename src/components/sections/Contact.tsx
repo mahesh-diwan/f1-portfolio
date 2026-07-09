@@ -26,7 +26,7 @@ export function Contact() {
           </div>
 
           {/* Direct Line */}
-          <div className="glass p-5 mb-4">
+          <div className="glass shadow-card p-5 mb-4">
             <p className="text-[8px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">Direct Line</p>
             <div className="flex items-center gap-3">
               <StatusIndicator status="active" label="AVAILABLE" />
@@ -41,7 +41,7 @@ export function Contact() {
             {channels.map((ch) => (
               <EasterEgg key={ch.label} message={`Opening ${ch.label} channel...`} icon="📡" trigger="click">
                 <a href={ch.url} target="_blank" rel="noopener noreferrer"
-                  className="glass p-4 block hover:bg-[var(--bg-elevated)] transition-colors group">
+                  className="glass shadow-card hover-lift p-4 block hover:bg-[var(--bg-elevated)] transition-colors group">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[7px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">Channel</span>
                     <span className="text-[7px] text-[var(--text-muted)] font-mono">{ch.label}</span>

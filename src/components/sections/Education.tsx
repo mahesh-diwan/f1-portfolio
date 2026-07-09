@@ -30,7 +30,7 @@ export function Education() {
                 const podium = podiumColors[idx] || podiumColors[0];
                 return (
                   <StaggerItem key={idx}>
-                    <div className="glass p-5 h-full" style={{ borderTop: `3px solid ${podium.border}` }}>
+                    <div className="glass shadow-card hover-lift p-5 h-full" style={{ borderTop: `3px solid ${podium.border}` }}>
                       <div className="flex items-center justify-between mb-3">
                         <span className="text-[7px] uppercase tracking-[0.1em] font-mono" style={{ color: podium.border }}>
                           {podium.label}

@@ -77,7 +77,7 @@ export function Hero() {
             {portfolio.titleName}
           </h1>
           {/* Scan line */}
-          <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--accent)] to-transparent animate-scanline opacity-60" aria-hidden="true" />
+          <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--accent)] to-transparent animate-scanline opacity-60" style={{ filter: "drop-shadow(0 0 6px var(--accent-glow))" }} aria-hidden="true" />
         </motion.div>
 
         {/* F1 subtitle */}
@@ -96,7 +96,7 @@ export function Hero() {
 
         {/* Telemetry strip */}
         <motion.div
-          className="flex items-center justify-center gap-6 sm:gap-8 mb-10"
+          className="flex items-center justify-center gap-6 sm:gap-8 mb-10 glass shadow-card px-6 py-3 mx-auto w-fit"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
@@ -153,7 +153,7 @@ export function Hero() {
         <span className="text-[8px] uppercase tracking-[0.2em] text-[var(--text-dim)] font-mono block mb-2">
           Scroll
         </span>
-        <div className="w-4 h-6 border border-[var(--border-default)] rounded-full mx-auto flex justify-center pt-1">
+        <div className="w-4 h-6 border border-[var(--border-default)] rounded-full mx-auto flex justify-center pt-1 shadow-card">
           <motion.div
             className="w-1 h-1.5 bg-[var(--text-dim)] rounded-full"
             animate={{ y: [0, 6, 0] }}

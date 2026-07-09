@@ -49,7 +49,7 @@ function ProjectCard({ project, index }: { project: ReturnType<typeof getProject
 
   return (
     <div className="break-inside-avoid mb-4">
-      <div className={`glass p-4 ${cardHeight} flex flex-col`}>
+      <div className={`glass shadow-card hover-lift p-4 ${cardHeight} flex flex-col`}>
         {/* Header */}
         <div className="flex items-start justify-between mb-2">
           <span className="text-[7px] uppercase tracking-[0.1em] text-[var(--text-muted)] font-mono">

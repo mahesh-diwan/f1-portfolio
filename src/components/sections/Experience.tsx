@@ -27,7 +27,7 @@ export function Experience() {
 
           <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6">
             {/* Left: Driver Standings */}
-            <div className="glass p-5 h-fit">
+            <div className="glass shadow-card p-5 h-fit">
               <p className="text-[8px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-4">Driver Standings</p>
 
               {/* Stats */}
@@ -77,7 +77,7 @@ export function Experience() {
               <div className="space-y-4">
                 {portfolio.experience.map((exp, idx) => (
                   <StaggerItem key={idx}>
-                    <div className="glass p-5">
+                    <div className="glass shadow-card hover-lift p-5">
                       <div className="flex items-center gap-2 mb-3">
                         <span className={`text-[9px] font-mono px-2 py-0.5 ${
                           idx === 0
