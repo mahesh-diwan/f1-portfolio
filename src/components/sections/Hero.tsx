@@ -107,12 +107,12 @@ export function Hero() {
           </motion.h1>
         </motion.div>
 
-        {/* F1 subtitle */}
+        {/* F1 subtitle — fades in after typing completes */}
         <motion.div
           className="flex items-center justify-center gap-3 mt-4 mb-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
+          transition={{ delay: 1.4 }}
         >
           <div className="w-8 h-px bg-[var(--accent)]" />
           <span className="text-[13px] uppercase tracking-[0.2em] text-[var(--accent)] font-mono">
@@ -121,12 +121,12 @@ export function Hero() {
           <div className="w-8 h-px bg-[var(--accent)]" />
         </motion.div>
 
-        {/* Telemetry strip */}
+        {/* Telemetry strip — fades in after typing completes */}
         <motion.div
           className="flex items-center justify-center gap-6 sm:gap-8 mb-10 glass shadow-card px-6 py-3 mx-auto w-fit"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
+          transition={{ delay: 1.6 }}
         >
           {stats.map((stat, i) => (
             <div key={stat.label} className="flex items-center gap-6 sm:gap-8">
@@ -138,12 +138,12 @@ export function Hero() {
           ))}
         </motion.div>
 
-        {/* Social links — icon only */}
+        {/* Social links — icon only, fades in after typing completes */}
         <motion.div
           className="flex items-center justify-center gap-5"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.0 }}
+          transition={{ delay: 1.8 }}
         >
           <EasterEgg message="GitHub: Where code meets the track!" icon="🏁" trigger="click">
             <a href={portfolio.links.github} target="_blank" rel="noopener noreferrer"
@@ -170,12 +170,12 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — fades in after typing completes */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
+        transition={{ delay: 2.0 }}
       >
         <span className="text-[12px] uppercase tracking-[0.2em] text-[var(--text-dim)] font-mono block mb-2">
           Scroll

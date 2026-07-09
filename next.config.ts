@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  devIndicators: false,
 };
 
 export default nextConfig;
