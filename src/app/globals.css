@@ -160,73 +160,73 @@
 }
 
 .light {
-    /* Warm white base — clean and modern */
-    --color-bg-base: #f5f3ef;
-    --color-bg-surface: #eeeae4;
-    --color-bg-elevated: #e8e3dc;
-    --color-bg-overlay: #e2ddd5;
-    --color-bg-inset: #f0ece6;
+    /* Ancient Script parchment base */
+    --color-bg-base: #e6d5a8;
+    --color-bg-surface: #f0e2c0;
+    --color-bg-elevated: #d8c898;
+    --color-bg-overlay: #ccb880;
+    --color-bg-inset: #e0d0a0;
 
     /* Desaturated dark borders — subtle but visible */
-    --color-border-subtle: rgba(0, 0, 0, 0.04);
-    --color-border-default: rgba(0, 0, 0, 0.08);
-    --color-border-strong: rgba(0, 0, 0, 0.12);
-    --color-border-focus: #c41a1a;
+    --color-border-subtle: #c8b888;
+    --color-border-default: #b8a070;
+    --color-border-strong: #a08850;
+    --color-border-focus: #a31815;
 
-    /* Deep blue-grey text — high contrast on warm white */
-    --color-text-primary: #1a1a2e;
-    --color-text-secondary: #4a4a5e;
-    --color-text-muted: #7a7a8e;
-    --color-text-dim: #9a9aae;
-    --color-text-inverse: #f5f3ef;
+    /* Deep brown text — high contrast on parchment */
+    --color-text-primary: #1a0e02;
+    --color-text-secondary: #3a2510;
+    --color-text-muted: #5a4020;
+    --color-text-dim: #7a6040;
+    --color-text-inverse: #e6d5a8;
 
-    /* Desaturated red accent — refined for light mode */
-    --color-accent-primary: #c41a1a;
-    --color-accent-primary-hover: #a31515;
-    --color-accent-primary-dim: #8a1010;
-    --color-accent-primary-glow: rgba(196, 26, 26, 0.15);
-    --color-accent-primary-muted: rgba(196, 26, 26, 0.06);
+    /* Desaturated red accent — refined for parchment */
+    --color-accent-primary: #a31815;
+    --color-accent-primary-hover: #c42018;
+    --color-accent-primary-dim: #8a1210;
+    --color-accent-primary-glow: rgba(163, 24, 21, 0.15);
+    --color-accent-primary-muted: rgba(163, 24, 21, 0.06);
 
     /* Warm gold accent */
-    --color-accent-gold: #b5850a;
-    --color-accent-gold-dim: #9a6f08;
-    --color-accent-gold-muted: rgba(181, 133, 10, 0.08);
+    --color-accent-gold: #9a7a0a;
+    --color-accent-gold-dim: #826808;
+    --color-accent-gold-muted: rgba(154, 122, 10, 0.06);
 
     /* Warm teal */
-    --color-accent-teal: #0a8a6e;
-    --color-accent-teal-dim: #087560;
-    --color-accent-teal-muted: rgba(10, 138, 110, 0.06);
+    --color-accent-teal: #087a60;
+    --color-accent-teal-dim: #066850;
+    --color-accent-teal-muted: rgba(8, 122, 96, 0.06);
 
     /* Warm blue */
-    --color-accent-blue: #2878c8;
-    --color-accent-blue-dim: #2068b0;
-    --color-accent-blue-muted: rgba(40, 120, 200, 0.06);
+    --color-accent-blue: #2068a8;
+    --color-accent-blue-dim: #1a5890;
+    --color-accent-blue-muted: rgba(32, 104, 168, 0.06);
 
     /* Warm green */
-    --color-accent-green: #2a8a5a;
-    --color-accent-green-dim: #227a4e;
-    --color-accent-green-muted: rgba(42, 138, 90, 0.06);
+    --color-accent-green: #207a4a;
+    --color-accent-green-dim: #1a6840;
+    --color-accent-green-muted: rgba(32, 122, 74, 0.06);
 
     /* Warm purple */
-    --color-accent-purple: #7a4ec0;
-    --color-accent-purple-dim: #6a42a8;
-    --color-accent-purple-muted: rgba(122, 78, 192, 0.06);
+    --color-accent-purple: #6a42a8;
+    --color-accent-purple-dim: #5a3890;
+    --color-accent-purple-muted: rgba(106, 66, 168, 0.06);
 
     /* Warm orange */
-    --color-accent-orange: #d06a20;
-    --color-accent-orange-dim: #b85c18;
-    --color-accent-orange-muted: rgba(208, 106, 32, 0.06);
+    --color-accent-orange: #b85a18;
+    --color-accent-orange-dim: #a04c14;
+    --color-accent-orange-muted: rgba(184, 90, 24, 0.06);
 
-    /* F1 display accents — muted for light mode */
-    --color-display-green: #1a8a4a;
-    --color-display-green-dim: #147040;
-    --color-display-green-muted: rgba(26, 138, 74, 0.06);
+    /* F1 display accents — muted for parchment */
+    --color-display-green: #1a7a40;
+    --color-display-green-dim: #14683a;
+    --color-display-green-muted: rgba(26, 122, 64, 0.06);
 
-    --color-display-amber: #a06a00;
-    --color-display-amber-dim: #8a5c00;
-    --color-display-amber-muted: rgba(160, 106, 0, 0.06);
+    --color-display-amber: #8a6a00;
+    --color-display-amber-dim: #785c00;
+    --color-display-amber-muted: rgba(138, 106, 0, 0.06);
 
-    --bg-nav: rgba(245, 243, 239, 0.95);
+    --bg-nav: rgba(230, 213, 168, 0.95);
 
     --bg-base: var(--color-bg-base);
     --bg-surface: var(--color-bg-surface);
@@ -254,35 +254,26 @@
     --scrollbar-thumb: var(--color-border-default);
     --scrollbar-track: var(--color-bg-surface);
 
-    --shadow-glow: 0 0 24px rgba(184, 32, 28, 0.15);
-    --shadow-glow-gold: 0 0 24px rgba(200, 150, 12, 0.12);
-    --shadow-glow-teal: 0 0 24px rgba(0, 150, 120, 0.12);
+    --shadow-glow: 0 0 24px rgba(163, 24, 21, 0.12);
+    --shadow-glow-gold: 0 0 24px rgba(154, 122, 10, 0.10);
+    --shadow-glow-teal: 0 0 24px rgba(8, 122, 96, 0.10);
 }
 
 .light body {
     background:
-        radial-gradient(
-            ellipse 80% 50% at 50% -10%,
-            rgba(196, 26, 26, 0.03) 0%,
-            transparent 60%
-        ),
-        radial-gradient(
-            ellipse 70% 45% at 80% 15%,
-            rgba(200, 160, 20, 0.08) 0%,
-            transparent 55%
-        ),
-        radial-gradient(
-            ellipse 60% 35% at 15% 50%,
-            rgba(200, 140, 30, 0.05) 0%,
-            transparent 50%
-        ),
-        radial-gradient(
-            ellipse 80% 40% at 50% 100%,
-            rgba(180, 140, 20, 0.06) 0%,
-            transparent 55%
-        ),
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(163,24,21,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 45% at 80% 15%, rgba(180,130,10,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 35% at 15% 50%, rgba(184,90,24,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse 80% 40% at 50% 100%, rgba(154,122,10,0.08) 0%, transparent 55%),
         var(--bg-base);
     background-attachment: fixed;
+}
+
+.light body::before {
+    background-image:
+        radial-gradient(circle at 0.5px 0.5px, rgba(26,14,2,0.04) 0.5px, transparent 0.5px);
+    background-size: 3px 3px;
+    opacity: 0.8;
 }
 
 @layer base {
@@ -1361,8 +1352,8 @@
 
 .light .grid-bg {
     background-image:
-        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0, 0, 0, 0.02) 40px, rgba(0, 0, 0, 0.02) 41px),
-        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0, 0, 0, 0.02) 40px, rgba(0, 0, 0, 0.02) 41px);
+        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(26,14,2,0.02) 40px, rgba(26,14,2,0.02) 41px),
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(26,14,2,0.02) 40px, rgba(26,14,2,0.02) 41px);
 }
 
 /* Telemetry pulse — for status dots */
