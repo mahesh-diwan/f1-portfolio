@@ -44,22 +44,22 @@ function ProjectCard({ project, index }: { project: ReturnType<typeof getProject
   }
 
   const status = project.status ? statusConfig[project.status] : null;
-  const heights = ["min-h-[200px]", "min-h-[280px]", "min-h-[220px]", "min-h-[260px]"];
+  const heights = ["min-h-[220px]", "min-h-[300px]", "min-h-[240px]", "min-h-[280px]"];
   const cardHeight = heights[index % 4];
 
   return (
     <div className="break-inside-avoid mb-4">
-      <div className={`glass shadow-card hover-lift p-4 ${cardHeight} flex flex-col`}>
+      <div className={`glass shadow-card hover-lift p-5 ${cardHeight} flex flex-col`}>
         {/* Header */}
         <div className="flex items-start justify-between mb-2">
-          <span className="text-[7px] uppercase tracking-[0.1em] text-[var(--text-muted)] font-mono">
+          <span className="text-[9px] uppercase tracking-[0.1em] text-[var(--text-muted)] font-mono">
             {project.type?.toUpperCase()}
           </span>
           {status && (
-            <span className={`inline-flex items-center gap-1 px-1.5 py-0.5 text-[7px] font-mono uppercase tracking-wider border ${status.bgClass}`}>
-              <span className="relative inline-flex h-1.5 w-1.5" aria-hidden="true">
+            <span className={`inline-flex items-center gap-1 px-2 py-0.5 text-[8px] font-mono uppercase tracking-wider border ${status.bgClass}`}>
+              <span className="relative inline-flex h-2 w-2" aria-hidden="true">
                 <span className="absolute inline-flex h-full w-full rounded-full opacity-75 animate-telemetry-pulse" style={{ backgroundColor: status.color }} />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full" style={{ backgroundColor: status.color }} />
+                <span className="relative inline-flex h-2 w-2 rounded-full" style={{ backgroundColor: status.color }} />
               </span>
               {status.label}
             </span>
@@ -67,69 +67,75 @@ function ProjectCard({ project, index }: { project: ReturnType<typeof getProject
         </div>
 
         {/* Title + icon */}
-        <div className="flex items-start gap-2.5 mb-2">
+        <div className="flex items-start gap-3 mb-3">
           <EasterEgg message={`Shipped ${project.name} to prod!`} icon="🏁" trigger="click">
-            <span className="text-lg cursor-pointer hover:scale-110 transition-transform">{project.icon}</span>
+            <span className="text-2xl cursor-pointer hover:scale-110 transition-transform">{project.icon}</span>
           </EasterEgg>
           <div className="min-w-0 flex-1">
-            <h3 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">{project.name}</h3>
-            <p className="text-[9px] text-[var(--text-secondary)] mt-0.5 line-clamp-2 leading-relaxed">{project.desc}</p>
+            <h3 className="text-sm font-bold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">{project.name}</h3>
+            <p className="text-[11px] text-[var(--text-secondary)] mt-1 line-clamp-2 leading-relaxed">{project.desc}</p>
           </div>
         </div>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-1 mb-3">
+        <div className="flex flex-wrap gap-1.5 mb-3">
           {project.tags.slice(0, 4).map((tag) => (
-            <span key={tag} className="px-1.5 py-0.5 text-[7px] font-mono uppercase tracking-wider text-[var(--text-muted)] border border-[var(--border-default)] bg-[var(--bg-surface)]">
+            <span key={tag} className="px-2 py-0.5 text-[8px] font-mono uppercase tracking-wider text-[var(--text-muted)] border border-[var(--border-default)] bg-[var(--bg-surface)]">
               {tag}
             </span>
           ))}
         </div>
 
         {/* Footer */}
-        <div className="flex items-center gap-2 mt-auto pt-2.5 border-t border-[var(--border-default)]">
+        <div className="flex items-center gap-2 mt-auto pt-3 border-t border-[var(--border-default)]">
           {project.link && (
             <a href={project.link} target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-1 px-1.5 py-0.5 text-[8px] font-mono text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+              className="flex items-center gap-1 px-2 py-1 text-[9px] font-mono text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
               aria-label={`${project.name} repository`}>
-              <GitBranch className="w-2.5 h-2.5" /> Repo
+              <GitBranch className="w-3 h-3" /> Repo
             </a>
           )}
           {project.demo && (
             <a href={project.demo} target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-1 px-1.5 py-0.5 text-[8px] font-mono text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+              className="flex items-center gap-1 px-2 py-1 text-[9px] font-mono text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
               aria-label={`${project.name} demo`}>
-              <ExternalLink className="w-2.5 h-2.5" /> Demo
+              <ExternalLink className="w-3 h-3" /> Demo
             </a>
           )}
-          {(project.problem || project.solution || metrics.length > 0) && (
+          {(project.problem || project.solution || project.architecture || metrics.length > 0) && (
             <button onClick={() => setExpanded(!expanded)}
-              className="ml-auto flex items-center gap-0.5 px-1.5 py-0.5 text-[8px] font-mono text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+              className="ml-auto flex items-center gap-0.5 px-2 py-1 text-[9px] font-mono text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
               aria-expanded={expanded}>
-              {expanded ? <Minus className="w-2.5 h-2.5" /> : <Plus className="w-2.5 h-2.5" />}
-              Data
+              {expanded ? <Minus className="w-3 h-3" /> : <Plus className="w-3 h-3" />}
+              Details
             </button>
           )}
         </div>
 
         {/* Expanded content */}
         {expanded && (
-          <div className="mt-3 pt-3 border-t border-[var(--border-default)] space-y-2.5 animate-fade-in">
+          <div className="mt-3 pt-3 border-t border-[var(--border-default)] space-y-3 animate-fade-in">
             {project.problem && (
               <div>
-                <p className="text-[7px] font-mono uppercase tracking-wider text-[var(--accent)] mb-0.5">Problem</p>
-                <p className="text-[9px] text-[var(--text-secondary)] leading-relaxed">{project.problem}</p>
+                <p className="text-[9px] font-mono uppercase tracking-wider text-[var(--accent)] mb-1">Problem</p>
+                <p className="text-[10px] text-[var(--text-secondary)] leading-relaxed">{project.problem}</p>
               </div>
             )}
             {project.solution && (
               <div>
-                <p className="text-[7px] font-mono uppercase tracking-wider text-[var(--color-display-green)] mb-0.5">Solution</p>
-                <p className="text-[9px] text-[var(--text-secondary)] leading-relaxed">{project.solution}</p>
+                <p className="text-[9px] font-mono uppercase tracking-wider text-[var(--color-display-green)] mb-1">Solution</p>
+                <p className="text-[10px] text-[var(--text-secondary)] leading-relaxed">{project.solution}</p>
+              </div>
+            )}
+            {project.architecture && (
+              <div>
+                <p className="text-[9px] font-mono uppercase tracking-wider text-[var(--color-accent-teal)] mb-1">Architecture</p>
+                <pre className="text-[9px] font-mono text-[var(--text-secondary)] bg-[var(--bg-elevated)] p-2 rounded border border-[var(--border-default)] overflow-x-auto whitespace-pre leading-relaxed">{project.architecture}</pre>
               </div>
             )}
             {metrics.length > 0 && (
               <div className="space-y-1.5">
-                <p className="text-[7px] font-mono uppercase tracking-wider text-[var(--text-muted)]">Metrics</p>
+                <p className="text-[9px] font-mono uppercase tracking-wider text-[var(--text-muted)]">Metrics</p>
                 {metrics.map((m) => (
                   <PerformanceMeter key={m.label} value={m.value} label={m.label} color={m.color} size="sm" />
                 ))}

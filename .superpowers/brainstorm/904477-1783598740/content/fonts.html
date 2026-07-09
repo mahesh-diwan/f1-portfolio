@@ -1,0 +1,92 @@
+<h2>F1 Typography — Font Pairing</h2>
+<p class="subtitle">Matching F1.com's actual font choices</p>
+
+<div class="section">
+  <h3>What F1.com Actually Uses</h3>
+  <p style="font-size: 13px; line-height: 1.6; max-width: 600px;">
+    The official F1 website uses a custom proprietary "F1" font for headings and nav, 
+    paired with <strong>Titillium Web</strong> for body text — a geometric sans-serif 
+    originally designed for the University of Architecture of Urbino. It has that wide, 
+    technical, motorsport feel without being illegible.
+  </p>
+</div>
+
+<div class="split" style="margin-top: 24px;">
+  <!-- Current -->
+  <div class="mockup">
+    <div class="mockup-header">Current Stack</div>
+    <div class="mockup-body" style="background: #f0e4c8; color: #1e1005; padding: 24px; position: relative;">
+      <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px, rgba(30,16,5,0.03) 1px, transparent 1px);background-size:4px 4px;pointer-events:none;opacity:0.6;"></div>
+      <div style="position: relative; z-index: 1;">
+        <p class="label" style="margin-bottom: 8px;">Headings — Space Grotesk</p>
+        <p style="font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; margin: 0 0 4px 0;">CAREER TIMELINE</p>
+        <p style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 600; margin: 0 0 16px 0; text-transform: uppercase; letter-spacing: 0.02em;">Race Engineer</p>
+        
+        <p class="label" style="margin-bottom: 8px;">Body — Inter Variable</p>
+        <p style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.65; margin: 0 0 16px 0;">
+          Led development of real-time telemetry processing system handling 2,000+ sensor data points per second across 20+ vehicles.
+        </p>
+        
+        <p class="label" style="margin-bottom: 8px;">Mono — IBM Plex Mono</p>
+        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: -0.01em; margin: 0;">
+          SECTOR 1: 0:31.442 ▪ PB: -0.234
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Proposed -->
+  <div class="mockup">
+    <div class="mockup-header">Proposed — F1-Linked Stack</div>
+    <div class="mockup-body" style="background: #f0e4c8; color: #1e1005; padding: 24px; position: relative;">
+      <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px, rgba(30,16,5,0.03) 1px, transparent 1px);background-size:4px 4px;pointer-events:none;opacity:0.6;"></div>
+      <div style="position: relative; z-index: 1;">
+        <p class="label" style="margin-bottom: 8px;">Headings — Titillium Web (F1 body font)</p>
+        <p style="font-family: 'Titillium Web', sans-serif; font-size: 28px; font-weight: 700; margin: 0 0 4px 0;">CAREER TIMELINE</p>
+        <p style="font-family: 'Titillium Web', sans-serif; font-size: 16px; font-weight: 600; margin: 0 0 16px 0; text-transform: uppercase; letter-spacing: 0.02em;">Race Engineer</p>
+        
+        <p class="label" style="margin-bottom: 8px;">Body — Titillium Web (same family, lighter)</p>
+        <p style="font-family: 'Titillium Web', sans-serif; font-size: 14px; font-weight: 400; line-height: 1.65; margin: 0 0 16px 0;">
+          Led development of real-time telemetry processing system handling 2,000+ sensor data points per second across 20+ vehicles.
+        </p>
+        
+        <p class="label" style="margin-bottom: 8px;">Mono — IBM Plex Mono (unchanged)</p>
+        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: -0.01em; margin: 0;">
+          SECTOR 1: 0:31.442 ▪ PB: -0.234
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 24px;">
+  <h3>Why Titillium Web</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div>
+      <p class="label">F1.com uses it</p>
+      <p style="font-size: 13px;">The actual body font on formula1.com. Instantly recognizable to F1 fans.</p>
+    </div>
+    <div>
+      <p class="label">Google Fonts</p>
+      <p style="font-size: 13px;">Free, self-hostable, 12 weights (200–900). No licensing issues.</p>
+    </div>
+    <div>
+      <p class="label">Technical feel</p>
+      <p style="font-size: 13px;">Wide letterforms, geometric construction. Reads as "engineering" not "fashion".</p>
+    </div>
+    <div>
+      <p class="label">Readability</p>
+      <p style="font-size: 13px;">Designed for screen. Good at small sizes (telemetry labels, mono-adjacent text).</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 16px;">
+  <h3>Full Font Stack</h3>
+  <div style="background: var(--bg-surface); border: 1px solid var(--border); padding: 16px; border-radius: 8px; font-family: monospace; font-size: 12px; line-height: 2;">
+    --font-sans: "Titillium Web", ui-sans-serif, system-ui, sans-serif;<br>
+    --font-heading: "Titillium Web", ui-sans-serif, system-ui, sans-serif;<br>
+    --font-display: "Titillium Web", ui-sans-serif, system-ui, sans-serif;<br>
+    --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  </div>
+</div>

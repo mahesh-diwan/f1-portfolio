@@ -50,7 +50,7 @@ test.describe("Content", () => {
     if (portfolioConfig.projects.length === 0) return;
     await page.locator('header button:has-text("Projects")').click();
     await page.waitForTimeout(1200);
-    const moreBtn = page.locator('button:has-text("DATA")').first();
+    const moreBtn = page.locator('button:has-text("Details")').first();
     await moreBtn.click();
     await expect(page.locator("text=PROBLEM").first()).toBeVisible();
     await expect(page.locator("text=SOLUTION").first()).toBeVisible();
