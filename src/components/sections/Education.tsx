@@ -7,7 +7,7 @@ import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/motio
 const podiumColors = [
   { border: "#f7d117", label: "P1 — FIRST", num: "#01" },
   { border: "#c0c0c0", label: "P2 — SECOND", num: "#02" },
-  { border: "#cd7f32", label: "P3 — THIRD", num: "#03" },
+  { border: "#e8a87c", label: "P3 — THIRD", num: "#03" },
 ];
 
 export function Education() {
