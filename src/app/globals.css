@@ -161,64 +161,73 @@
 }
 
 .light {
-    /* Deep parchment base — warmer than pure white */
-    --color-bg-base: #f0e4c8;
-    --color-bg-surface: #f7edd4;
-    --color-bg-elevated: #e8dab8;
-    --color-bg-overlay: #ddd0a8;
-    --color-bg-inset: #ede0c4;
+    /* Warm white base — clean and modern */
+    --color-bg-base: #f5f3ef;
+    --color-bg-surface: #eeeae4;
+    --color-bg-elevated: #e8e3dc;
+    --color-bg-overlay: #e2ddd5;
+    --color-bg-inset: #f0ece6;
 
-    /* Warm amber-brown borders */
-    --color-border-subtle: #d4c498;
-    --color-border-default: #c4b080;
-    --color-border-strong: #a89460;
-    --color-border-focus: #c9302c;
+    /* Desaturated dark borders — subtle but visible */
+    --color-border-subtle: rgba(0, 0, 0, 0.04);
+    --color-border-default: rgba(0, 0, 0, 0.08);
+    --color-border-strong: rgba(0, 0, 0, 0.12);
+    --color-border-focus: #c41a1a;
 
-    /* Rich dark brown text — high contrast on parchment */
-    --color-text-primary: #1e1005;
-    --color-text-secondary: #3a2810;
-    --color-text-muted: #4d3a1c;
-    --color-text-dim: #6b5530;
-    --color-text-inverse: #f0e4c8;
+    /* Deep blue-grey text — high contrast on warm white */
+    --color-text-primary: #1a1a2e;
+    --color-text-secondary: #4a4a5e;
+    --color-text-muted: #7a7a8e;
+    --color-text-dim: #9a9aae;
+    --color-text-inverse: #f5f3ef;
 
-    /* Warmer red accent — tuned for light parchment */
-    --color-accent-primary: #b8201c;
-    --color-accent-primary-hover: #d42820;
-    --color-accent-primary-dim: #941a16;
-    --color-accent-primary-glow: rgba(184, 32, 28, 0.3);
-    --color-accent-primary-muted: rgba(184, 32, 28, 0.08);
+    /* Desaturated red accent — refined for light mode */
+    --color-accent-primary: #c41a1a;
+    --color-accent-primary-hover: #a31515;
+    --color-accent-primary-dim: #8a1010;
+    --color-accent-primary-glow: rgba(196, 26, 26, 0.15);
+    --color-accent-primary-muted: rgba(196, 26, 26, 0.06);
 
     /* Warm gold accent */
     --color-accent-gold: #b5850a;
     --color-accent-gold-dim: #9a6f08;
-    --color-accent-gold-muted: rgba(181, 133, 10, 0.1);
+    --color-accent-gold-muted: rgba(181, 133, 10, 0.08);
 
-    /* Warm teal — slightly deeper for light bg */
+    /* Warm teal */
     --color-accent-teal: #0a8a6e;
     --color-accent-teal-dim: #087560;
-    --color-accent-teal-muted: rgba(10, 138, 110, 0.08);
+    --color-accent-teal-muted: rgba(10, 138, 110, 0.06);
 
-    /* Warm blue — deeper for light bg */
+    /* Warm blue */
     --color-accent-blue: #2878c8;
     --color-accent-blue-dim: #2068b0;
-    --color-accent-blue-muted: rgba(40, 120, 200, 0.08);
+    --color-accent-blue-muted: rgba(40, 120, 200, 0.06);
 
-    /* Warm green — deeper for light bg */
+    /* Warm green */
     --color-accent-green: #2a8a5a;
     --color-accent-green-dim: #227a4e;
-    --color-accent-green-muted: rgba(42, 138, 90, 0.08);
+    --color-accent-green-muted: rgba(42, 138, 90, 0.06);
 
-    /* Warm purple — deeper for light bg */
+    /* Warm purple */
     --color-accent-purple: #7a4ec0;
     --color-accent-purple-dim: #6a42a8;
-    --color-accent-purple-muted: rgba(122, 78, 192, 0.08);
+    --color-accent-purple-muted: rgba(122, 78, 192, 0.06);
 
-    /* Warm orange — F1 brake-glow inspired */
+    /* Warm orange */
     --color-accent-orange: #d06a20;
     --color-accent-orange-dim: #b85c18;
-    --color-accent-orange-muted: rgba(208, 106, 32, 0.08);
+    --color-accent-orange-muted: rgba(208, 106, 32, 0.06);
 
-    --bg-nav: rgba(240, 228, 200, 0.95);
+    /* F1 display accents — muted for light mode */
+    --color-display-green: #1a8a4a;
+    --color-display-green-dim: #147040;
+    --color-display-green-muted: rgba(26, 138, 74, 0.06);
+
+    --color-display-amber: #a06a00;
+    --color-display-amber-dim: #8a5c00;
+    --color-display-amber-muted: rgba(160, 106, 0, 0.06);
+
+    --bg-nav: rgba(245, 243, 239, 0.95);
 
     --bg-base: var(--color-bg-base);
     --bg-surface: var(--color-bg-surface);
@@ -255,28 +264,23 @@
     background:
         radial-gradient(
             ellipse 80% 50% at 50% -10%,
-            rgba(184, 32, 28, 0.04) 0%,
+            rgba(196, 26, 26, 0.03) 0%,
             transparent 60%
         ),
         radial-gradient(
             ellipse 70% 45% at 80% 15%,
-            rgba(200, 150, 12, 0.15) 0%,
+            rgba(200, 160, 20, 0.08) 0%,
             transparent 55%
         ),
         radial-gradient(
             ellipse 60% 35% at 15% 50%,
-            rgba(208, 106, 32, 0.08) 0%,
+            rgba(200, 140, 30, 0.05) 0%,
             transparent 50%
         ),
         radial-gradient(
             ellipse 80% 40% at 50% 100%,
-            rgba(181, 133, 10, 0.1) 0%,
+            rgba(180, 140, 20, 0.06) 0%,
             transparent 55%
-        ),
-        radial-gradient(
-            ellipse 40% 30% at 90% 80%,
-            rgba(208, 106, 32, 0.06) 0%,
-            transparent 50%
         ),
         var(--bg-base);
     background-attachment: fixed;
