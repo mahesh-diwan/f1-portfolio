@@ -40,9 +40,11 @@ export function Education() {
                       <h3 className="text-[11px] font-bold text-[var(--text-primary)] mb-1 leading-tight">{edu.degree}</h3>
                       <p className="text-[9px] text-[var(--text-secondary)] mb-2">{edu.institution}</p>
                       <p className="text-[9px] text-[var(--text-muted)]">
-                        {edu.period} · <span style={{ color: podium.border, fontWeight: "bold" }}>
-                          {edu.gpa ? `CGPA: ${edu.gpa}` : edu.aggregate || `Score: ${edu.score}`}
-                        </span>
+                        {edu.period} · {edu.gpa && (
+                          <span style={{ color: podium.border, fontWeight: "bold" }}>
+                            CGPA: {edu.gpa}
+                          </span>
+                        )}
                       </p>
                       {edu.details && (
                         <p className="text-[9px] text-[var(--text-secondary)] mt-3 pt-3 border-t border-[var(--border-default)] leading-relaxed">
