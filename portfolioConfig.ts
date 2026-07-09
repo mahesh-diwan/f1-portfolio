@@ -9,6 +9,12 @@ export interface Project {
   accent: string;
   icon: string;
   status?: "in-production" | "experimental" | "archived";
+  problem?: string;
+  solution?: string;
+  challenges?: string;
+  lessons?: string;
+  metrics?: string[];
+  architecture?: string;
 }
 
 export interface Experience {
@@ -18,6 +24,7 @@ export interface Experience {
   date: string;
   desc: string;
   tags: string[];
+  current?: boolean;
 }
 
 export interface Education {
@@ -138,6 +145,7 @@ export const portfolioConfig = {
         "VPC",
         "Nginx",
       ],
+      current: true,
     },
     {
       id: "exp-2",
@@ -154,6 +162,7 @@ export const portfolioConfig = {
         "Linux",
         "Git",
       ],
+      current: false,
     },
   ] as Experience[],
   projects: [
@@ -175,6 +184,21 @@ export const portfolioConfig = {
       accent: "#61afef",
       icon: "🐳",
       status: "in-production",
+      problem:
+        "Deploying a multi-service MERN application manually to production caused massive downtime, environment inconsistency, and lack of scaling capabilities under high traffic.",
+      solution:
+        "Containerized the services using Docker Compose, configured rolling updates on AWS ECS (Fargate) behind an Application Load Balancer, and subsequently migrated to an AWS EKS (Kubernetes) cluster utilizing Prometheus/Grafana monitoring and automated GitOps triggers.",
+      challenges:
+        "Debugging pod-to-pod networking issues during initial K8s migration, and handling database credentials securely.",
+      lessons:
+        "Mastered Kubernetes service discovery, ingress rules, and IAM role association for service accounts (IRSA).",
+      metrics: [
+        "Reduced code delivery latency from hours to 5 minutes via automated GitHub Actions pipelines",
+        "Maintains 99.9% availability during rolling deployment upgrades by tuning K8s readiness/liveness probes",
+        "Tuned Horizontal Pod Autoscaler (HPA) CPU thresholds, optimizing container costs by 35% under simulated load testing",
+      ],
+      architecture:
+        "  [Dev push] -> [GitHub Actions] -> [Docker Hub/ECR]\n                                           │\n  [Users] -> [Route53] -> [ALB] -> [AWS EKS / ECS Cluster]\n                                     ├── web-api pod\n                                     ├── auth pod\n                                     └── mongodb pod",
     },
     {
       id: "proj-2",
@@ -194,6 +218,21 @@ export const portfolioConfig = {
       accent: "#98c379",
       icon: "☸️",
       status: "experimental",
+      problem:
+        "Traditional monolithic voting systems suffer from single points of failure, scaling constraints, and lack multi-language service interoperability.",
+      solution:
+        "Refactored the application into five microservices (Python frontend, C# worker, Node.js results API, Redis, and PostgreSQL). Orchestrated them using Kubernetes Deployments and Services with internal ClusterDNS resolution.",
+      challenges:
+        "Handling data consistency between the Python frontend voting logs, Redis cache queuing, and the C# worker database writes.",
+      lessons:
+        "Understood Redis pub/sub queue patterns, persistent volumes (PV/PVC) in Kubernetes, and handling container restart back-offs.",
+      metrics: [
+        "Sustained processing of 10,000+ concurrent requests during Apache Bench load testing",
+        "Achieved sub-50ms query response latency by implementing Redis caching queues",
+        "Configured Kubernetes self-healing probes, recovering failed pods in <3 seconds",
+      ],
+      architecture:
+        "  [Vote Cast] -> [Python UI] -> [Redis Queue] -> [C# Worker] -> [PostgreSQL]\n                                                                    │\n  [Live Results] <---------- [NodeJS API] <-------------------------┘",
     },
     {
       id: "proj-3",
@@ -205,6 +244,21 @@ export const portfolioConfig = {
       accent: "#d19a66",
       icon: "⚙️",
       status: "in-production",
+      problem:
+        "Lack of automated test verification and slow manual SSH deployment steps on AWS EC2 instances increased deployment errors and slowed feature iteration.",
+      solution:
+        "Designed a clean CI/CD automation pipeline using GitHub Actions that triggers on every commit, runs PyTest suites, builds a slim Docker container, and performs SSH deployments to EC2 instances using secure SSH runners.",
+      challenges:
+        "Managing SSH key security in public runners and setting up automated rollback triggers when unit tests failed.",
+      lessons:
+        "Learned how to set up GitHub Secrets, build secure Docker base images, and write robust bash deployment scripts.",
+      metrics: [
+        "Automated SSH deployment runners, completing code delivery in under 2 minutes",
+        "Integrated PyTest automation, ensuring 100% test coverage before production rollouts",
+        "Configured automated Docker image rollback targets on failed staging health checks",
+      ],
+      architecture:
+        "  [Code Push] -> [GHA runner] -> [Build Docker Image] -> [Test Pass]\n                                                               │ (SSH)\n  [Target EC2 Instance] <- [Docker Run alpine:nginx] <─────────┘",
     },
     {
       id: "proj-4",
@@ -216,6 +270,21 @@ export const portfolioConfig = {
       accent: "#fe8019",
       icon: "📖",
       status: "experimental",
+      problem:
+        "Extracting reference answers and reading through massive multi-page PDF documents is time-consuming and inefficient for researchers.",
+      solution:
+        "Developed a Python application powered by LangChain and Hugging Face Transformers to parse text, chunk paragraphs, store vector indices, and answer natural language prompts in an interactive Streamlit shell.",
+      challenges:
+        "Managing token chunk limits and handling embedded charts or table parsing errors from PyPDF2.",
+      lessons:
+        "Learned context embeddings alignment, prompt engineering guidelines, and memory handling in RAG applications.",
+      metrics: [
+        "Achieved semantic query response times under 2 seconds",
+        "Handles concurrent vector indexing of text documents up to 50MB",
+        "Increased retrieval accuracy by utilizing recursive text chunking strategies",
+      ],
+      architecture:
+        "  [PDF Upload] -> [PyPDF2 Parser] -> [Recursive Chunker] -> [Vector Index]\n                                                                 │\n  [User Query] -> [Semantic Match] -> [Hugging Face LLM] -> [Answer]",
     },
     {
       id: "proj-5",
@@ -227,6 +296,21 @@ export const portfolioConfig = {
       accent: "#c678dd",
       icon: "☁️",
       status: "archived",
+      problem:
+        "Forgotten cloud resources (idle EC2 instances, unattached EBS volumes, legacy Lambda functions) lead to silent monthly AWS cost leakages.",
+      solution:
+        "Wrote a lightweight Bash automation utility that schedules via cron, queries active AWS resources across EC2, S3, IAM, and Lambda using AWS CLI, and exports reports for auditing.",
+      challenges:
+        "Handling pagination in AWS CLI queries and structuring the output reports cleanly.",
+      lessons:
+        "Deepened knowledge of shell scripting, JSON parsing with jq, and AWS CLI pagination arguments.",
+      metrics: [
+        "Identified and flagged unattached cloud volumes, reducing sandbox billing costs by 30%",
+        "Queries and compiles AWS resource logs across 4 core APIs in under 5 seconds",
+        "Executes cron-scheduled audits autonomously, outputting alerts directly to logging targets",
+      ],
+      architecture:
+        "  [Cron Trigger] -> [Bash Script] -> [AWS CLI Query] -> [JQ Parse] -> [Log File]",
     },
     {
       id: "proj-6",
@@ -238,6 +322,21 @@ export const portfolioConfig = {
       accent: "#56b6c2",
       icon: "🕸️",
       status: "archived",
+      problem:
+        "Extracting nested directories and dynamic JavaScript data from websites for analytical models is slow when done manually.",
+      solution:
+        "Created an automated crawler with Node.js and Puppeteer that dynamically executes dynamic DOM actions, scrapes indices, and reports raw outputs to a Dockerized Flask backend API.",
+      challenges:
+        "Handling website rate limits, captcha checks, and asynchronous page loads.",
+      lessons:
+        "Understood headless browser configurations, Docker network links, and API rate-limiting techniques.",
+      metrics: [
+        "Sustained crawlers parsing 50+ dynamically loaded DOM pages per minute",
+        "Maintains structured, isolated database schemas behind Docker-linked API networks",
+        "Configured automated connection retry limits and error boundaries for scraping targets",
+      ],
+      architecture:
+        "  [Trigger API] -> [Puppeteer headless browser] -> [Dynamic DOM Parse]\n                                                           │\n  [Flask SQLite Target] <----------- [JSON Export] <───────┘",
     },
   ] as Project[],
 
