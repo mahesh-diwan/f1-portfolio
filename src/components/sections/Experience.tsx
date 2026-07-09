@@ -1,89 +1,112 @@
 "use client";
 
 import { portfolio } from "@/lib/portfolio";
-import { TelemetryPanel } from "@/components/ui/TelemetryPanel";
-import { RaceTimeline } from "@/components/ui/RaceTimeline";
-import { SectorTime } from "@/components/ui/SectorTime";
-import { SectionReveal } from "@/components/ui/SectionReveal";
-import { EasterEgg } from "@/components/ui/EasterEgg";
+import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/SectionReveal";
 
-const sectors = ["FORMATION LAP", "GREEN FLAG", "SECTOR 1", "SECTOR 2", "SECTOR 3"];
+const sectors = [
+  { label: "S1", time: "0:31.442", delta: "-0.234", status: "pb" as const },
+  { label: "S2", time: "0:28.176", delta: "+0.087", status: "normal" as const },
+  { label: "S3", time: "0:25.931", delta: "-0.412", status: "best" as const },
+];
 
 export function Experience() {
-  const items = portfolio.experience.map((exp, idx) => ({
-    id: exp.id,
-    date: exp.date,
-    title: exp.role,
-    subtitle: exp.company,
-    description: exp.desc,
-    tags: exp.tags,
-    current: exp.current,
-    sector: sectors[idx] ?? `SECTOR ${idx + 1}`,
-  }));
-
-  if (items.length === 0) return null;
-
-  const yearStart = portfolio.experience.reduce((acc, e) => {
-    const m = e.date.match(/(\d{4})/);
-    return m ? Math.min(acc, parseInt(m[1])) : acc;
-  }, new Date().getFullYear());
-  const yearEnd = portfolio.experience.reduce((acc, e) => {
-    if (e.current) return new Date().getFullYear();
-    const m = e.date.match(/(\d{4})/);
-    return m ? Math.max(acc, parseInt(m[1])) : acc;
-  }, 0);
-  const seasons = Math.max(0, yearEnd - yearStart + 1);
+  if (portfolio.experience.length === 0) return null;
 
   return (
-    <section id="experience" className="py-24 px-4 relative section-carbon" aria-label="Career experience">
+    <section id="experience" className="py-24 px-4 relative grid-bg" aria-label="Career experience">
       <SectionReveal>
-      <div className="max-w-7xl mx-auto">
-        <div className="flex items-center gap-4 mb-12">
-          <div className="section-accent-bar bg-gradient-to-b from-[var(--accent-primary)] to-[var(--color-accent-gold)]" aria-hidden="true" />
-          <div>
-            <p className="label-sm tracking-[0.2em]">RACE HISTORY</p>
-            <h2 className="heading-md text-3xl sm:text-4xl text-[var(--text-primary)] mt-0.5">Career Timeline</h2>
+        <div className="max-w-[1400px] mx-auto">
+          {/* Section header */}
+          <div className="flex items-center gap-3 mb-12">
+            <div className="w-[3px] h-5 bg-[var(--accent)]" />
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">Race History</p>
+              <h2 className="text-3xl sm:text-4xl font-display font-bold text-[var(--text-primary)]">Career Timeline</h2>
+            </div>
           </div>
-        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-          <TelemetryPanel label="PROFILE OVERVIEW" accent="var(--accent-primary)" className="lg:col-span-4">
-            <div className="flex flex-col gap-5">
-              <div className="grid grid-cols-2 gap-3">
-                <EasterEgg message="Every position on the grid counts — just like every commit! 🏆" icon="🏆" trigger="click" size="lg">
-                  <div className="text-center p-4 rounded-md bg-[var(--bg-elevated)] border border-[var(--border-default)]/60 hover-glow-accent cursor-pointer">
-                    <span className="text-3xl font-mono font-bold text-[var(--accent-primary)] tabular-nums">
-                      {portfolio.experience.length}
-                    </span>
-                    <p className="text-[9px] font-mono uppercase tracking-[0.12em] text-[var(--text-muted)] mt-1.5">POSITIONS</p>
-                  </div>
-                </EasterEgg>
-                <div className="text-center p-4 rounded-md bg-[var(--bg-elevated)] border border-[var(--border-default)]/60 hover-glow-accent">
-                  <span className="text-3xl font-mono font-bold text-[var(--color-accent-teal)] tabular-nums">{seasons}</span>
-                  <p className="text-[9px] font-mono uppercase tracking-[0.12em] text-[var(--text-muted)] mt-1.5">SEASONS</p>
+          <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6">
+            {/* Left: Driver Standings */}
+            <div className="glass p-5 h-fit">
+              <p className="text-[8px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-4">Driver Standings</p>
+
+              {/* Stats */}
+              <div className="grid grid-cols-2 gap-3 mb-5">
+                <div className="text-center bg-[var(--accent-muted)] border border-[var(--accent)]/15 p-3">
+                  <div className="text-2xl font-bold text-[var(--accent)]">{portfolio.experience.length}</div>
+                  <div className="text-[7px] uppercase tracking-[0.1em] text-[var(--text-muted)]">Positions</div>
+                </div>
+                <div className="text-center bg-[var(--color-accent-teal-muted)] border border-[var(--color-accent-teal)]/15 p-3">
+                  <div className="text-2xl font-bold text-[var(--color-accent-teal)]">3</div>
+                  <div className="text-[7px] uppercase tracking-[0.1em] text-[var(--text-muted)]">Seasons</div>
                 </div>
               </div>
+
+              {/* Best Sectors */}
+              <p className="text-[7px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">Best Sectors</p>
               <div className="space-y-1.5">
-                <p className="text-[8px] font-mono uppercase tracking-[0.12em] text-[var(--text-dim)]">BEST SECTORS</p>
-                <SectorTime sector={1} time="0:31.442" delta="-0.234" personalBest />
-                <SectorTime sector={2} time="0:28.176" delta="+0.087" />
-                <SectorTime sector={3} time="0:25.931" delta="-0.412" best />
-              </div>
-              <div className="flex flex-wrap gap-1.5">
-                {Array.from(new Set(portfolio.experience.flatMap((e) => e.tags))).slice(0, 8).map((tag) => (
-                  <span key={tag} className="px-1.5 py-0.5 text-[8px] font-mono uppercase tracking-wider bg-[var(--bg-elevated)] text-[var(--text-muted)] rounded-sm border border-[var(--border-default)]/60">
-                    {tag}
-                  </span>
+                {sectors.map((s) => (
+                  <div
+                    key={s.label}
+                    className={`flex items-center justify-between px-2.5 py-1.5 text-[9px] font-mono ${
+                      s.status === "pb"
+                        ? "bg-[var(--color-display-green-muted)] border border-[var(--color-display-green)]/15"
+                        : s.status === "best"
+                        ? "bg-[var(--color-accent-gold-muted)] border border-[var(--color-accent-gold)]/15"
+                        : "bg-[var(--bg-surface)] border border-[var(--border-default)]"
+                    }`}
+                  >
+                    <span className={s.status === "pb" ? "text-[var(--color-display-green)]" : s.status === "best" ? "text-[var(--color-accent-gold)]" : "text-[var(--text-secondary)]"}>
+                      {s.label} {s.time}
+                    </span>
+                    <span className={s.status === "pb" ? "text-[var(--color-display-green)]" : s.status === "best" ? "text-[var(--color-accent-gold)]" : "text-[var(--text-muted)]"}>
+                      {s.delta}
+                    </span>
+                    {s.status !== "normal" && (
+                      <span className={`text-[7px] ${s.status === "pb" ? "text-[var(--color-display-green)]" : "text-[var(--color-accent-gold)]"}`}>
+                        {s.status === "pb" ? "PB" : "BEST"}
+                      </span>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>
-          </TelemetryPanel>
 
-          <TelemetryPanel label="WORK HISTORY" className="lg:col-span-8">
-            <RaceTimeline items={items} />
-          </TelemetryPanel>
+            {/* Right: Work History */}
+            <StaggerReveal staggerDelay={0.1} direction="up">
+              <div className="space-y-4">
+                {portfolio.experience.map((exp, idx) => (
+                  <StaggerItem key={idx}>
+                    <div className="glass p-5">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className={`text-[9px] font-mono px-2 py-0.5 ${
+                          idx === 0
+                            ? "text-[var(--color-display-green)] bg-[var(--color-display-green-muted)]"
+                            : "text-[var(--color-accent-gold)] bg-[var(--color-accent-gold-muted)]"
+                        }`}>
+                          {idx === 0 ? "● FORMATION LAP" : "GREEN FLAG"}
+                        </span>
+                        <span className="text-[8px] text-[var(--text-muted)] font-mono">{exp.date}</span>
+                      </div>
+                      <h3 className="text-base font-bold text-[var(--text-primary)] mb-1">{exp.role}</h3>
+                      <p className="text-[10px] text-[var(--accent)] font-mono mb-2">{exp.company}</p>
+                      <p className="text-[10px] text-[var(--text-secondary)] leading-relaxed">{exp.desc}</p>
+                      {exp.tags && (
+                        <div className="flex flex-wrap gap-1.5 mt-3">
+                          {exp.tags.map((tag) => (
+                            <span key={tag} className="px-2 py-0.5 text-[7px] font-mono uppercase tracking-wider text-[var(--text-muted)] border border-[var(--border-default)] bg-[var(--bg-surface)]">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </StaggerItem>
+                ))}
+              </div>
+            </StaggerReveal>
+          </div>
         </div>
-      </div>
       </SectionReveal>
     </section>
   );
