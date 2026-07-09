@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { portfolio } from "@/lib/portfolio";
-import { StatusIndicator } from "@/components/ui/StatusIndicator";
-import { EasterEgg } from "@/components/ui/EasterEgg";
+import { StatusIndicator } from "@/components/ui/primitives/StatusIndicator";
+import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
 
 function HeroStat({ label, value, accent }: { label: string; value: number; accent: string }) {
   const [display, setDisplay] = useState(0);

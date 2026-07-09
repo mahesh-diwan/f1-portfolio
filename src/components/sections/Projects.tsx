@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { ExternalLink, GitBranch, Plus, Minus } from "lucide-react";
 import { portfolio, getProject } from "@/lib/portfolio";
-import { PerformanceMeter } from "@/components/ui/PerformanceMeter";
-import { SectionReveal } from "@/components/ui/SectionReveal";
-import { EasterEgg } from "@/components/ui/EasterEgg";
+import { PerformanceMeter } from "@/components/ui/f1/PerformanceMeter";
+import { SectionReveal } from "@/components/ui/motion/SectionReveal";
+import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
 
 const statusConfig: Record<string, { label: string; color: string; bgClass: string }> = {
   "in-production": {

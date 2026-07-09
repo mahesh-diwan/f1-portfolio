@@ -1,7 +1,7 @@
 "use client";
 
 import { portfolio } from "@/lib/portfolio";
-import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/SectionReveal";
+import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/motion/SectionReveal";
 
 const podiumColors = [
   { border: "#f7d117", label: "P1 — FIRST", num: "#01" },

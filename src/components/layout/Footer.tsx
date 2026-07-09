@@ -1,7 +1,7 @@
 "use client";
 
 import { portfolio } from "@/lib/portfolio";
-import { EasterEgg } from "@/components/ui/EasterEgg";
+import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
 
 export function Footer() {
   const year = new Date().getFullYear();

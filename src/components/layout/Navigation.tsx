@@ -4,8 +4,8 @@ import { useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { usePageTransition } from "@/lib/transition-context";
 import { useTheme } from "@/lib/theme-context";
-import { MagneticHover } from "@/components/ui/MagneticHover";
-import { EasterEgg } from "@/components/ui/EasterEgg";
+import { MagneticHover } from "@/components/ui/primitives/MagneticHover";
+import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
 
 const navItems = [
   { label: "Profile", id: "hero" },

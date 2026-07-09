@@ -2,11 +2,11 @@
 
 import { Zap } from "lucide-react";
 import { portfolio } from "@/lib/portfolio";
-import { TelemetryBar } from "@/components/ui/TelemetryBar";
-import { Gauge } from "@/components/ui/Gauge";
-import { DRSIndicator } from "@/components/ui/DRSIndicator";
-import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/SectionReveal";
-import { EasterEgg } from "@/components/ui/EasterEgg";
+import { TelemetryBar } from "@/components/ui/primitives/TelemetryBar";
+import { Gauge } from "@/components/ui/primitives/Gauge";
+import { DRSIndicator } from "@/components/ui/f1/DRSIndicator";
+import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/motion/SectionReveal";
+import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
 
 const engineModes = ["QUALIFYING", "RACE", "SAFETY CAR"];
 

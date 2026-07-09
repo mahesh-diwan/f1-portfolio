@@ -1,9 +1,9 @@
 "use client";
 
 import { portfolio } from "@/lib/portfolio";
-import { StatusIndicator } from "@/components/ui/StatusIndicator";
-import { SectionReveal } from "@/components/ui/SectionReveal";
-import { EasterEgg } from "@/components/ui/EasterEgg";
+import { StatusIndicator } from "@/components/ui/primitives/StatusIndicator";
+import { SectionReveal } from "@/components/ui/motion/SectionReveal";
+import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
 
 export function Contact() {
   const channels = [

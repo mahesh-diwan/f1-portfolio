@@ -1,7 +1,7 @@
 "use client";
 
 import { portfolio } from "@/lib/portfolio";
-import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/SectionReveal";
+import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/motion/SectionReveal";
 
 const sectors = [
   { label: "S1", time: "0:31.442", delta: "-0.234", status: "pb" as const },
