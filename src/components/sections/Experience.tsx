@@ -75,10 +75,10 @@ export function Experience() {
 
             {/* Right: Work History */}
             <StaggerReveal staggerDelay={0.1} direction="up">
-              <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 grid-rows-[1fr]">
                 {portfolio.experience.map((exp, idx) => (
                   <StaggerItem key={idx}>
-                    <div className="glass shadow-card hover-lift p-5">
+                    <div className="glass shadow-card hover-lift p-5 flex flex-col h-full">
                       <div className="flex items-center gap-2 mb-3">
                         <span className={`text-[12px] font-mono px-2 py-0.5 ${
                           idx === 0
@@ -91,7 +91,7 @@ export function Experience() {
                       </div>
                       <h3 className="text-base font-bold text-[var(--text-primary)] mb-1">{exp.role}</h3>
                       <p className="text-[13px] text-[var(--accent)] font-mono mb-2">{exp.company}</p>
-                      <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed">{exp.desc}</p>
+                      <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed flex-1">{exp.desc}</p>
                       {exp.tags && (
                         <div className="flex flex-wrap gap-1.5 mt-3">
                           {exp.tags.map((tag) => (
