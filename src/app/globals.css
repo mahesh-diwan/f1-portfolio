@@ -774,15 +774,6 @@
     50% { box-shadow: 0 0 12px var(--ring-color); }
 }
 
-@keyframes scan-line {
-    from {
-        transform: translateY(-100%);
-    }
-    to {
-        transform: translateY(100vh);
-    }
-}
-
 @keyframes gradient-shift {
     0% {
         background-position: 0% 50%;
@@ -954,15 +945,6 @@
     }
 }
 
-@keyframes scan-line-fast {
-    0% {
-        transform: translateY(-100%);
-    }
-    100% {
-        transform: translateY(100%);
-    }
-}
-
 @keyframes flag-wave {
     0% {
         transform: skewX(0deg);
@@ -1088,10 +1070,6 @@
 
 @utility animate-number-tick {
     animation: number-tick 0.25s ease-out;
-}
-
-@utility animate-scan-line {
-    animation: scan-line-fast 3s linear infinite;
 }
 
 @utility animate-flag-wave {
@@ -1403,9 +1381,4 @@
 /* Telemetry pulse — for status dots */
 @utility animate-telemetry-pulse {
     animation: pulse-dim 2s ease-in-out infinite;
-}
-
-/* Scanline — for hero name effect */
-@utility animate-scanline {
-    animation: scan-line-fast 4s ease-in-out infinite;
 }

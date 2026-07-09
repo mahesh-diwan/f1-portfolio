@@ -46,6 +46,28 @@ export function Hero() {
 
   const [racePhase, setRacePhase] = useState<"off" | "lights" | "text" | "pulse">("off");
   const reducedMotion = useReducedMotion();
+  const [typedName, setTypedName] = useState("");
+  const [showCursor, setShowCursor] = useState(true);
+  const fullName = portfolio.titleName;
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setTypedName(fullName);
+      setShowCursor(false);
+      return;
+    }
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i < fullName.length) {
+        setTypedName(fullName.slice(0, i + 1));
+        i++;
+      } else {
+        clearInterval(interval);
+        setTimeout(() => setShowCursor(false), 400);
+      }
+    }, 80);
+    return () => clearInterval(interval);
+  }, [fullName, reducedMotion]);
 
   const handleRaceStart = () => {
     if (racePhase !== "off") return;
@@ -134,7 +156,10 @@ export function Hero() {
             }
             transition={{ duration: 0.4 }}
           >
-            {portfolio.titleName}
+            {typedName}
+            {showCursor && (
+              <span className="inline-block w-[3px] h-[0.85em] bg-[var(--accent)] align-middle ml-0.5 animate-pulse" />
+            )}
           </motion.h1>
 
           {/* LIGHTS OUT text */}
@@ -152,8 +177,6 @@ export function Hero() {
             )}
           </AnimatePresence>
 
-          {/* Scan line */}
-          <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--accent)] to-transparent animate-scanline opacity-60" style={{ filter: "drop-shadow(0 0 6px var(--accent-glow))" }} aria-hidden="true" />
         </motion.div>
 
         {/* F1 subtitle */}
