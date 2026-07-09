@@ -46,7 +46,7 @@ export function Education() {
                       <p className="text-[12px] text-[var(--text-muted)]">
                         {edu.period} · {edu.gpa && (
                           <span style={{ color: podium.border, fontWeight: "bold" }}>
-                            CGPA: {edu.gpa}
+                            {edu.gpa}
                           </span>
                         )}
                       </p>
