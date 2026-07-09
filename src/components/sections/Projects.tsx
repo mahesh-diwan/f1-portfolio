@@ -1,12 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { motion, useAnimation, useReducedMotion } from "framer-motion";
 import { ExternalLink, GitBranch, Plus, Minus } from "lucide-react";
 import { portfolio, getProject } from "@/lib/portfolio";
 import { PerformanceMeter } from "@/components/ui/f1/PerformanceMeter";
 import { SectionReveal } from "@/components/ui/motion/SectionReveal";
-import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
 
 const statusConfig: Record<string, { label: string; color: string; bgClass: string }> = {
   "in-production": {
@@ -26,7 +24,7 @@ const statusConfig: Record<string, { label: string; color: string; bgClass: stri
   },
 };
 
-function ProjectCard({ project, index, blurControls }: { project: ReturnType<typeof getProject>; index: number; blurControls: ReturnType<typeof useAnimation> }) {
+function ProjectCard({ project, index }: { project: ReturnType<typeof getProject>; index: number }) {
   const [expanded, setExpanded] = useState(false);
   if (!project) return null;
 
@@ -50,11 +48,7 @@ function ProjectCard({ project, index, blurControls }: { project: ReturnType<typ
 
   return (
     <div className="break-inside-avoid mb-4">
-      <motion.div
-        className={`glass shadow-card hover-lift p-5 ${cardHeight} flex flex-col`}
-        animate={blurControls}
-        initial={{ filter: "blur(0px)", scale: 1 }}
-      >
+      <div className={`glass shadow-card hover-lift p-5 ${cardHeight} flex flex-col`}>
         {/* Header */}
         <div className="flex items-start justify-between mb-2">
           <span className="text-[9px] uppercase tracking-[0.1em] text-[var(--text-muted)] font-mono">
@@ -73,9 +67,7 @@ function ProjectCard({ project, index, blurControls }: { project: ReturnType<typ
 
         {/* Title + icon */}
         <div className="flex items-start gap-3 mb-3">
-          <EasterEgg message={`Shipped ${project.name} to prod!`} icon="🏁" trigger="click">
-            <span className="text-2xl cursor-pointer hover:scale-110 transition-transform">{project.icon}</span>
-          </EasterEgg>
+          <span className="text-2xl">{project.icon}</span>
           <div className="min-w-0 flex-1">
             <h3 className="text-sm font-bold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">{project.name}</h3>
             <p className="text-[11px] text-[var(--text-secondary)] mt-1 line-clamp-2 leading-relaxed">{project.desc}</p>
@@ -148,7 +140,7 @@ function ProjectCard({ project, index, blurControls }: { project: ReturnType<typ
             )}
           </div>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 }
@@ -156,29 +148,11 @@ function ProjectCard({ project, index, blurControls }: { project: ReturnType<typ
 export function Projects() {
   if (portfolio.projects.length === 0) return null;
 
-  const reducedMotion = useReducedMotion() ?? false;
-  const blurControls = useAnimation();
-
-  const handlePitStop = async () => {
-    if (reducedMotion) return;
-    await blurControls.start({
-      filter: ["blur(0px)", "blur(8px)", "blur(0px)"],
-      scale: [1, 0.98, 1],
-      transition: { duration: 1.5, ease: "easeInOut" },
-    });
-  };
-
   return (
     <section id="projects" className="py-20 px-4 relative grid-bg" aria-label="Projects">
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
-          <div
-            className="flex items-center gap-3 mb-12 cursor-pointer select-none"
-            onClick={handlePitStop}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") handlePitStop(); }}
-          >
+          <div className="flex items-center gap-3 mb-12">
             <div className="w-[3px] h-5 bg-gradient-to-b from-[var(--color-accent-blue)] to-[var(--color-accent-teal)]" />
             <div>
               <p className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">Pit Wall Monitor</p>
@@ -188,7 +162,7 @@ export function Projects() {
 
           <div className="columns-1 md:columns-2 gap-4">
             {portfolio.projects.map((project, idx) => (
-              <ProjectCard key={project.id} project={project} index={idx} blurControls={blurControls} />
+              <ProjectCard key={project.id} project={project} index={idx} />
             ))}
           </div>
         </div>
