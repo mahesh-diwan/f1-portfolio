@@ -1409,3 +1409,60 @@
 @utility animate-scanline {
     animation: scan-line-fast 4s ease-in-out infinite;
 }
+
+/* F1 Car Divider */
+.f1-divider {
+    position: relative;
+    height: 120px;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--bg-base) 0%, var(--bg-surface) 50%, var(--bg-base) 100%);
+}
+
+.f1-track {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(196, 164, 74, 0.3), transparent);
+}
+
+.f1-car-wrapper {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -300px;
+    transition: none;
+}
+
+.f1-car-image {
+    height: 90px;
+    width: auto;
+    filter: drop-shadow(0 4px 20px rgba(30, 41, 82, 0.5));
+}
+
+.f1-track-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(196, 164, 74, 0.4), transparent);
+}
+
+.f1-drive-active .f1-car-wrapper {
+    animation: f1-drive 2.5s ease-in-out forwards;
+}
+
+@keyframes f1-drive {
+    0% { left: -300px; }
+    100% { left: calc(100% + 300px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .f1-drive-active .f1-car-wrapper {
+        animation: none;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

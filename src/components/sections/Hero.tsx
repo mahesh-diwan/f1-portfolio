@@ -5,6 +5,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { portfolio } from "@/lib/portfolio";
 import { StatusIndicator } from "@/components/ui/primitives/StatusIndicator";
 import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
+import { F1Divider } from "@/components/ui/motion/F1Divider";
 
 function HeroStat({ label, value, accent }: { label: string; value: number; accent: string }) {
   const [display, setDisplay] = useState(0);
@@ -237,6 +238,9 @@ export function Hero() {
           />
         </div>
       </motion.div>
+
+      {/* F1 Car Divider */}
+      <F1Divider />
     </section>
   );
 }

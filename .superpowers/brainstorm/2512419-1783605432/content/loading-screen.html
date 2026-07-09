@@ -1,0 +1,43 @@
+<h2>Loading Screen — Race Start Countdown</h2>
+<p class="subtitle">5 red lights illuminate one by one, then all go out to reveal the page</p>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">Current: Spinning Circle</div>
+    <div class="mockup-body" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:300px;background:#0a0e14;">
+      <div style="width:48px;height:48px;border:3px solid #333;border-top-color:#ff3333;border-radius:50%;animation:spin 1s linear infinite;"></div>
+      <p style="color:#888;font-size:10px;margin-top:16px;letter-spacing:0.15em;font-family:monospace;">INITIALIZING TELEMETRY</p>
+      <div style="display:flex;gap:4px;margin-top:8px;">
+        <span style="color:#ff3333;font-size:10px;">.</span>
+        <span style="color:#ff3333;font-size:10px;">.</span>
+        <span style="color:#ff3333;font-size:10px;">.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mockup">
+    <div class="mockup-header">New: Race Start Lights</div>
+    <div class="mockup-body" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:300px;background:#0a0e14;">
+      <div style="display:flex;gap:20px;">
+        <div style="width:32px;height:32px;border-radius:50%;background:#ff3333;box-shadow:0 0 20px #ff3333;"></div>
+        <div style="width:32px;height:32px;border-radius:50%;background:#ff3333;box-shadow:0 0 20px #ff3333;"></div>
+        <div style="width:32px;height:32px;border-radius:50%;background:#ff3333;box-shadow:0 0 20px #ff3333;"></div>
+        <div style="width:32px;height:32px;border-radius:50%;background:#ff3333;box-shadow:0 0 20px #ff3333;"></div>
+        <div style="width:32px;height:32px;border-radius:50%;background:#331111;border:2px solid #441616;"></div>
+      </div>
+      <p style="color:#555;font-size:11px;margin-top:20px;letter-spacing:0.2em;font-family:monospace;">LIGHTS 1-4 ON</p>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:24px;padding:16px;background:rgba(255,255,255,0.05);border-radius:8px;">
+  <h4 style="color:#c4a44a;margin-bottom:8px;">Sequence:</h4>
+  <ol style="color:#aaa;font-size:13px;line-height:1.8;">
+    <li>5 red lights illuminate one by one (400ms apart)</li>
+    <li>All lights on — 400ms pause</li>
+    <li>All lights go out — page reveals</li>
+    <li>Total: ~2.4s</li>
+  </ol>
+</div>
+
+<style>@keyframes spin{to{transform:rotate(360deg)}}</style>

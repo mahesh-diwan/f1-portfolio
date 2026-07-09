@@ -1,0 +1,119 @@
+<h2>UI Polish — All Changes Summary</h2>
+<p class="subtitle">6 changes to improve readability, remove clutter, and add personality</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+  <!-- 1. Loading -->
+  <div style="border:1px solid #333;border-radius:8px;padding:20px;background:rgba(255,255,255,0.03);">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+      <span style="background:#c4a44a;color:#0a0e14;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">1</span>
+      <h3 style="color:#f5f5f5;font-size:16px;">Loading Screen</h3>
+    </div>
+    <p style="color:#aaa;font-size:13px;line-height:1.6;">Spinning circle → Race start countdown. 5 red lights illuminate one by one, all go out, page reveals.</p>
+    <div style="display:flex;gap:8px;margin-top:12px;justify-content:center;">
+      <div style="width:16px;height:16px;border-radius:50%;background:#ff3333;"></div>
+      <div style="width:16px;height:16px;border-radius:50%;background:#ff3333;"></div>
+      <div style="width:16px;height:16px;border-radius:50%;background:#ff3333;"></div>
+      <div style="width:16px;height:16px;border-radius:50%;background:#ff3333;"></div>
+      <div style="width:16px;height:16px;border-radius:50%;background:#331;border:2px solid #444;"></div>
+    </div>
+  </div>
+
+  <!-- 2. Name -->
+  <div style="border:1px solid #333;border-radius:8px;padding:20px;background:rgba(255,255,255,0.03);">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+      <span style="background:#c4a44a;color:#0a0e14;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">2</span>
+      <h3 style="color:#f5f5f5;font-size:16px;">Name Treatment</h3>
+    </div>
+    <p style="color:#aaa;font-size:13px;line-height:1.6;">Scan line → Typing effect. Characters appear one by one with blinking cursor.</p>
+    <div style="margin-top:12px;text-align:center;">
+      <span style="color:#f5f5f5;font-size:20px;font-weight:700;border-right:2px solid #c4a44a;padding-right:2px;">Mahesh Diwan</span>
+    </div>
+  </div>
+
+  <!-- 3. Easter Eggs -->
+  <div style="border:1px solid #333;border-radius:8px;padding:20px;background:rgba(255,255,255,0.03);">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+      <span style="background:#c4a44a;color:#0a0e14;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">3</span>
+      <h3 style="color:#f5f5f5;font-size:16px;">Easter Eggs</h3>
+    </div>
+    <p style="color:#aaa;font-size:13px;line-height:1.6;">Remove 4, keep 2. Only Skills engine mode and Contact team radio remain.</p>
+    <div style="margin-top:12px;font-size:12px;">
+      <p style="color:#ff3333;">✗ Hero race lights</p>
+      <p style="color:#ff3333;">✗ Experience sector replay</p>
+      <p style="color:#ff3333;">✗ Projects pit stop blur</p>
+      <p style="color:#ff3333;">✗ Education trophy lift</p>
+      <p style="color:#00ff88;">✓ Skills engine mode</p>
+      <p style="color:#00ff88;">✓ Contact team radio</p>
+    </div>
+  </div>
+
+  <!-- 4. F1 Car -->
+  <div style="border:1px solid #333;border-radius:8px;padding:20px;background:rgba(255,255,255,0.03);">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+      <span style="background:#c4a44a;color:#0a0e14;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">4</span>
+      <h3 style="color:#f5f5f5;font-size:16px;">F1 Car Divider</h3>
+    </div>
+    <p style="color:#aaa;font-size:13px;line-height:1.6;">Animated F1 car driving between Hero and Experience sections. Appears once on first reveal.</p>
+    <div style="margin-top:12px;height:40px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:50%;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#c4a44a,transparent);"></div>
+      <svg viewBox="0 0 120 40" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:24px;">
+        <g fill="#c4a44a">
+          <path d="M20,25 L30,20 L50,18 L70,18 L85,20 L95,22 L100,25 L100,28 L20,28 Z"/>
+          <circle cx="30" cy="28" r="5" fill="#333"/>
+          <circle cx="85" cy="28" r="5" fill="#333"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <!-- 5. Text Scale -->
+  <div style="border:1px solid #333;border-radius:8px;padding:20px;background:rgba(255,255,255,0.03);">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+      <span style="background:#c4a44a;color:#0a0e14;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">5</span>
+      <h3 style="color:#f5f5f5;font-size:16px;">Text Scale</h3>
+    </div>
+    <p style="color:#aaa;font-size:13px;line-height:1.6;">12px minimum for all labels and data. Readable on mobile and desktop.</p>
+    <div style="margin-top:12px;">
+      <div style="display:flex;justify-content:space-between;border-bottom:1px solid #333;padding:6px 0;">
+        <span style="color:#888;font-size:12px;">Labels</span>
+        <span style="color:#00ff88;font-size:12px;">7px → 12px</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;border-bottom:1px solid #333;padding:6px 0;">
+        <span style="color:#888;font-size:12px;">Data</span>
+        <span style="color:#00ff88;font-size:12px;">8px → 12px</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:6px 0;">
+        <span style="color:#888;font-size:12px;">Body</span>
+        <span style="color:#00ff88;font-size:12px;">10px → 13px</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Experience Cards -->
+  <div style="border:1px solid #333;border-radius:8px;padding:20px;background:rgba(255,255,255,0.03);">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+      <span style="background:#c4a44a;color:#0a0e14;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">6</span>
+      <h3 style="color:#f5f5f5;font-size:16px;">Experience Cards</h3>
+    </div>
+    <p style="color:#aaa;font-size:13px;line-height:1.6;">Equal height cards using CSS grid. Tags pushed to bottom with flex spacer.</p>
+    <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div style="background:#111;border:1px solid #333;border-radius:4px;padding:10px;min-height:80px;display:flex;flex-direction:column;">
+        <span style="color:#00ff88;font-size:10px;">CURRENT</span>
+        <span style="color:#f5f5f5;font-size:11px;margin-top:4px;">Role A</span>
+        <div style="flex:1;"></div>
+        <span style="color:#888;font-size:9px;margin-top:4px;">Tags</span>
+      </div>
+      <div style="background:#111;border:1px solid #333;border-radius:4px;padding:10px;min-height:80px;display:flex;flex-direction:column;">
+        <span style="color:#888;font-size:10px;">PAST</span>
+        <span style="color:#f5f5f5;font-size:11px;margin-top:4px;">Role B</span>
+        <div style="flex:1;"></div>
+        <span style="color:#888;font-size:9px;margin-top:4px;">Tags</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:24px;padding:16px;background:rgba(196,164,74,0.1);border:1px solid rgba(196,164,74,0.3);border-radius:8px;">
+  <p style="color:#c4a44a;font-size:14px;font-weight:600;">Ready to implement?</p>
+  <p style="color:#aaa;font-size:13px;margin-top:4px;">I'll use subagents for parallel implementation and run tests after each change.</p>
+</div>

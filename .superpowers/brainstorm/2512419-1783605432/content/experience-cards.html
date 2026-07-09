@@ -1,0 +1,88 @@
+<h2>Experience Cards — Equal Height</h2>
+<p class="subtitle">Fix uneven card heights in the experience section</p>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">Current: Uneven Heights</div>
+    <div class="mockup-body" style="padding:24px;background:#0a0e14;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <!-- Card 1 - tall -->
+        <div style="border:1px solid #222;border-radius:8px;padding:16px;background:#111;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <div style="width:8px;height:8px;border-radius:50%;background:#00ff88;"></div>
+            <span style="color:#00ff88;font-size:10px;font-family:monospace;">CURRENT</span>
+          </div>
+          <h3 style="color:#f5f5f5;font-size:14px;font-weight:600;">Associate Software Engineer</h3>
+          <p style="color:#c4a44a;font-size:12px;">ThynkTech India</p>
+          <p style="color:#888;font-size:11px;margin-top:4px;">Dec 2025 — May 2026</p>
+          <p style="color:#aaa;font-size:11px;margin-top:8px;line-height:1.5;">Automated deployment scaling of multi-service applications on AWS EKS and ECS (Fargate), reducing deployment lifecycle.</p>
+          <div style="height:60px;"></div>
+        </div>
+        
+        <!-- Card 2 - short -->
+        <div style="border:1px solid #222;border-radius:8px;padding:16px;background:#111;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <div style="width:8px;height:8px;border-radius:50%;background:#888;"></div>
+            <span style="color:#888;font-size:10px;font-family:monospace;">PERSONAL</span>
+          </div>
+          <h3 style="color:#f5f5f5;font-size:14px;font-weight:600;">DevOps & Cloud Automation</h3>
+          <p style="color:#c4a44a;font-size:12px;">Personal Projects</p>
+          <p style="color:#888;font-size:11px;margin-top:4px;">Jan 2024 — Present</p>
+          <p style="color:#aaa;font-size:11px;margin-top:8px;line-height:1.5;">Provisioned multi-region AWS environments utilizing Terraform HCL workflows.</p>
+        </div>
+      </div>
+      <p style="color:#ff3333;font-size:11px;margin-top:12px;text-align:center;">⚠ Cards don't align at bottom</p>
+    </div>
+  </div>
+
+  <div class="mockup">
+    <div class="mockup-header">New: Equal Height</div>
+    <div class="mockup-body" style="padding:24px;background:#0a0e14;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:16px;">
+        <!-- Card 1 -->
+        <div style="border:1px solid #222;border-radius:8px;padding:20px;background:#111;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+            <div style="width:8px;height:8px;border-radius:50%;background:#00ff88;"></div>
+            <span style="color:#00ff88;font-size:12px;font-family:monospace;">CURRENT</span>
+          </div>
+          <h3 style="color:#f5f5f5;font-size:16px;font-weight:600;">Associate Software Engineer</h3>
+          <p style="color:#c4a44a;font-size:13px;">ThynkTech India</p>
+          <p style="color:#888;font-size:12px;margin-top:4px;">Dec 2025 — May 2026</p>
+          <p style="color:#aaa;font-size:13px;margin-top:10px;line-height:1.6;">Automated deployment scaling of multi-service applications on AWS EKS and ECS (Fargate), reducing deployment lifecycle.</p>
+          <div style="flex:1;"></div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;">
+            <span style="color:#888;font-size:11px;padding:2px 6px;border:1px solid #333;">AWS ECS/EKS</span>
+            <span style="color:#888;font-size:11px;padding:2px 6px;border:1px solid #333;">Kubernetes</span>
+          </div>
+        </div>
+        
+        <!-- Card 2 -->
+        <div style="border:1px solid #222;border-radius:8px;padding:20px;background:#111;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+            <div style="width:8px;height:8px;border-radius:50%;background:#888;"></div>
+            <span style="color:#888;font-size:12px;font-family:monospace;">PERSONAL</span>
+          </div>
+          <h3 style="color:#f5f5f5;font-size:16px;font-weight:600;">DevOps & Cloud Automation</h3>
+          <p style="color:#c4a44a;font-size:13px;">Personal Projects</p>
+          <p style="color:#888;font-size:12px;margin-top:4px;">Jan 2024 — Present</p>
+          <p style="color:#aaa;font-size:13px;margin-top:10px;line-height:1.6;">Provisioned multi-region AWS environments utilizing Terraform HCL workflows to standardize developer environments.</p>
+          <div style="flex:1;"></div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;">
+            <span style="color:#888;font-size:11px;padding:2px 6px;border:1px solid #333;">Terraform</span>
+            <span style="color:#888;font-size:11px;padding:2px 6px;border:1px solid #333;">Bash</span>
+          </div>
+        </div>
+      </div>
+      <p style="color:#00ff88;font-size:12px;margin-top:12px;text-align:center;">✓ Cards align evenly</p>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:24px;padding:16px;background:rgba(255,255,255,0.05);border-radius:8px;">
+  <h4 style="color:#c4a44a;margin-bottom:8px;">Solution:</h4>
+  <ul style="color:#aaa;font-size:13px;line-height:1.8;">
+    <li>Use <code style="color:#c4a44a;">grid-auto-rows: 1fr</code> for equal row heights</li>
+    <li>Flex column layout with <code style="color:#c4a44a;">flex-1</code> spacer pushes tags to bottom</li>
+    <li>Both cards stretch to match tallest content</li>
+  </ul>
+</div>
