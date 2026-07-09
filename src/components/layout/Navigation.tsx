@@ -32,7 +32,7 @@ export function Navigation() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        "bg-[var(--bg-nav)] backdrop-blur-xl border-b border-[var(--border-default)]",
+        "glass-elevated border-b border-[var(--border-default)]",
       )}
       role="banner"
     >
@@ -170,7 +170,7 @@ export function Navigation() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden border-b border-[var(--border-default)] animate-fade-in bg-[var(--bg-nav)] backdrop-blur-xl">
+        <div className="md:hidden border-b border-[var(--border-default)] animate-fade-in glass-overlay">
           <nav className="px-5 py-3 flex flex-col gap-0.5" aria-label="Mobile navigation">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;

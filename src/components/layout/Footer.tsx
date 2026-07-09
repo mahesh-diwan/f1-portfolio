@@ -7,12 +7,8 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-[var(--border-default)]/60 pt-0" role="contentinfo">
-      <div className="h-[2px] w-full grid grid-cols-12" aria-hidden="true">
-        {Array.from({ length: 12 }).map((_, i) => (
-          <div key={i} className={i % 2 === 0 ? "bg-[var(--accent)]/30" : "bg-[var(--border-default)]/30"} />
-        ))}
-      </div>
+    <footer className="glass border-t border-[var(--border-default)] pt-0" role="contentinfo">
+      <div className="h-[3px] w-full bg-gradient-to-r from-[var(--accent)] via-[var(--color-accent-gold)] to-[var(--color-accent-teal)]" aria-hidden="true" />
       <div className="py-10 px-4">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
