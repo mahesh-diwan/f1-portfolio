@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Zap } from "lucide-react";
 import { portfolio } from "@/lib/portfolio";
 import { TelemetryBar } from "@/components/ui/primitives/TelemetryBar";
@@ -11,7 +13,20 @@ import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
 const engineModes = ["QUALIFYING", "RACE", "SAFETY CAR"];
 
 export function TelemetrySkills() {
+  const [modeIdx, setModeIdx] = useState(0);
+  const reducedMotion = useReducedMotion() ?? false;
+
   if (portfolio.skills.length === 0) return null;
+
+  const handleModeShift = () => {
+    if (reducedMotion) return;
+    setModeIdx((prev) => (prev + 1) % engineModes.length);
+  };
+
+  const adjustValue = (base: number) => {
+    const shift = [0.9, 1.0, 1.1][modeIdx % 3] ?? 1.0;
+    return Math.min(100, Math.round(base * shift));
+  };
 
   return (
     <section id="skills" className="py-24 px-4 relative grid-bg" aria-label="Skills telemetry">
@@ -21,7 +36,24 @@ export function TelemetrySkills() {
             <div className="w-[3px] h-5 bg-[var(--color-accent-gold)]" />
             <div>
               <p className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">System Diagnostics</p>
-              <h2 className="text-3xl sm:text-4xl font-display font-bold text-[var(--text-primary)]">Skills Telemetry</h2>
+              <h2
+                className="text-3xl sm:text-4xl font-display font-bold text-[var(--text-primary)] cursor-pointer select-none"
+                onClick={handleModeShift}
+                title="Click to shift engine mode"
+              >
+                Skills Telemetry
+              </h2>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={modeIdx}
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  className="text-[9px] font-mono uppercase tracking-[0.2em] text-[var(--color-accent-gold)]"
+                >
+                  MODE: {engineModes[modeIdx]}
+                </motion.span>
+              </AnimatePresence>
             </div>
           </div>
 
@@ -37,7 +69,7 @@ export function TelemetrySkills() {
                         <Gauge value={avg} label="AVG" color={avg >= 85 ? "#a855f7" : avg >= 70 ? "#22c55e" : "#eab308"} size={56} />
                         <div className="space-y-1.5 flex-1 min-w-0">
                           {group.items.map((skill) => (
-                            <TelemetryBar key={skill.name} value={skill.pct} label={skill.name} color={skill.color} size="xs" />
+                            <TelemetryBar key={skill.name} value={adjustValue(skill.pct)} label={skill.name} color={skill.color} size="xs" />
                           ))}
                         </div>
                       </div>
@@ -47,7 +79,16 @@ export function TelemetrySkills() {
                         </EasterEgg>
                         <span className="text-[7px] font-mono uppercase tracking-wider text-[var(--text-dim)] flex items-center gap-1">
                           <Zap className="w-2.5 h-2.5" />
-                          MODE: {engineModes[idx] ?? "RACE"}
+                          <AnimatePresence mode="wait">
+                            <motion.span
+                              key={modeIdx}
+                              initial={{ opacity: 0, y: 3 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -3 }}
+                            >
+                              MODE: {engineModes[modeIdx]}
+                            </motion.span>
+                          </AnimatePresence>
                         </span>
                       </div>
                     </div>
