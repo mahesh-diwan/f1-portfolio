@@ -13,7 +13,7 @@ export function Experience() {
   if (portfolio.experience.length === 0) return null;
 
   return (
-    <section id="experience" className="py-24 px-4 relative grid-bg" aria-label="Career experience">
+    <section id="experience" className="py-28 px-4 relative grid-bg" aria-label="Career experience">
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
           {/* Section header */}

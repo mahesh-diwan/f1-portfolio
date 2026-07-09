@@ -13,7 +13,7 @@ export function Education() {
   if (portfolio.education.length === 0) return null;
 
   return (
-    <section id="education" className="py-24 px-4 relative grid-bg" aria-label="Education">
+    <section id="education" className="py-28 px-4 relative grid-bg" aria-label="Education">
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
           <div className="flex items-center gap-3 mb-12">

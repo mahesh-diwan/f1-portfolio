@@ -44,8 +44,8 @@ function ProjectCard({ project, index }: { project: ReturnType<typeof getProject
   }
 
   const status = project.status ? statusConfig[project.status] : null;
-  const heights = ["min-h-[220px]", "min-h-[260px]", "min-h-[240px]"];
-  const cardHeight = heights[index % 3];
+  const heights = ["min-h-[200px]", "min-h-[280px]", "min-h-[220px]", "min-h-[260px]"];
+  const cardHeight = heights[index % 4];
 
   return (
     <div className="break-inside-avoid mb-4">
@@ -146,7 +146,7 @@ export function Projects() {
   if (portfolio.projects.length === 0) return null;
 
   return (
-    <section id="projects" className="py-24 px-4 relative grid-bg" aria-label="Projects">
+    <section id="projects" className="py-20 px-4 relative grid-bg" aria-label="Projects">
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
           <div className="flex items-center gap-3 mb-12">

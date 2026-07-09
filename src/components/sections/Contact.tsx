@@ -14,7 +14,7 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-24 px-4 relative grid-bg" aria-label="Contact">
+    <section id="contact" className="py-20 px-4 relative grid-bg" aria-label="Contact">
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
           <div className="flex items-center gap-3 mb-12">
