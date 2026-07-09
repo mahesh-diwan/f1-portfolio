@@ -83,10 +83,10 @@ export function TelemetryBar({
       <div
         className={cn(
           "w-full bg-[var(--bg-inset)] rounded-sm overflow-hidden",
-          size === "xs" && "h-[3px]",
-          size === "sm" && "h-1.5",
-          size === "md" && "h-2",
-          size === "lg" && "h-3",
+          size === "xs" && "h-[2px]",
+          size === "sm" && "h-1",
+          size === "md" && "h-1.5",
+          size === "lg" && "h-2",
         )}
       >
         <div
