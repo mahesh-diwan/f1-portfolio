@@ -1,9 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { ExternalLink, GitBranch, Plus, Minus } from "lucide-react";
+import { ExternalLink, GitBranch } from "lucide-react";
 import { portfolio, getProject } from "@/lib/portfolio";
-import { PerformanceMeter } from "@/components/ui/f1/PerformanceMeter";
 import { SectionReveal } from "@/components/ui/motion/SectionReveal";
 import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
 
@@ -26,22 +24,7 @@ const statusConfig: Record<string, { label: string; color: string; bgClass: stri
 };
 
 function ProjectCard({ project, index }: { project: ReturnType<typeof getProject>; index: number }) {
-  const [expanded, setExpanded] = useState(false);
   if (!project) return null;
-
-  const metrics: { label: string; value: number; color: string }[] = [];
-  if (project.metrics && Array.isArray(project.metrics)) {
-    project.metrics.forEach((m) => {
-      if (typeof m === "string") {
-        const [key, val] = m.split(":").map((s) => s.trim());
-        if (key && val) {
-          const v = parseInt(val);
-          const c = key.toLowerCase().includes("perf") ? "var(--color-display-green)" : key.toLowerCase().includes("rel") ? "var(--color-accent-teal)" : "var(--color-accent-blue)";
-          metrics.push({ label: key, value: isNaN(v) ? 85 : v, color: c });
-        }
-      }
-    });
-  }
 
   const status = project.status ? statusConfig[project.status] : null;
   const heights = ["min-h-[200px]", "min-h-[280px]", "min-h-[220px]", "min-h-[260px]"];
@@ -102,41 +85,7 @@ function ProjectCard({ project, index }: { project: ReturnType<typeof getProject
               <ExternalLink className="w-2.5 h-2.5" /> Demo
             </a>
           )}
-          {(project.problem || project.solution || metrics.length > 0) && (
-            <button onClick={() => setExpanded(!expanded)}
-              className="ml-auto flex items-center gap-0.5 px-1.5 py-0.5 text-[8px] font-mono text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
-              aria-expanded={expanded}>
-              {expanded ? <Minus className="w-2.5 h-2.5" /> : <Plus className="w-2.5 h-2.5" />}
-              Data
-            </button>
-          )}
         </div>
-
-        {/* Expanded content */}
-        {expanded && (
-          <div className="mt-3 pt-3 border-t border-[var(--border-default)] space-y-2.5 animate-fade-in">
-            {project.problem && (
-              <div>
-                <p className="text-[7px] font-mono uppercase tracking-wider text-[var(--accent)] mb-0.5">Problem</p>
-                <p className="text-[9px] text-[var(--text-secondary)] leading-relaxed">{project.problem}</p>
-              </div>
-            )}
-            {project.solution && (
-              <div>
-                <p className="text-[7px] font-mono uppercase tracking-wider text-[var(--color-display-green)] mb-0.5">Solution</p>
-                <p className="text-[9px] text-[var(--text-secondary)] leading-relaxed">{project.solution}</p>
-              </div>
-            )}
-            {metrics.length > 0 && (
-              <div className="space-y-1.5">
-                <p className="text-[7px] font-mono uppercase tracking-wider text-[var(--text-muted)]">Metrics</p>
-                {metrics.map((m) => (
-                  <PerformanceMeter key={m.label} value={m.value} label={m.label} color={m.color} size="sm" />
-                ))}
-              </div>
-            )}
-          </div>
-        )}
       </div>
     </div>
   );
