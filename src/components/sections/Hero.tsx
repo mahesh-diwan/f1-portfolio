@@ -26,7 +26,7 @@ function HeroStat({ label, value, accent }: { label: string; value: number; acce
 
   return (
     <div className="text-center">
-      <div className="text-[7px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-1">
+      <div className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-1">
         {label}
       </div>
       <div className="text-2xl font-bold font-mono tabular-nums" style={{ color: accent }}>
@@ -82,7 +82,7 @@ export function Hero() {
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         {/* Role label */}
         <motion.p
-          className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-4"
+          className="text-[13px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-4"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -115,7 +115,7 @@ export function Hero() {
           transition={{ delay: 0.6 }}
         >
           <div className="w-8 h-px bg-[var(--accent)]" />
-          <span className="text-[10px] uppercase tracking-[0.2em] text-[var(--accent)] font-mono">
+          <span className="text-[13px] uppercase tracking-[0.2em] text-[var(--accent)] font-mono">
             Race Engineer
           </span>
           <div className="w-8 h-px bg-[var(--accent)]" />
@@ -177,7 +177,7 @@ export function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
       >
-        <span className="text-[8px] uppercase tracking-[0.2em] text-[var(--text-dim)] font-mono block mb-2">
+        <span className="text-[12px] uppercase tracking-[0.2em] text-[var(--text-dim)] font-mono block mb-2">
           Scroll
         </span>
         <div className="w-4 h-6 border border-[var(--border-default)] rounded-full mx-auto flex justify-center pt-1 shadow-card">

@@ -48,7 +48,7 @@ export function StatusIndicator({
           style={colors.ringColor ? { "--ring-color": colors.ringColor, animation: "glow-ring 2s ease-in-out infinite" } as React.CSSProperties : undefined}
         />
       </span>
-      <span className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">
+      <span className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">
         {label}
       </span>
     </div>

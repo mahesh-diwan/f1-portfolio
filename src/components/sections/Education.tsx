@@ -20,7 +20,7 @@ export function Education() {
           <div className="flex items-center gap-3 mb-12">
             <div className="w-[3px] h-5 bg-[var(--color-accent-teal)]" />
             <div>
-              <p className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">Championship Standings</p>
+              <p className="text-[13px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">Championship Standings</p>
               <h2 className="text-3xl sm:text-4xl font-display font-bold text-[var(--text-primary)]">Education</h2>
             </div>
           </div>
@@ -36,14 +36,14 @@ export function Education() {
                       style={{ borderTop: `3px solid ${podium.border}` }}
                     >
                       <div className="flex items-center justify-between mb-3">
-                        <span className="text-[7px] uppercase tracking-[0.1em] font-mono" style={{ color: podium.border }}>
+                        <span className="text-[12px] uppercase tracking-[0.1em] font-mono" style={{ color: podium.border }}>
                           {podium.label}
                         </span>
-                        <span className="text-[7px] text-[var(--text-muted)] font-mono">{podium.num}</span>
+                        <span className="text-[12px] text-[var(--text-muted)] font-mono">{podium.num}</span>
                       </div>
-                      <h3 className="text-[11px] font-bold text-[var(--text-primary)] mb-1 leading-tight">{edu.degree}</h3>
-                      <p className="text-[9px] text-[var(--text-secondary)] mb-2">{edu.institution}</p>
-                      <p className="text-[9px] text-[var(--text-muted)]">
+                      <h3 className="text-[13px] font-bold text-[var(--text-primary)] mb-1 leading-tight">{edu.degree}</h3>
+                      <p className="text-[12px] text-[var(--text-secondary)] mb-2">{edu.institution}</p>
+                      <p className="text-[12px] text-[var(--text-muted)]">
                         {edu.period} · {edu.gpa && (
                           <span style={{ color: podium.border, fontWeight: "bold" }}>
                             CGPA: {edu.gpa}
@@ -51,7 +51,7 @@ export function Education() {
                         )}
                       </p>
                       {edu.details && (
-                        <p className="text-[9px] text-[var(--text-secondary)] mt-3 pt-3 border-t border-[var(--border-default)] leading-relaxed">
+                        <p className="text-[13px] text-[var(--text-secondary)] mt-3 pt-3 border-t border-[var(--border-default)] leading-relaxed">
                           {edu.details}
                         </p>
                       )}

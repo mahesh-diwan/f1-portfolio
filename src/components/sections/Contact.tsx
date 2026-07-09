@@ -31,14 +31,14 @@ export function Contact() {
           <div className="flex items-center gap-3 mb-12">
             <div className="w-[3px] h-5 bg-[var(--accent)]" />
             <div>
-              <p className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">Pit Wall</p>
+              <p className="text-[13px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">Pit Wall</p>
               <h2 className="text-3xl sm:text-4xl font-display font-bold text-[var(--text-primary)]">Communication</h2>
             </div>
           </div>
 
           {/* Direct Line */}
           <div className="glass shadow-card p-5 mb-4">
-            <p className="text-[8px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">Direct Line</p>
+            <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">Direct Line</p>
             <div className="flex items-center gap-3">
               <StatusIndicator status="active" label="AVAILABLE" />
               <a href={`mailto:${portfolio.email}`} className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-mono transition-colors">
@@ -53,14 +53,14 @@ export function Contact() {
               <EasterEgg key={ch.label} message={`Opening ${ch.label} channel...`} icon="📡" trigger="click">
                 <a href={ch.url} target="_blank" rel="noopener noreferrer"
                   onClick={() => handleRadio(idx)}
-                  className="glass shadow-card hover-lift p-4 block hover:bg-[var(--bg-elevated)] transition-colors group relative overflow-hidden">
+                  className="glass shadow-card hover-lift p-5 block hover:bg-[var(--bg-elevated)] transition-colors group relative overflow-hidden">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[7px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">Channel</span>
-                    <span className="text-[7px] text-[var(--text-muted)] font-mono">{ch.label}</span>
+                    <span className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">Channel</span>
+                    <span className="text-[12px] text-[var(--text-muted)] font-mono">{ch.label}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-sm text-[var(--text-muted)] group-hover:text-[var(--text-primary)] transition-colors">{ch.icon}</span>
-                    <span className="text-[10px] text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors font-mono">{ch.handle}</span>
+                    <span className="text-[13px] text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors font-mono">{ch.handle}</span>
                   </div>
 
                   {radioBurst === idx && (
