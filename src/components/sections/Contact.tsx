@@ -5,7 +5,6 @@ import { portfolio } from "@/lib/portfolio";
 import { StatusIndicator } from "@/components/ui/primitives/StatusIndicator";
 import { SectionReveal } from "@/components/ui/motion/SectionReveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 export function Contact() {
@@ -36,12 +35,6 @@ export function Contact() {
     { label: "LEETCODE", handle: "mahesh_diwan", url: portfolio.links.leetcode, icon: (
       <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M10 4l-8 8 8 8M14 4l8 8-8 8"/>
-      </svg>
-    )},
-    { label: "UPI", handle: portfolio.links.upi, url: `upi://pay?pa=${portfolio.links.upi}`, icon: (
-      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="6" width="20" height="12" rx="2"/>
-        <path d="M8 12h8"/>
       </svg>
     )},
   ];
@@ -75,8 +68,7 @@ export function Contact() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {channels.map((ch, idx) => (
-              <EasterEgg key={ch.label} message={`Opening ${ch.label} channel...`} icon="📡" trigger="click">
-                <a href={ch.url} target="_blank" rel="noopener noreferrer"
+              <a key={ch.label} href={ch.url} target="_blank" rel="noopener noreferrer"
                   onClick={() => handleRadio(idx)}
                   className="glass shadow-card hover-lift p-5 block hover:bg-[var(--bg-elevated)] transition-colors group relative overflow-hidden">
                   <div className="flex items-center justify-between mb-2">
@@ -99,7 +91,6 @@ export function Contact() {
                     </div>
                   )}
                 </a>
-              </EasterEgg>
             ))}
           </div>
         </div>

@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { portfolio } from "@/lib/portfolio";
-import { StatusIndicator } from "@/components/ui/primitives/StatusIndicator";
 import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
 
 function HeroStat({ label, value, accent }: { label: string; value: number; accent: string }) {
@@ -73,10 +72,6 @@ export function Hero() {
   return (
     <section id="hero" className="min-h-screen flex flex-col justify-center relative overflow-hidden" aria-label="Hero introduction">
       <div className="absolute inset-0 grid-bg opacity-50" aria-hidden="true" />
-
-      <div className="absolute top-6 right-6 z-10">
-        <StatusIndicator status="active" label="ONLINE" />
-      </div>
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <p className="text-[13px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-4 animate-fade-in" style={{ animationDelay: "0.2s" }}>

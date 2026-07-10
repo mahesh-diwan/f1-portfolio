@@ -90,12 +90,12 @@ export function OpenSource() {
                         className="w-2 h-2 rounded-full"
                         style={{ backgroundColor: langColors[repo.language] || "#888" }}
                       />
-                      <span className="text-[11px] font-mono text-[var(--text-dim)]">
+                      <span className="text-[12px] font-mono text-[var(--text-dim)]">
                         {repo.language}
                       </span>
                     </span>
                   )}
-                  <span className="text-[11px] font-mono text-[var(--text-dim)] ml-auto">
+                  <span className="text-[12px] font-mono text-[var(--text-dim)] ml-auto">
                     {daysAgo(repo.updated_at)}
                   </span>
                 </div>

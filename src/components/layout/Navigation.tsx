@@ -156,7 +156,7 @@ export function Navigation() {
           </button>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2 -mr-1 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+            className="p-2 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
             aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={mobileOpen}
           >
@@ -201,12 +201,12 @@ export function Navigation() {
         </div>
       )}
       {pitStop !== null && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--bg-base)]/90 backdrop-blur-sm animate-fade-in" onClick={() => setPitStop(null)}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--bg-base)]/90 backdrop-blur-sm animate-fade-in" onClick={() => setPitStop(null)} onKeyDown={(e) => e.key === 'Escape' && setPitStop(null)} tabIndex={0}>
           <div className="text-center select-none">
             <div className="text-6xl mb-2">🔧🏎️🔧</div>
             <div className="text-xs font-mono uppercase tracking-[0.2em] text-[var(--color-display-amber)] mb-1">Pit Stop</div>
             <div className="text-3xl font-mono font-bold text-[var(--color-display-green)] tabular-nums">{pitStop.toFixed(1)}s</div>
-            <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-[var(--text-muted)] mt-1">
+            <div className="text-[12px] font-mono uppercase tracking-[0.15em] text-[var(--text-muted)] mt-1">
               {pitStop < 2.8 ? "World Class!" : pitStop < 3.5 ? "Solid Stop" : "Keep Practicing"}
             </div>
           </div>
