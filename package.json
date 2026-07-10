@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "fetch-repos": "./scripts/fetch-repos.sh",
+    "prebuild": "npm run fetch-repos",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

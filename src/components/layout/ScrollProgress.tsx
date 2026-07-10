@@ -29,7 +29,7 @@ export function ScrollProgress() {
       </span>
       <div className="w-1.5 h-20 bg-[var(--border-default)] rounded-full overflow-hidden">
         <div
-          className="w-full bg-[var(--accent)] rounded-full transition-all duration-150 ease-out"
+          className="w-full bg-[var(--accent)] rounded-full transition-all duration-150 ease-out shadow-[0_0_8px_var(--accent-glow)]"
           style={{ height: `${progress}%` }}
         />
       </div>

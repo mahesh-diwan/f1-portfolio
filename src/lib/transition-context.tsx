@@ -24,6 +24,7 @@ const SECTION_LABELS: Record<string, string> = {
   education: "EDUCATION",
   projects: "PROJECTS",
   skills: "TELEMETRY",
+  "open-source": "OPEN SOURCE",
   contact: "CONTACT",
 };
 
@@ -98,8 +99,8 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
       setTimeout(() => {
         setOverlay({ visible: false, label: "", phase: "idle" });
         busyRef.current = false;
-      }, 500);
-    }, 600);
+      }, 300);
+    }, 400);
   }, [activeSection]);
 
   return (

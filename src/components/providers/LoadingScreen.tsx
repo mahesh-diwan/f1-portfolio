@@ -9,11 +9,11 @@ export function LoadingScreen() {
   const [lightsOut, setLightsOut] = useState(false);
 
   useEffect(() => {
-    const t1 = setTimeout(() => setLightsOut(true), 2000);
+    const t1 = setTimeout(() => setLightsOut(true), 1500);
     const t2 = setTimeout(() => {
       setFadeOut(true);
       setTimeout(() => setVisible(false), 600);
-    }, 2200);
+    }, 1700);
     return () => { clearTimeout(t1); clearTimeout(t2); };
   }, []);
 
@@ -55,7 +55,7 @@ export function LoadingScreen() {
           <div
             key={i}
             className={cn("f1-light", !lightsOut && "on")}
-            style={!lightsOut ? { animation: `lightOn 0.1s ${i * 400}ms forwards` } : undefined}
+            style={!lightsOut ? { animation: `lightOn 0.1s ${i * 300}ms forwards` } : undefined}
             aria-hidden="true"
           />
         ))}

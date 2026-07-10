@@ -310,6 +310,7 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
+        transition: background-color 0.2s, color 0.2s;
     }
 
     body {
@@ -522,52 +523,6 @@
     filter: drop-shadow(0 0 30px var(--accent-glow));
 }
 
-.hero-social-link {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 16px;
-    font-size: 0.625rem;
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    border: 1px solid var(--border-default);
-    color: var(--text-muted);
-    background: var(--bg-surface);
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-}
-
-.hero-social-link:hover {
-    color: var(--text-primary);
-    border-color: var(--border-strong);
-    background: var(--bg-elevated);
-    box-shadow: 0 0 16px var(--accent-glow);
-}
-
-.hero-social-link--accent {
-    border-color: color-mix(in srgb, var(--accent) 40%, transparent);
-    color: color-mix(in srgb, var(--accent) 80%, transparent);
-}
-
-.hero-social-link--accent:hover {
-    background: var(--accent);
-    color: var(--text-inverse);
-    border-color: var(--accent);
-    box-shadow: 0 0 24px var(--accent-glow);
-}
-
-.hero-social-link--gold {
-    border-color: color-mix(in srgb, var(--color-accent-gold) 30%, transparent);
-    color: color-mix(in srgb, var(--color-accent-gold) 70%, transparent);
-}
-
-.hero-social-link--gold:hover {
-    color: var(--color-accent-gold);
-    border-color: color-mix(in srgb, var(--color-accent-gold) 60%, transparent);
-    box-shadow: 0 0 20px var(--shadow-glow-gold);
-}
-
 /* Glass morphism utilities */
 @utility glass {
     background: color-mix(in srgb, var(--bg-surface) 70%, transparent);
@@ -616,14 +571,14 @@
 }
 
 .hover-lift:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow:
         0 8px 24px rgba(0, 0, 0, 0.3),
         0 0 0 1px var(--border-strong);
 }
 
 .light .hover-lift:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow:
         0 8px 24px rgba(26, 14, 2, 0.12),
         0 0 0 1px var(--border-strong),

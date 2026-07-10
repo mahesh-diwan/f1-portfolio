@@ -12,18 +12,24 @@ export function Footer() {
       <div className="py-10 px-4">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
-            <EasterEgg message="Ping: 0.001ms — Server is alive!" icon="💚" trigger="click">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse cursor-pointer" aria-hidden="true" />
-            </EasterEgg>
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse" aria-hidden="true" />
             <span className="text-[12px] font-mono uppercase tracking-[0.12em] text-[var(--text-muted)]">
               {portfolio.name} &mdash; {portfolio.role}
             </span>
           </div>
-          <EasterEgg message="Built with Next.js, Tailwind, Framer Motion & F1 telemetry vibes" icon="🛠️" trigger="double-click">
-            <p className="text-[12px] font-mono text-[var(--text-dim)] cursor-pointer">
-              &copy; {year} ALL RIGHTS RESERVED
-            </p>
-          </EasterEgg>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5">
+              <span className="w-1 h-1 rounded-full bg-[var(--color-display-green)] animate-pulse" aria-hidden="true" />
+              <span className="text-[11px] font-mono uppercase tracking-[0.1em] text-[var(--text-muted)]">
+                PIT WALL &mdash; STANDING BY
+              </span>
+            </div>
+            <EasterEgg message="Built with Next.js, Tailwind & F1 telemetry vibes" icon="🛠️" trigger="double-click">
+              <p className="text-[12px] font-mono text-[var(--text-dim)] cursor-pointer">
+                &copy; {year} ALL RIGHTS RESERVED
+              </p>
+            </EasterEgg>
+          </div>
         </div>
       </div>
     </footer>

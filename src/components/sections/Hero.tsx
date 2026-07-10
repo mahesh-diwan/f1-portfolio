@@ -84,7 +84,7 @@ export function Hero() {
         </p>
 
         <div className="relative inline-block animate-scale-in" style={{ animationDelay: "0.4s" }}>
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold text-[var(--text-primary)] tracking-tight">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold text-[var(--text-primary)] tracking-tight hero-name-glow">
             {typedName}
             {showCursor && (
               <span className="inline-block w-[3px] h-[0.85em] bg-[var(--accent)] align-middle ml-0.5 animate-pulse" />
