@@ -61,7 +61,7 @@ test.describe("Content", () => {
       { id: "experience", text: "Career Timeline" },
       { id: "education", text: "Education" },
       { id: "projects", text: "Projects" },
-      { id: "skills", text: "Skills Telemetry" },
+      { id: "skills", text: "System Diagnostics" },
       { id: "contact", text: "Communication" },
     ];
     for (const { id, text } of sections) {
