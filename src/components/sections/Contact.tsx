@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { portfolio } from "@/lib/portfolio";
 import { StatusIndicator } from "@/components/ui/primitives/StatusIndicator";
 import { SectionReveal } from "@/components/ui/motion/SectionReveal";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
 
 export function Contact() {
@@ -28,13 +29,7 @@ export function Contact() {
     <section id="contact" className="py-20 px-4 relative grid-bg" aria-label="Contact">
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
-          <div className="flex items-center gap-3 mb-12">
-            <div className="w-[3px] h-5 bg-[var(--accent)]" />
-            <div>
-              <p className="text-[13px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">Pit Wall</p>
-              <h2 className="text-3xl sm:text-4xl font-display font-bold text-[var(--text-primary)]">Communication</h2>
-            </div>
-          </div>
+          <SectionHeader sector="SECTOR 5/5" right="8 CHANNELS" title="Communication" />
 
           {/* Direct Line */}
           <div className="glass shadow-card p-5 mb-4">

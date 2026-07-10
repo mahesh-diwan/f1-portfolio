@@ -110,7 +110,7 @@ export function Navigation() {
               });
               window.dispatchEvent(event);
             }}
-            className="ml-1 px-2.5 py-1 text-[10px] font-mono text-[var(--text-dim)] border border-[var(--border-default)] rounded-sm hover:text-[var(--text-secondary)] hover:border-[var(--border-strong)] transition-all"
+            className="ml-1 px-2.5 py-1 text-[12px] font-mono text-[var(--text-dim)] border border-[var(--border-default)] rounded-sm hover:text-[var(--text-secondary)] hover:border-[var(--border-strong)] transition-all"
             aria-label="Open command palette"
             title="Ctrl+K to open command palette"
           >

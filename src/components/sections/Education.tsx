@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { portfolio } from "@/lib/portfolio";
 import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/motion/SectionReveal";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 const podiumColors = [
   { border: "var(--color-accent-gold)", label: "P1 — FIRST", num: "#01" },
@@ -17,13 +18,7 @@ export function Education() {
     <section id="education" className="py-28 px-4 relative grid-bg" aria-label="Education">
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
-          <div className="flex items-center gap-3 mb-12">
-            <div className="w-[3px] h-5 bg-[var(--color-accent-teal)]" />
-            <div>
-              <p className="text-[13px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">Championship Standings</p>
-              <h2 className="text-3xl sm:text-4xl font-display font-bold text-[var(--text-primary)]">Education</h2>
-            </div>
-          </div>
+          <SectionHeader sector="SECTOR 2/5" right="3 DEGREES" title="Education" />
 
           <StaggerReveal staggerDelay={0.1} direction="up">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

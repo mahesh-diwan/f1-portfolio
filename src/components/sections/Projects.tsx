@@ -5,6 +5,7 @@ import { ExternalLink, GitBranch, Plus, Minus } from "lucide-react";
 import { portfolio, getProject } from "@/lib/portfolio";
 
 import { SectionReveal } from "@/components/ui/motion/SectionReveal";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 const statusConfig: Record<string, { label: string; color: string; bgClass: string }> = {
   "in-production": {
@@ -137,7 +138,7 @@ function ProjectCard({ project }: { project: ReturnType<typeof getProject> }) {
                   return (
                     <div key={m.label} className="flex flex-col gap-1" role="progressbar" aria-valuenow={clamped} aria-valuemin={0} aria-valuemax={100} aria-label={m.label}>
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">{m.label}</span>
+                        <span className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">{m.label}</span>
                         <span className="font-mono tabular-nums text-xs text-[var(--text-primary)]">{clamped}%</span>
                       </div>
                       <div className="w-full bg-[var(--bg-inset)] rounded-sm overflow-hidden h-1">
@@ -162,13 +163,7 @@ export function Projects() {
     <section id="projects" className="py-20 px-4 relative grid-bg" aria-label="Projects">
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
-          <div className="flex items-center gap-3 mb-12">
-            <div className="w-[3px] h-5 bg-gradient-to-b from-[var(--color-accent-blue)] to-[var(--color-accent-teal)]" />
-            <div>
-              <p className="text-[13px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">Pit Wall Monitor</p>
-              <h2 className="text-3xl sm:text-4xl font-display font-bold text-[var(--text-primary)]">Projects</h2>
-            </div>
-          </div>
+          <SectionHeader sector="SECTOR 3/5" right="6 PROJECTS" title="Projects" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {portfolio.projects.map((project) => (

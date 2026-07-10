@@ -8,6 +8,7 @@ import { TelemetryBar } from "@/components/ui/primitives/TelemetryBar";
 import { Gauge } from "@/components/ui/primitives/Gauge";
 import { DRSIndicator } from "@/components/ui/f1/DRSIndicator";
 import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/motion/SectionReveal";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
 
 const engineModes = ["QUALIFYING", "RACE", "SAFETY CAR"];
@@ -32,17 +33,9 @@ export function TelemetrySkills() {
     <section id="skills" className="py-24 px-4 relative grid-bg" aria-label="Skills telemetry">
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
-          <div className="flex items-center gap-3 mb-12">
-            <div className="w-[3px] h-5 bg-[var(--color-accent-gold)]" />
-            <div>
-              <p className="text-[13px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">System Diagnostics</p>
-              <h2
-                className="text-3xl sm:text-4xl font-display font-bold text-[var(--text-primary)] cursor-pointer select-none"
-                onClick={handleModeShift}
-                title="Click to shift engine mode"
-              >
-                Skills Telemetry
-              </h2>
+          <div className="flex items-start gap-3 mb-12">
+            <div className="flex-1">
+              <SectionHeader sector="SECTOR 4/5" right="12 SKILLS" title="System Diagnostics" />
               <AnimatePresence mode="wait">
                 <motion.span
                   key={modeIdx}
@@ -102,7 +95,7 @@ export function TelemetrySkills() {
             <div className="mt-6">
               <SectionReveal delay={0.2}>
                 <div className="glass shadow-card p-5">
-                  <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">Additional Capabilities</p>
+                  <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">SECONDARY SYSTEMS</p>
                   <div className="flex flex-wrap gap-1.5">
                     {portfolio.otherSkills.map((skill) => (
                       <span key={skill} className="px-2 py-0.5 text-[12px] font-mono uppercase tracking-wider text-[var(--text-secondary)] border border-[var(--border-default)] bg-[var(--bg-surface)] hover:border-[var(--accent)]/20 hover:text-[var(--text-primary)] transition-all cursor-default">

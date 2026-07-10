@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { portfolio } from "@/lib/portfolio";
 import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/motion/SectionReveal";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 const sectors = [
   { label: "S1", time: "0:31.442", delta: "-0.234", pct: 85, status: "pb" as const },
@@ -17,14 +18,7 @@ export function Experience() {
     <section id="experience" className="py-28 px-4 relative grid-bg" aria-label="Career experience">
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
-          {/* Section header */}
-          <div className="flex items-center gap-3 mb-12">
-            <div className="w-[3px] h-5 bg-[var(--accent)]" />
-            <div>
-              <p className="text-[13px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">Race History</p>
-              <h2 className="text-3xl sm:text-4xl font-display font-bold text-[var(--text-primary)]">Career Timeline</h2>
-            </div>
-          </div>
+          <SectionHeader sector="SECTOR 1/5" right="2 ROLES" title="Career Timeline" />
 
           <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6">
             {/* Left: Driver Standings */}
