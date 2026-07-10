@@ -17,7 +17,7 @@ export function ScrollProgress() {
 
   return (
     <div
-      className="fixed bottom-4 right-4 z-40 flex flex-col items-center gap-1"
+      className="fixed bottom-4 right-4 z-40 flex flex-col items-center gap-1 max-sm:hidden"
       role="progressbar"
       aria-valuenow={Math.round(progress)}
       aria-valuemin={0}
