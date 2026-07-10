@@ -66,7 +66,7 @@ export function TelemetrySkills() {
                     <div className="glass shadow-card hover-lift p-5 h-full">
                       <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">{group.group}</p>
                       <div className="flex items-start gap-3">
-                        <Gauge value={avg} label="AVG" color={avg >= 85 ? "#a855f7" : avg >= 70 ? "#22c55e" : "#eab308"} size={56} />
+                        <Gauge value={avg} label="AVG" color={avg >= 85 ? "var(--color-accent-purple)" : avg >= 70 ? "var(--color-accent-green)" : "var(--color-accent-gold)"} size={56} />
                         <div className="space-y-1.5 flex-1 min-w-0">
                           {group.items.map((skill) => (
                             <TelemetryBar key={skill.name} value={adjustValue(skill.pct)} label={skill.name} color={skill.color} size="xs" />
