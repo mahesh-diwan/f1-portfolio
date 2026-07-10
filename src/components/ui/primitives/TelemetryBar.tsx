@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 
 interface TelemetryBarProps {
   value: number;
@@ -18,8 +19,9 @@ export function TelemetryBar({
   className,
   size = "md",
 }: TelemetryBarProps) {
-  const [animatedWidth, setAnimatedWidth] = useState(0);
-  const [animatedValue, setAnimatedValue] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
+  const [animatedWidth, setAnimatedWidth] = useState(shouldReduceMotion ? value : 0);
+  const [animatedValue, setAnimatedValue] = useState(shouldReduceMotion ? value : 0);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const startTime = useRef<number | null>(null);
@@ -44,6 +46,7 @@ export function TelemetryBar({
 
   useEffect(() => {
     if (!isVisible) return;
+    if (shouldReduceMotion) return;
     const animate = (timestamp: number) => {
       if (!startTime.current) startTime.current = timestamp;
       const elapsed = timestamp - startTime.current;
@@ -57,7 +60,7 @@ export function TelemetryBar({
     };
     animFrame.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animFrame.current);
-  }, [isVisible, value]);
+  }, [isVisible, value, shouldReduceMotion]);
 
   return (
     <div
