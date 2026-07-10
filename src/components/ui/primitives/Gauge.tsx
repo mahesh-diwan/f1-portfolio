@@ -18,7 +18,12 @@ export function Gauge({
   className,
   size = 80,
 }: GaugeProps) {
-  const [animatedValue, setAnimatedValue] = useState(0);
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const [animatedValue, setAnimatedValue] = useState(
+    prefersReducedMotion ? clamped : 0,
+  );
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const radius = 32;
@@ -41,7 +46,7 @@ export function Gauge({
   }, []);
 
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible || prefersReducedMotion) return;
     let start = 0;
     const duration = 1000;
     const step = 16;
@@ -58,7 +63,7 @@ export function Gauge({
     }, step);
 
     return () => clearInterval(timer);
-  }, [isVisible, clamped]);
+  }, [isVisible, clamped, prefersReducedMotion]);
 
   return (
     <div
@@ -95,7 +100,9 @@ export function Gauge({
           strokeDasharray={circumference}
           strokeDashoffset={isVisible ? offset : circumference}
           style={{
-            transition: "stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1)",
+            transition: prefersReducedMotion
+              ? "none"
+              : "stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         />
       </svg>
