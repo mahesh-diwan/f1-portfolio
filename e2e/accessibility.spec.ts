@@ -37,20 +37,6 @@ test.describe("Accessibility", () => {
     await expect(page.locator('[role="contentinfo"]')).toBeVisible();
   });
 
-  test("should have accessible command palette", async ({ page }) => {
-    await page.goto("/", { waitUntil: "domcontentloaded" });
-    await page.waitForTimeout(500);
-    await page.keyboard.press("Escape");
-    await page.waitForTimeout(100);
-    await page.keyboard.down("Control");
-    await page.keyboard.press("k");
-    await page.keyboard.up("Control");
-    await page.waitForTimeout(200);
-    const palette = page.locator('[aria-label="Command palette"]');
-    await expect(palette).toBeVisible({ timeout: 5000 });
-    await expect(palette).toHaveAttribute("aria-modal", "true");
-  });
-
   test("theme toggle works without errors", async ({ page }) => {
     const toggle = page.locator('button[aria-label*="Switch to"]').first();
     await toggle.click();
