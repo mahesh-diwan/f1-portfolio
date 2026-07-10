@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { portfolio } from "@/lib/portfolio";
 import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
-import { Hero3DParticles } from "@/components/ui/three/Hero3DParticles";
 
 function HeroStat({ label, value, accent }: { label: string; value: number; accent: string }) {
   const shouldReduceMotion = useReducedMotion();
@@ -141,7 +140,6 @@ export function Hero() {
           <div className="w-1 h-1.5 bg-[var(--text-dim)] rounded-full animate-bounce-y" />
         </div>
       </div>
-      <Hero3DParticles />
     </section>
   );
 }

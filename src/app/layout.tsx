@@ -6,6 +6,8 @@ import { ThemeProvider } from "@/lib/theme-context";
 import { TransitionProvider } from "@/lib/transition-context";
 import "./globals.css";
 
+const basePath = process.env.GITHUB_ACTIONS ? "/f1-portfolio" : "";
+
 const sora = Sora({
   variable: "--font-sans",
   subsets: ["latin"],
@@ -50,7 +52,7 @@ export const metadata: Metadata = {
     siteName: "Mahesh Diwan — Pit Wall Portfolio",
     images: [
       {
-        url: "/f1-portfolio/og-image.png",
+        url: `${basePath}/og-image.png`,
         width: 1200,
         height: 630,
         alt: "Mahesh Diwan — DevOps & Cloud Engineer",
@@ -62,15 +64,15 @@ export const metadata: Metadata = {
     title: "Mahesh Diwan | DevOps & Cloud Engineer",
     description:
       "DevOps & Cloud Infrastructure Engineer specializing in AWS, Kubernetes, Terraform, and CI/CD automation.",
-    images: ["/f1-portfolio/og-image.png"],
+    images: [`${basePath}/og-image.png`],
   },
   robots: {
     index: true,
     follow: true,
   },
   icons: {
-    icon: "/f1-portfolio/favicon.svg",
-    apple: "/f1-portfolio/favicon.svg",
+    icon: `${basePath}/favicon.svg`,
+    apple: `${basePath}/favicon.svg`,
   },
 };
 
