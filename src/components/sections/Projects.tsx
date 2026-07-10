@@ -188,7 +188,7 @@ export function Projects() {
     <section id="projects" className="py-20 px-4 relative grid-bg" aria-label="Projects">
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
-          <SectionHeader sector="SECTOR 3/5" right={`${allProjects.length} PROJECTS`} title="Projects" />
+          <SectionHeader sector="SECTOR 3/6" right={`${allProjects.length} PROJECTS`} title="Projects" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {allProjects.map((project) => (

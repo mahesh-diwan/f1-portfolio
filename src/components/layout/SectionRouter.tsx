@@ -22,5 +22,5 @@ const sections: Record<string, React.ReactNode> = {
 export function SectionRouter() {
   const { activeSection } = usePageTransition();
 
-  return <div key={activeSection}>{sections[activeSection]}</div>;
+  return <div>{sections[activeSection]}</div>;
 }

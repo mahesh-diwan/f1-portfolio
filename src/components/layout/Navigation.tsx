@@ -85,6 +85,7 @@ export function Navigation() {
             const isActive = activeSection === item.id;
             return (
                 <button
+                  key={item.id}
                   onClick={(e) => handleNav(e, item.id)}
                   className={cn(
                     "relative px-3 py-1.5 text-[11px] font-mono uppercase tracking-[0.12em] transition-all duration-200 rounded-sm",

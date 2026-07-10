@@ -35,7 +35,7 @@ export function TelemetrySkills() {
         <div className="max-w-[1400px] mx-auto">
           <div className="flex items-start gap-3 mb-12">
             <div className="flex-1">
-              <SectionHeader sector="SECTOR 4/5" right={`${portfolio.skills.flatMap(g => g.items).length} SKILLS`} title="System Diagnostics" />
+              <SectionHeader sector="SECTOR 4/6" right={`${portfolio.skills.flatMap(g => g.items).length} SKILLS`} title="System Diagnostics" />
               <span
                 key={modeIdx}
                 className="text-[12px] font-mono uppercase tracking-[0.2em] text-[var(--color-accent-gold)] animate-fade-in"
@@ -49,7 +49,7 @@ export function TelemetrySkills() {
               {portfolio.skills.map((group, idx) => {
                 const avg = Math.round(group.items.reduce((sum, s) => sum + s.pct, 0) / group.items.length);
                 return (
-                  <div className="glass shadow-card hover-lift p-5 h-full">
+                  <div key={group.group} className="glass shadow-card hover-lift p-5 h-full">
                       <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">{group.group}</p>
                       <div className="flex items-start gap-3">
                         <Gauge value={avg} label="AVG" color={avg >= 85 ? "var(--color-accent-purple)" : avg >= 70 ? "var(--color-accent-green)" : "var(--color-accent-gold)"} size={56} />

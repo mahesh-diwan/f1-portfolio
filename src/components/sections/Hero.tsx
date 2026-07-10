@@ -107,7 +107,7 @@ export function Hero() {
         </div>
 
         <div className="flex items-center justify-center gap-5 animate-fade-in" style={{ animationDelay: "1.8s" }}>
-          <EasterEgg message="GitHub: Where code meets the track!" icon="🏁" trigger="click">
+          <EasterEgg message="GitHub: Where code meets the track!" icon="🏁" trigger="hover">
             <a href={portfolio.links.github} target="_blank" rel="noopener noreferrer"
               className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors text-sm font-mono"
               aria-label="GitHub">

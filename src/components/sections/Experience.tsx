@@ -17,7 +17,7 @@ export function Experience() {
     <section id="experience" className="py-20 px-4 relative grid-bg" aria-label="Career experience">
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
-          <SectionHeader sector="SECTOR 1/5" right={`${portfolio.experience.length} ROLES`} title="Career Timeline" />
+          <SectionHeader sector="SECTOR 1/6" right={`${portfolio.experience.length} ROLES`} title="Career Timeline" />
 
           <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6">
             {/* Left: Driver Standings */}

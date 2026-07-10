@@ -7,7 +7,6 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: "",
     },
     sitemap: "https://mahesh-diwan.github.io/f1-portfolio/sitemap.xml",
   };

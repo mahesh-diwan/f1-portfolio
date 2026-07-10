@@ -22,7 +22,7 @@ export function LoadingScreen() {
   return (
     <div
       className={cn(
-        "fixed inset-0 z-[200] bg-[#0a0e14] flex items-center justify-center transition-opacity duration-500",
+        "fixed inset-0 z-[200] bg-[var(--bg-base)] flex items-center justify-center transition-opacity duration-500",
         fadeOut ? "opacity-0" : "opacity-100",
       )}
       role="progressbar"

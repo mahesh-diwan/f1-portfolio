@@ -22,14 +22,15 @@ export function Gauge({
   const circumference = 2 * Math.PI * radius;
   const clamped = Math.min(Math.max(value, 0), 100);
   const offset = circumference - (clamped / 100) * circumference;
-  const prefersReducedMotion =
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const [animatedValue, setAnimatedValue] = useState(
-    prefersReducedMotion ? clamped : 0,
-  );
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [animatedValue, setAnimatedValue] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mq.matches);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -68,7 +69,7 @@ export function Gauge({
   return (
     <div
       ref={ref}
-      className={cn("flex flex-col items-center gap-1", className)}
+      className={cn("relative flex flex-col items-center gap-1", className)}
       role="progressbar"
       aria-valuenow={clamped}
       aria-valuemin={0}
