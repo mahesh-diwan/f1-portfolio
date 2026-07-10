@@ -9,17 +9,17 @@ import { SectionReveal } from "@/components/ui/motion/SectionReveal";
 const statusConfig: Record<string, { label: string; color: string; bgClass: string }> = {
   "in-production": {
     label: "IN PRODUCTION",
-    color: "#00ff88",
+    color: "var(--color-display-green)",
     bgClass: "bg-[var(--color-display-green-muted)] border-[var(--color-display-green)]/20 text-[var(--color-display-green)]",
   },
   experimental: {
     label: "EXPERIMENTAL",
-    color: "#b388ff",
+    color: "var(--color-accent-purple)",
     bgClass: "bg-[var(--color-accent-purple-muted)] border-[var(--color-accent-purple)]/20 text-[var(--color-accent-purple)]",
   },
   archived: {
     label: "ARCHIVED",
-    color: "#8a8a9a",
+    color: "var(--color-text-dim)",
     bgClass: "bg-[var(--text-dim)]/10 border-[var(--text-dim)]/20 text-[var(--text-dim)]",
   },
 };
