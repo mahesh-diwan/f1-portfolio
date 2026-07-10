@@ -34,12 +34,7 @@ const radioMessages = [
   "Mode: Race.",
   "DRS enabled.",
   "Safety Car deployed.",
-  "Stay out, stay out.",
-  "All clear at T1.",
   "We're racing.",
-  "Negative. We're going for the win.",
-  "No radio. Copy.",
-  "Get in there, Lewis!",
 ];
 
 export function TransitionProvider({ children }: { children: ReactNode }) {

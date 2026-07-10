@@ -1,22 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import { portfolio } from "@/lib/portfolio";
 import { StatusIndicator } from "@/components/ui/primitives/StatusIndicator";
 import { SectionReveal } from "@/components/ui/motion/SectionReveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 export function Contact() {
-  const reducedMotion = useReducedMotion() ?? false;
-  const [radioBurst, setRadioBurst] = useState<number | null>(null);
-
-  const handleRadio = (idx: number) => {
-    if (reducedMotion) return;
-    setRadioBurst(idx);
-    setTimeout(() => setRadioBurst(null), 1800);
-  };
-
   const channels = [
     { label: "GITHUB", handle: `@${portfolio.githubUsername}`, url: portfolio.links.github, icon: "⬆" },
     { label: "LINKEDIN", handle: "Mahesh Diwan", url: portfolio.links.linkedin, icon: "⬆" },
@@ -67,9 +56,8 @@ export function Contact() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {channels.map((ch, idx) => (
+            {channels.map((ch) => (
               <a key={ch.label} href={ch.url} target="_blank" rel="noopener noreferrer"
-                  onClick={() => handleRadio(idx)}
                   className="glass shadow-card hover-lift p-5 block hover:bg-[var(--bg-elevated)] transition-colors group relative overflow-hidden">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">Channel</span>
@@ -80,16 +68,6 @@ export function Contact() {
                     <span className="text-[13px] text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors font-mono">{ch.handle}</span>
                   </div>
 
-                  {radioBurst === idx && (
-                    <div className="absolute inset-0 z-20 pointer-events-none animate-fade-in">
-                      <div className="absolute inset-0 bg-[var(--accent)]/5" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-xs font-mono font-bold text-[var(--accent)] tracking-widest bg-[var(--bg-elevated)]/90 px-2 py-1 rounded">
-                          ROGER THAT
-                        </span>
-                      </div>
-                    </div>
-                  )}
                 </a>
             ))}
           </div>

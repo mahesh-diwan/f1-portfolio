@@ -8,7 +8,6 @@ interface EasterEggProps {
   icon?: string;
   className?: string;
   trigger?: "click" | "hover" | "double-click";
-  size?: "sm" | "lg";
 }
 
 export function EasterEgg({
@@ -17,7 +16,6 @@ export function EasterEgg({
   icon = "🥚",
   className = "",
   trigger = "click",
-  size = "lg",
 }: EasterEggProps) {
   const [found, setFound] = useState(false);
   const [showToast, setShowToast] = useState(false);
@@ -41,7 +39,7 @@ export function EasterEgg({
       {showToast && (
         <span
           className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-3 whitespace-nowrap rounded-lg border border-[var(--accent)]/40 bg-[var(--bg-elevated)]/95 backdrop-blur-md shadow-2xl z-50 ${
-            size === "lg" ? "px-5 py-3 text-sm" : "px-3 py-1.5 text-[10px]"
+            "px-5 py-3 text-sm"
           } font-mono text-[var(--text-primary)] animate-fade-in`}
           role="status"
           aria-live="polite"

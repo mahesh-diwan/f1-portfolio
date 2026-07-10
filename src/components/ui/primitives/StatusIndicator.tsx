@@ -8,20 +8,11 @@ interface StatusIndicatorProps {
   className?: string;
 }
 
-const statusColors: Record<string, { dot: string; ringColor: string }> = {
-  active: {
-    dot: "bg-[var(--color-accent-green)]",
-    ringColor: "var(--color-accent-green)",
-  },
-  inactive: { dot: "bg-[var(--text-dim)]", ringColor: "" },
-  warning: {
-    dot: "bg-[var(--color-accent-gold)]",
-    ringColor: "var(--color-accent-gold)",
-  },
-  error: {
-    dot: "bg-[var(--accent)]",
-    ringColor: "var(--accent)",
-  },
+const statusDot: Record<string, string> = {
+  active: "bg-[var(--color-accent-green)]",
+  inactive: "bg-[var(--text-dim)]",
+  warning: "bg-[var(--color-accent-gold)]",
+  error: "bg-[var(--accent)]",
 };
 
 export function StatusIndicator({
@@ -29,7 +20,6 @@ export function StatusIndicator({
   label,
   className,
 }: StatusIndicatorProps) {
-  const colors = statusColors[status];
   return (
     <div
       className={cn("flex items-center gap-2", className)}
@@ -43,9 +33,8 @@ export function StatusIndicator({
         <span
           className={cn(
             "relative inline-flex h-2 w-2 rounded-full",
-            colors.dot,
+            statusDot[status],
           )}
-          style={colors.ringColor ? { "--ring-color": colors.ringColor, animation: "glow-ring 2s ease-in-out infinite" } as React.CSSProperties : undefined}
         />
       </span>
       <span className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">

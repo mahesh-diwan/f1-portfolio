@@ -6,8 +6,6 @@ interface SectionRevealProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
-  direction?: "up" | "down" | "left" | "right" | "none";
-  duration?: number;
   once?: boolean;
 }
 
@@ -15,7 +13,6 @@ export function SectionReveal({
   children,
   className,
   delay = 0,
-  direction = "up",
   once = true,
 }: SectionRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
