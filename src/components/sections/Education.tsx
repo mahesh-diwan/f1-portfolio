@@ -6,7 +6,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 
 const podiumColors = [
   { border: "var(--color-accent-gold)", label: "P1 — FIRST", num: "#01" },
-  { border: "var(--color-mercedes-silver)", label: "P2 — SECOND", num: "#02" },
+  { border: "#9ca3af", label: "P2 — SECOND", num: "#02" },
   { border: "var(--color-accent-orange)", label: "P3 — THIRD", num: "#03" },
 ];
 

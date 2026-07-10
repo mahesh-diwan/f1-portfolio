@@ -160,8 +160,7 @@ function ProjectCard({ project }: { project: Project | undefined }) {
 }
 
 const significantRepoNames = new Set([
-  "AWS-Resource-Tracker", "go-shell", "Web-Scraper",
-  "Devops-Project1", "spectre",
+  "go-shell",
 ]);
 
 const ownRepos: (Project & { stars: number; forks: number })[] = (ownRepoData as RepoSummary[])
