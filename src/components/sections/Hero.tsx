@@ -7,11 +7,13 @@ import { StatusIndicator } from "@/components/ui/primitives/StatusIndicator";
 import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
 
 function HeroStat({ label, value, accent }: { label: string; value: number; accent: string }) {
-  const [display, setDisplay] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
+  const [display, setDisplay] = useState(shouldReduceMotion ? value : 0);
   const startTime = useRef<number | null>(null);
   const animFrame = useRef<number>(0);
 
   useEffect(() => {
+    if (shouldReduceMotion) return;
     const animate = (timestamp: number) => {
       if (!startTime.current) startTime.current = timestamp;
       const elapsed = timestamp - startTime.current;
@@ -22,7 +24,7 @@ function HeroStat({ label, value, accent }: { label: string; value: number; acce
     };
     animFrame.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animFrame.current);
-  }, [value]);
+  }, [value, shouldReduceMotion]);
 
   return (
     <div className="text-center">
