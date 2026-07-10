@@ -18,6 +18,10 @@ export function Gauge({
   className,
   size = 80,
 }: GaugeProps) {
+  const radius = 32;
+  const circumference = 2 * Math.PI * radius;
+  const clamped = Math.min(Math.max(value, 0), 100);
+  const offset = circumference - (clamped / 100) * circumference;
   const prefersReducedMotion =
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -26,10 +30,6 @@ export function Gauge({
   );
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const radius = 32;
-  const circumference = 2 * Math.PI * radius;
-  const clamped = Math.min(Math.max(value, 0), 100);
-  const offset = circumference - (clamped / 100) * circumference;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
