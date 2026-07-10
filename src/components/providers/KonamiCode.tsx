@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 const KONAMI_CODE = [
   "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown",
@@ -51,27 +50,15 @@ export function KonamiCodeOverlay() {
   const { activated, message } = useKonamiCode();
 
   return (
-    <AnimatePresence>
+    <>
       {activated && (
-        <motion.div
-          className="fixed inset-0 z-[9999] flex items-center justify-center pointer-events-none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-        >
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center pointer-events-none animate-fade-in">
           <div className="absolute inset-0 bg-[var(--accent)]/10 backdrop-blur-sm" />
-          <motion.div
-            className="relative px-8 py-5 rounded-lg border border-[var(--accent)]/40 bg-[var(--bg-elevated)]/90 backdrop-blur-md shadow-2xl"
-            initial={{ scale: 0.8, y: 20 }}
-            animate={{ scale: 1, y: 0 }}
-            exit={{ scale: 0.8, y: -20 }}
-            transition={{ type: "spring", damping: 15, stiffness: 300 }}
-          >
+          <div className="relative px-8 py-5 rounded-lg border border-[var(--accent)]/40 bg-[var(--bg-elevated)]/90 backdrop-blur-md shadow-2xl animate-scale-in">
             <p className="text-lg font-mono text-[var(--text-primary)] text-center">{message}</p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

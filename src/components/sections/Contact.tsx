@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import { portfolio } from "@/lib/portfolio";
 import { StatusIndicator } from "@/components/ui/primitives/StatusIndicator";
 import { SectionReveal } from "@/components/ui/motion/SectionReveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 export function Contact() {
   const reducedMotion = useReducedMotion() ?? false;
@@ -23,6 +23,27 @@ export function Contact() {
     { label: "LINKEDIN", handle: "Mahesh Diwan", url: portfolio.links.linkedin, icon: "⬆" },
     { label: "INSTAGRAM", handle: "@mahesh_diwan1", url: portfolio.links.instagram, icon: "⬆" },
     { label: "X", handle: "@mahesh_diwan1", url: portfolio.links.twitter, icon: "⬆" },
+    { label: "HASHNODE", handle: "@mahesh1215", url: portfolio.links.hashnode, icon: (
+      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="12 2 22 7 22 17 12 22 2 17 2 7 12 2"/>
+      </svg>
+    )},
+    { label: "MEDIUM", handle: "mahesh1215", url: portfolio.links.medium, icon: (
+      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 20V4l6 8 6-8v16"/>
+      </svg>
+    )},
+    { label: "LEETCODE", handle: "mahesh_diwan", url: portfolio.links.leetcode, icon: (
+      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M10 4l-8 8 8 8M14 4l8 8-8 8"/>
+      </svg>
+    )},
+    { label: "UPI", handle: portfolio.links.upi, url: `upi://pay?pa=${portfolio.links.upi}`, icon: (
+      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="6" width="20" height="12" rx="2"/>
+        <path d="M8 12h8"/>
+      </svg>
+    )},
   ];
 
   return (
@@ -31,7 +52,6 @@ export function Contact() {
         <div className="max-w-[1400px] mx-auto">
           <SectionHeader sector="SECTOR 5/5" right={`${Object.keys(portfolio.links).length} CHANNELS`} title="Communication" />
 
-          {/* Direct Line */}
           <div className="glass shadow-card p-5 mb-4">
             <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">Direct Line</p>
             <div className="flex items-center gap-3">
@@ -42,7 +62,17 @@ export function Contact() {
             </div>
           </div>
 
-          {/* Channels grid */}
+          <div className="glass shadow-card p-5 mb-4">
+            <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">Location</p>
+            <div className="flex items-center gap-3">
+              <svg className="w-4 h-4 shrink-0 text-[var(--text-muted)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span className="text-[13px] text-[var(--text-secondary)] font-mono">{portfolio.location}</span>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {channels.map((ch, idx) => (
               <EasterEgg key={ch.label} message={`Opening ${ch.label} channel...`} icon="📡" trigger="click">
@@ -59,36 +89,14 @@ export function Contact() {
                   </div>
 
                   {radioBurst === idx && (
-                    <motion.div
-                      className="absolute inset-0 z-10 pointer-events-none"
-                      initial={{ clipPath: "inset(0 0 100% 0)" }}
-                      animate={{ clipPath: ["inset(0 0 100% 0)", "inset(0 0 0% 0)", "inset(100% 0 0 0)"] }}
-                      transition={{ duration: 1.5, ease: "easeInOut" }}
-                    >
-                      <div className="w-full h-full bg-[var(--accent)]/10" />
-                      {Array.from({ length: 6 }).map((_, i) => (
-                        <motion.div
-                          key={i}
-                          className="absolute left-0 right-0 h-[2px] bg-[var(--accent)]/60"
-                          style={{ top: `${(i + 1) * 14}%` }}
-                          animate={{ scaleY: [0.5, 1.5, 0.5] }}
-                          transition={{ duration: 0.3, repeat: Infinity, delay: i * 0.1 }}
-                        />
-                      ))}
-                    </motion.div>
-                  )}
-
-                  {radioBurst === idx && (
-                    <motion.div
-                      className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: [0, 1, 0.5, 1] }}
-                      transition={{ delay: 1.0, duration: 0.5 }}
-                    >
-                      <span className="text-xs font-mono font-bold text-[var(--accent)] tracking-widest bg-[var(--bg)]/80 px-2 py-1 rounded">
-                        ROGER THAT
-                      </span>
-                    </motion.div>
+                    <div className="absolute inset-0 z-20 pointer-events-none animate-fade-in">
+                      <div className="absolute inset-0 bg-[var(--accent)]/5" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-xs font-mono font-bold text-[var(--accent)] tracking-widest bg-[var(--bg-elevated)]/90 px-2 py-1 rounded">
+                          ROGER THAT
+                        </span>
+                      </div>
+                    </div>
                   )}
                 </a>
               </EasterEgg>

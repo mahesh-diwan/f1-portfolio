@@ -16,7 +16,7 @@ const sora = Sora({
 const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600"],
   display: "swap",
 });
 
@@ -69,8 +69,8 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: "/f1-portfolio/favicon.svg",
+    apple: "/f1-portfolio/favicon.svg",
   },
 };
 

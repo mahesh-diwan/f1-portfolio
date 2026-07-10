@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { portfolio } from "@/lib/portfolio";
 import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/motion/SectionReveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";

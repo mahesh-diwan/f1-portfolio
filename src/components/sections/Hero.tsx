@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { portfolio } from "@/lib/portfolio";
 import { StatusIndicator } from "@/components/ui/primitives/StatusIndicator";
 import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
@@ -72,64 +72,35 @@ export function Hero() {
 
   return (
     <section id="hero" className="min-h-screen flex flex-col justify-center relative overflow-hidden" aria-label="Hero introduction">
-      {/* Grid background */}
       <div className="absolute inset-0 grid-bg opacity-50" aria-hidden="true" />
 
-      {/* Status indicator — top right */}
       <div className="absolute top-6 right-6 z-10">
         <StatusIndicator status="active" label="ONLINE" />
       </div>
 
-      {/* Main content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        {/* Role label */}
-        <motion.p
-          className="text-[13px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-4"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
+        <p className="text-[13px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-4 animate-fade-in" style={{ animationDelay: "0.2s" }}>
           {portfolio.role}
-        </motion.p>
+        </p>
 
-        {/* Name with typing effect */}
-        <motion.div
-          className="relative inline-block"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.4, type: "spring", stiffness: 100 }}
-        >
-          <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold text-[var(--text-primary)] tracking-tight"
-          >
+        <div className="relative inline-block animate-scale-in" style={{ animationDelay: "0.4s" }}>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold text-[var(--text-primary)] tracking-tight">
             {typedName}
             {showCursor && (
               <span className="inline-block w-[3px] h-[0.85em] bg-[var(--accent)] align-middle ml-0.5 animate-pulse" />
             )}
-          </motion.h1>
-        </motion.div>
+          </h1>
+        </div>
 
-        {/* F1 subtitle — fades in after typing completes */}
-        <motion.div
-          className="flex items-center justify-center gap-3 mt-4 mb-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.4 }}
-        >
+        <div className="flex items-center justify-center gap-3 mt-4 mb-8 animate-fade-in" style={{ animationDelay: "1.4s" }}>
           <div className="w-8 h-px bg-[var(--accent)]" />
           <span className="text-[13px] uppercase tracking-[0.2em] text-[var(--accent)] font-mono">
             Race Engineer
           </span>
           <div className="w-8 h-px bg-[var(--accent)]" />
-        </motion.div>
+        </div>
 
-        {/* Telemetry strip — fades in after typing completes */}
-        <motion.div
-          className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 md:gap-8 mb-10 glass shadow-card px-4 sm:px-6 py-3 mx-auto max-w-full"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.6 }}
-        >
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 md:gap-8 mb-10 glass shadow-card px-4 sm:px-6 py-3 mx-auto max-w-full animate-fade-in" style={{ animationDelay: "1.6s" }}>
           {stats.map((stat, i) => (
             <div key={stat.label} className="flex items-center gap-6 sm:gap-8">
               <HeroStat label={stat.label} value={stat.value} accent={stat.accent} />
@@ -138,15 +109,9 @@ export function Hero() {
               )}
             </div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Social links — icon only, fades in after typing completes */}
-        <motion.div
-          className="flex items-center justify-center gap-5"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.8 }}
-        >
+        <div className="flex items-center justify-center gap-5 animate-fade-in" style={{ animationDelay: "1.8s" }}>
           <EasterEgg message="GitHub: Where code meets the track!" icon="🏁" trigger="click">
             <a href={portfolio.links.github} target="_blank" rel="noopener noreferrer"
               className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors text-sm font-mono"
@@ -169,27 +134,17 @@ export function Hero() {
             aria-label="View resume">
             Resume
           </a>
-        </motion.div>
+        </div>
       </div>
 
-      {/* Scroll indicator — fades in after typing completes */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.0 }}
-      >
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center animate-fade-in" style={{ animationDelay: "2.0s" }}>
         <span className="text-[12px] uppercase tracking-[0.2em] text-[var(--text-dim)] font-mono block mb-2">
           Scroll
         </span>
         <div className="w-4 h-6 border border-[var(--border-default)] rounded-full mx-auto flex justify-center pt-1 shadow-card">
-          <motion.div
-            className="w-1 h-1.5 bg-[var(--text-dim)] rounded-full"
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          />
+          <div className="w-1 h-1.5 bg-[var(--text-dim)] rounded-full animate-bounce-y" />
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

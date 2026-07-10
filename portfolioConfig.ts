@@ -47,8 +47,9 @@ export interface Certification {
   name: string;
   issuer: string;
   date: string;
-  icon: string;
+  icon?: string;
   url: string;
+  status?: string;
 }
 
 export const portfolioConfig = {
@@ -368,6 +369,8 @@ export const portfolioConfig = {
       ],
     },
   ] as SkillGroup[],
+
+
   otherSkills: [
     "AWS ECR",
     "Application Load Balancer (ALB)",

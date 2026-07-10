@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Zap } from "lucide-react";
 import { portfolio } from "@/lib/portfolio";
 import { TelemetryBar } from "@/components/ui/primitives/TelemetryBar";
@@ -10,6 +9,7 @@ import { DRSIndicator } from "@/components/ui/f1/DRSIndicator";
 import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/motion/SectionReveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 const engineModes = ["QUALIFYING", "RACE", "SAFETY CAR"];
 
@@ -36,17 +36,12 @@ export function TelemetrySkills() {
           <div className="flex items-start gap-3 mb-12">
             <div className="flex-1">
               <SectionHeader sector="SECTOR 4/5" right={`${portfolio.skills.flatMap(g => g.items).length} SKILLS`} title="System Diagnostics" />
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={modeIdx}
-                  initial={{ opacity: 0, y: 4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -4 }}
-                  className="text-[12px] font-mono uppercase tracking-[0.2em] text-[var(--color-accent-gold)]"
-                >
-                  MODE: {engineModes[modeIdx]}
-                </motion.span>
-              </AnimatePresence>
+              <span
+                key={modeIdx}
+                className="text-[12px] font-mono uppercase tracking-[0.2em] text-[var(--color-accent-gold)] animate-fade-in"
+              >
+                MODE: {engineModes[modeIdx]}
+              </span>
             </div>
           </div>
 
@@ -72,16 +67,12 @@ export function TelemetrySkills() {
                         </EasterEgg>
                         <span className="text-[12px] font-mono uppercase tracking-wider text-[var(--text-dim)] flex items-center gap-1">
                           <Zap className="w-2.5 h-2.5" />
-                          <AnimatePresence mode="wait">
-                            <motion.span
-                              key={modeIdx}
-                              initial={{ opacity: 0, y: 3 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: -3 }}
-                            >
-                              MODE: {engineModes[modeIdx]}
-                            </motion.span>
-                          </AnimatePresence>
+                          <span
+                            key={modeIdx}
+                            className="animate-fade-in"
+                          >
+                            MODE: {engineModes[modeIdx]}
+                          </span>
                         </span>
                       </div>
                     </div>

@@ -1,7 +1,7 @@
 import { portfolioConfig } from "../../portfolioConfig";
-import type { Project, Experience, Education, SkillGroup, Certification } from "../../portfolioConfig";
+import type { Project, Experience, Education, SkillGroup } from "../../portfolioConfig";
 
-export type { Project, Experience, Education, SkillGroup, Certification };
+export type { Project, Experience, Education, SkillGroup };
 
 export const portfolio = portfolioConfig;
 
