@@ -4,7 +4,6 @@ import { useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { usePageTransition } from "@/lib/transition-context";
 import { useTheme } from "@/lib/theme-context";
-import { MagneticHover } from "@/components/ui/primitives/MagneticHover";
 import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
 
 const navItems = [
@@ -56,7 +55,6 @@ export function Navigation() {
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
-              <MagneticHover key={item.id} strength={0.2}>
                 <button
                   onClick={(e) => handleNav(e, item.id)}
                   className={cn(
@@ -72,7 +70,7 @@ export function Navigation() {
                   )}
                   {item.label}
                 </button>
-              </MagneticHover>
+
             );
           })}
 
