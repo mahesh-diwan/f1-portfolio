@@ -4,6 +4,8 @@ import { useState } from "react";
 import { ExternalLink, GitBranch, Plus, Minus } from "lucide-react";
 import { portfolio } from "@/lib/portfolio";
 import type { Project } from "@/lib/portfolio";
+import ownRepoData from "@/data/github-own-repos.json";
+import type { RepoSummary } from "@/data/repo-summary";
 
 import { SectionReveal } from "@/components/ui/motion/SectionReveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -157,17 +159,40 @@ function ProjectCard({ project }: { project: Project | undefined }) {
   );
 }
 
+const significantRepoNames = new Set([
+  "AWS-Resource-Tracker", "go-shell", "Web-Scraper",
+  "Devops-Project1", "spectre",
+]);
+
+const ownRepos: (Project & { stars: number; forks: number })[] = (ownRepoData as RepoSummary[])
+  .filter(r => significantRepoNames.has(r.name))
+  .map(r => ({
+    id: r.name,
+    name: r.name,
+    desc: r.description || "",
+    type: "OPEN SOURCE",
+    tags: [r.language, ...r.topics].filter((t): t is string => t !== null),
+    link: r.url,
+    accent: "var(--color-accent-teal)",
+    icon: "⚡",
+    status: "experimental" as const,
+    stars: r.stars,
+    forks: r.forks,
+  }));
+
+const allProjects = [...portfolio.projects, ...ownRepos];
+
 export function Projects() {
-  if (portfolio.projects.length === 0) return null;
+  if (allProjects.length === 0) return null;
 
   return (
     <section id="projects" className="py-20 px-4 relative grid-bg" aria-label="Projects">
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
-          <SectionHeader sector="SECTOR 3/5" right={`${portfolio.projects.length} PROJECTS`} title="Projects" />
+          <SectionHeader sector="SECTOR 3/5" right={`${allProjects.length} PROJECTS`} title="Projects" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {portfolio.projects.map((project) => (
+            {allProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>

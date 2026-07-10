@@ -1,0 +1,82 @@
+[
+  {
+    "name": "spectre",
+    "description": "A beginner-level tool that allows users to chat with PDF documents. This project demonstrates basic concepts in document processing and text-based interactions with PDFs.",
+    "language": "Python",
+    "stars": 1,
+    "forks": 0,
+    "updated_at": "2026-01-13T06:51:30Z",
+    "url": "https://github.com/mahesh-diwan/spectre",
+    "topics": []
+  },
+  {
+    "name": "ZEDOS",
+    "description": "Portfolio",
+    "language": "TypeScript",
+    "stars": 0,
+    "forks": 0,
+    "updated_at": "2026-07-08T07:56:14Z",
+    "url": "https://github.com/mahesh-diwan/ZEDOS",
+    "topics": []
+  },
+  {
+    "name": "News3",
+    "description": "A beginner-level web application that integrates web scraping, API usage, and frontend-backend communication to deliver news updates. This project explores basic concepts in full-stack development and data integration.",
+    "language": "CSS",
+    "stars": 0,
+    "forks": 0,
+    "updated_at": "2025-11-18T10:07:45Z",
+    "url": "https://github.com/mahesh-diwan/News3",
+    "topics": []
+  },
+  {
+    "name": "go-shell",
+    "description": "minimal command-line shell built in Go. Supports basic system commands, directory navigation (cd), and live working directory prompts. ",
+    "language": "Go",
+    "stars": 0,
+    "forks": 0,
+    "updated_at": "2025-11-03T15:24:54Z",
+    "url": "https://github.com/mahesh-diwan/go-shell",
+    "topics": []
+  },
+  {
+    "name": "AWS-Resource-Tracker",
+    "description": "The AWS Resource Tracker is a simple Bash script designed to report usage statistics for various AWS resources. This script utilizes the AWS CLI to gather information about AWS S3 buckets, EC2 instances, Lambda functions, and IAM users, making it easier to monitor your cloud resources.",
+    "language": "Shell",
+    "stars": 0,
+    "forks": 0,
+    "updated_at": "2025-04-12T06:57:46Z",
+    "url": "https://github.com/mahesh-diwan/AWS-Resource-Tracker",
+    "topics": []
+  },
+  {
+    "name": "Web-Scraper",
+    "description": "A web scraper built with Node.js & Puppeteer to extract text, links, URLs, and images from a webpage. The scraped data is served via a Flask API in Python, and the entire application is containerized using Docker with a multi-stage build for efficiency. 🚀",
+    "language": "Dockerfile",
+    "stars": 0,
+    "forks": 0,
+    "updated_at": "2025-02-21T15:40:52Z",
+    "url": "https://github.com/mahesh-diwan/Web-Scraper",
+    "topics": []
+  },
+  {
+    "name": "Devops-Project2",
+    "description": "Automating Docker deployments using Jenkins, Ansible, and GitHub. This project sets up a CI/CD pipeline to automate the build, test, and deployment of Dockerized applications.",
+    "language": "CSS",
+    "stars": 0,
+    "forks": 0,
+    "updated_at": "2025-01-13T10:11:53Z",
+    "url": "https://github.com/mahesh-diwan/Devops-Project2",
+    "topics": []
+  },
+  {
+    "name": "Devops-Project1",
+    "description": "A complete guide to setting up a CI/CD pipeline with Jenkins, SonarQube, and Docker on AWS. Automates the process of building, testing, and deploying Dockerized applications in the cloud.",
+    "language": "HTML",
+    "stars": 0,
+    "forks": 0,
+    "updated_at": "2025-01-13T10:11:19Z",
+    "url": "https://github.com/mahesh-diwan/Devops-Project1",
+    "topics": []
+  }
+]
