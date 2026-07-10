@@ -43,7 +43,12 @@ function ProjectCard({ project, index }: { project: ReturnType<typeof getProject
   }
 
   const status = project.status ? statusConfig[project.status] : null;
-  const heights = ["min-h-[220px]", "min-h-[300px]", "min-h-[240px]", "min-h-[280px]"];
+  const heights = [
+    "min-h-[160px] sm:min-h-[220px]",
+    "min-h-[200px] sm:min-h-[300px]",
+    "min-h-[160px] sm:min-h-[240px]",
+    "min-h-[180px] sm:min-h-[280px]",
+  ];
   const cardHeight = heights[index % 4];
 
   return (
