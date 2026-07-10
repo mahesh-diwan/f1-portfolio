@@ -42,16 +42,6 @@ export interface SkillGroup {
   items: { name: string; pct: number; color: string }[];
 }
 
-export interface Certification {
-  id: string;
-  name: string;
-  issuer: string;
-  date: string;
-  icon?: string;
-  url: string;
-  status?: string;
-}
-
 export const portfolioConfig = {
   name: "Mahesh Diwan",
   titleName: "Mahesh Diwan",
@@ -63,32 +53,6 @@ export const portfolioConfig = {
     "DevOps & Cloud Infrastructure Engineer | AWS, Kubernetes, Terraform & CI/CD Automation",
   bioLong:
     "I am a DevOps and Cloud Infrastructure Engineer focused on automating container runtimes, optimizing cloud resources, and streamlining continuous integration pipelines. I specialize in building secure, zero-downtime microservice environments on AWS EKS and ECS, provisioning reusable cloud infrastructure via Terraform module configurations, and writing automation scripts. I love constructing the automated systems that make software releases fast, secure, and stress-free.",
-  bioBullets: [
-    {
-      icon: "🚀",
-      text: "Deployed MERN services onto",
-      boldText: "AWS ECS (Fargate) & EKS clusters",
-      afterText: "running Task definitions behind ALBs",
-    },
-    {
-      icon: "🛠️",
-      text: "Structured K8s manifests for",
-      boldText: "Deployments, Services, and HPAs",
-      afterText: "to enable automated container self-healing",
-    },
-    {
-      icon: "📦",
-      text: "Engineered automated pipelines for",
-      boldText: "Docker build → ECR push",
-      afterText: "and rolling EC2/EKS staging rollouts",
-    },
-    {
-      icon: "✍️",
-      text: "Monitored system health parameters and",
-      boldText: "authored technical DevOps guides",
-      afterText: "on Hashnode",
-    },
-  ],
   links: {
     github: "https://github.com/mahesh-diwan",
     linkedin: "https://www.linkedin.com/in/mahesh-diwan/",

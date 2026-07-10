@@ -57,19 +57,6 @@
     --color-display-amber-dim: #e69500;
     --color-display-amber-muted: rgba(255, 170, 0, 0.08);
 
-    /* F1 Team Colors */
-    --color-ferrari: #dc0000;
-    --color-ferrari-dim: #a30000;
-    --color-ferrari-glow: rgba(220, 0, 0, 0.3);
-
-    --color-redbull-blue: #1e3a8a;
-    --color-redbull-yellow: #ffd700;
-    --color-redbull-glow: rgba(30, 58, 138, 0.3);
-
-    --color-mercedes-teal: #00d2be;
-    --color-mercedes-silver: #c0c0c0;
-    --color-mercedes-glow: rgba(0, 210, 190, 0.3);
-
     --font-sans: "Sora", ui-sans-serif, system-ui, sans-serif;
     --font-heading: "Sora", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "IBM Plex Mono", ui-monospace, monospace;
@@ -258,7 +245,6 @@
     --shadow-glow-gold: 0 0 24px rgba(154, 122, 10, 0.10);
     --shadow-glow-teal: 0 0 24px rgba(8, 122, 96, 0.10);
 
-    --color-mercedes-silver: #707070;
 }
 
 .light body {

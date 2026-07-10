@@ -1,7 +1,7 @@
 "use client";
 
 import { portfolio } from "@/lib/portfolio";
-import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/motion/SectionReveal";
+import { SectionReveal } from "@/components/ui/motion/SectionReveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
 const podiumColors = [
@@ -19,12 +19,10 @@ export function Education() {
         <div className="max-w-[1400px] mx-auto">
           <SectionHeader sector="SECTOR 2/5" right={`${portfolio.education.length} DEGREES`} title="Education" />
 
-          <StaggerReveal staggerDelay={0.1} direction="up">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {portfolio.education.map((edu, idx) => {
                 const podium = podiumColors[idx] || podiumColors[0];
                 return (
-                  <StaggerItem key={idx}>
                     <div
                       className="glass shadow-card hover-lift p-5 h-full"
                       style={{ borderTop: `3px solid ${podium.border}` }}
@@ -50,11 +48,9 @@ export function Education() {
                         </p>
                       )}
                     </div>
-                  </StaggerItem>
-                );
-              })}
-            </div>
-          </StaggerReveal>
+                 );
+               })}
+             </div>
         </div>
       </SectionReveal>
     </section>

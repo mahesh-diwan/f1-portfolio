@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { ExternalLink, GitBranch, Plus, Minus } from "lucide-react";
-import { portfolio, getProject } from "@/lib/portfolio";
+import { portfolio } from "@/lib/portfolio";
+import type { Project } from "@/lib/portfolio";
 
 import { SectionReveal } from "@/components/ui/motion/SectionReveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -25,7 +26,7 @@ const statusConfig: Record<string, { label: string; color: string; bgClass: stri
   },
 };
 
-function ProjectCard({ project }: { project: ReturnType<typeof getProject> }) {
+function ProjectCard({ project }: { project: Project | undefined }) {
   const [expanded, setExpanded] = useState(false);
   if (!project) return null;
 

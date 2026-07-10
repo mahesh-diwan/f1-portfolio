@@ -6,7 +6,7 @@ import { portfolio } from "@/lib/portfolio";
 import { TelemetryBar } from "@/components/ui/primitives/TelemetryBar";
 import { Gauge } from "@/components/ui/primitives/Gauge";
 import { DRSIndicator } from "@/components/ui/f1/DRSIndicator";
-import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/motion/SectionReveal";
+import { SectionReveal } from "@/components/ui/motion/SectionReveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
@@ -45,13 +45,11 @@ export function TelemetrySkills() {
             </div>
           </div>
 
-          <StaggerReveal staggerDelay={0.1} direction="up">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {portfolio.skills.map((group, idx) => {
                 const avg = Math.round(group.items.reduce((sum, s) => sum + s.pct, 0) / group.items.length);
                 return (
-                  <StaggerItem key={group.group}>
-                    <div className="glass shadow-card hover-lift p-5 h-full">
+                  <div className="glass shadow-card hover-lift p-5 h-full">
                       <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">{group.group}</p>
                       <div className="flex items-start gap-3">
                         <Gauge value={avg} label="AVG" color={avg >= 85 ? "var(--color-accent-purple)" : avg >= 70 ? "var(--color-accent-green)" : "var(--color-accent-gold)"} size={56} />
@@ -76,11 +74,9 @@ export function TelemetrySkills() {
                         </span>
                       </div>
                     </div>
-                  </StaggerItem>
                 );
               })}
             </div>
-          </StaggerReveal>
 
           {portfolio.otherSkills && portfolio.otherSkills.length > 0 && (
             <div className="mt-6">

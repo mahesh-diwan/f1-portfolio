@@ -1,7 +1,7 @@
 "use client";
 
 import { portfolio } from "@/lib/portfolio";
-import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/motion/SectionReveal";
+import { SectionReveal } from "@/components/ui/motion/SectionReveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
 const sectors = [
@@ -67,10 +67,8 @@ export function Experience() {
             </div>
 
             {/* Right: Work History */}
-            <StaggerReveal staggerDelay={0.1} direction="up">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 grid-rows-[1fr]">
                 {portfolio.experience.map((exp, idx) => (
-                  <StaggerItem key={idx}>
                     <div className="glass shadow-card hover-lift p-5 flex flex-col h-full">
                       <div className="flex items-center gap-2 mb-3">
                         <span className={`text-[12px] font-mono px-2 py-0.5 ${
@@ -95,10 +93,8 @@ export function Experience() {
                         </div>
                       )}
                     </div>
-                  </StaggerItem>
                 ))}
               </div>
-            </StaggerReveal>
           </div>
         </div>
       </SectionReveal>
