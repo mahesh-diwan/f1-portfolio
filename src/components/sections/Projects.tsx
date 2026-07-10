@@ -24,7 +24,7 @@ const statusConfig: Record<string, { label: string; color: string; bgClass: stri
   },
 };
 
-function ProjectCard({ project, index }: { project: ReturnType<typeof getProject>; index: number }) {
+function ProjectCard({ project }: { project: ReturnType<typeof getProject> }) {
   const [expanded, setExpanded] = useState(false);
   if (!project) return null;
 
@@ -43,17 +43,11 @@ function ProjectCard({ project, index }: { project: ReturnType<typeof getProject
   }
 
   const status = project.status ? statusConfig[project.status] : null;
-  const heights = [
-    "min-h-[160px] sm:min-h-[220px]",
-    "min-h-[200px] sm:min-h-[300px]",
-    "min-h-[160px] sm:min-h-[240px]",
-    "min-h-[180px] sm:min-h-[280px]",
-  ];
-  const cardHeight = heights[index % 4];
+
 
   return (
-    <div className="break-inside-avoid mb-4">
-      <div className={`glass shadow-card hover-lift p-5 ${cardHeight} flex flex-col`}>
+    <div>
+      <div className="glass shadow-card hover-lift p-5 h-full flex flex-col">
         {/* Header */}
         <div className="flex items-start justify-between mb-2">
           <span className="text-[13px] uppercase tracking-[0.1em] text-[var(--text-muted)] font-mono">
@@ -165,9 +159,9 @@ export function Projects() {
             </div>
           </div>
 
-          <div className="columns-1 md:columns-2 gap-4">
-            {portfolio.projects.map((project, idx) => (
-              <ProjectCard key={project.id} project={project} index={idx} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {portfolio.projects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
             ))}
           </div>
         </div>
