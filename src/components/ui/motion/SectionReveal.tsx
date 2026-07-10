@@ -86,7 +86,7 @@ const staggerContainer = {
 export function StaggerReveal({
   children,
   className,
-  staggerDelay = 0,
+  staggerDelay = 0.3,
   direction = "up",
 }: StaggerRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
