@@ -28,33 +28,12 @@ export function LoadingScreen() {
       role="progressbar"
       aria-label="Loading"
     >
-      <style>{`
-        @keyframes lightOn {
-          0% { background-color: #1a1a2e; box-shadow: none; }
-          100% { background-color: #dc0000; box-shadow: 0 0 20px #dc0000, 0 0 40px rgba(220, 0, 0, 0.3); }
-        }
-        .f1-light {
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          background-color: #1a1a2e;
-          border: 2px solid #333;
-          transition: background-color 0.3s, box-shadow 0.3s;
-        }
-        .f1-light.on {
-          background-color: #dc0000;
-          box-shadow: 0 0 20px #dc0000, 0 0 40px rgba(220, 0, 0, 0.3);
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .f1-light { animation: none !important; }
-          .f1-light.on { background-color: #dc0000; box-shadow: 0 0 20px #dc0000; }
-        }
-      `}</style>
+
       <div className="flex items-center gap-4">
         {[0, 1, 2, 3, 4].map((i) => (
           <div
             key={i}
-            className={cn("f1-light", !lightsOut && "on")}
+            className={`f1-light ${!lightsOut ? "on" : ""}`}
             style={!lightsOut ? { animation: `lightOn 0.1s ${i * 300}ms forwards` } : undefined}
             aria-hidden="true"
           />

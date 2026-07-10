@@ -33,7 +33,7 @@ export function TelemetryBar({
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
+        if (entry.isIntersecting) {
           setIsVisible(true);
           observer.disconnect();
         }
@@ -42,7 +42,7 @@ export function TelemetryBar({
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [isVisible]);
+  }, []);
 
   useEffect(() => {
     if (!isVisible) return;

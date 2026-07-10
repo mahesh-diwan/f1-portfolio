@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { useEffect, useRef, useState } from "react";
 
 interface GaugeProps {
@@ -22,15 +23,10 @@ export function Gauge({
   const circumference = 2 * Math.PI * radius;
   const clamped = Math.min(Math.max(value, 0), 100);
   const offset = circumference - (clamped / 100) * circumference;
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
   const [animatedValue, setAnimatedValue] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mq.matches);
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

@@ -628,6 +628,28 @@
     animation: bounce-y 1.5s ease-in-out infinite;
 }
 
+/* F1 loading light */
+@keyframes lightOn {
+  0% { background-color: #1a1a2e; box-shadow: none; }
+  100% { background-color: var(--accent); box-shadow: 0 0 20px var(--accent), 0 0 40px color-mix(in srgb, var(--accent) 30%, transparent); }
+}
+.f1-light {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #1a1a2e;
+  border: 2px solid var(--border-default);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.f1-light.on {
+  background-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent), 0 0 40px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .f1-light { animation: none !important; }
+  .f1-light.on { background-color: var(--accent); box-shadow: 0 0 20px var(--accent); }
+}
+
 /* View Transitions */
 ::view-transition-old(.fade-out) {
   animation: 150ms ease-in fade-out both;
