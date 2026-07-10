@@ -55,7 +55,7 @@ function ProjectCard({ project }: { project: ReturnType<typeof getProject> }) {
             {project.type?.toUpperCase()}
           </span>
           {status && (
-            <span className={`inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-mono uppercase tracking-wider border ${status.bgClass}`}>
+            <span className={`inline-flex items-center gap-1 px-2 py-0.5 text-[12px] font-mono uppercase tracking-wider border ${status.bgClass}`}>
               <span className="relative inline-flex h-2 w-2" aria-hidden="true">
                 <span className="absolute inline-flex h-full w-full rounded-full opacity-75 animate-telemetry-pulse" style={{ backgroundColor: status.color }} />
                 <span className="relative inline-flex h-2 w-2 rounded-full" style={{ backgroundColor: status.color }} />
@@ -70,7 +70,7 @@ function ProjectCard({ project }: { project: ReturnType<typeof getProject> }) {
           <span className="text-2xl">{project.icon}</span>
           <div className="min-w-0 flex-1">
             <h3 className="text-sm font-bold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">{project.name}</h3>
-            <p className="text-[11px] text-[var(--text-secondary)] mt-1 line-clamp-2 leading-relaxed">{project.desc}</p>
+            <p className="text-[12px] text-[var(--text-secondary)] mt-1 line-clamp-2 leading-relaxed">{project.desc}</p>
           </div>
         </div>
 
@@ -163,7 +163,7 @@ export function Projects() {
     <section id="projects" className="py-20 px-4 relative grid-bg" aria-label="Projects">
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
-          <SectionHeader sector="SECTOR 3/5" right="6 PROJECTS" title="Projects" />
+          <SectionHeader sector="SECTOR 3/5" right={`${portfolio.projects.length} PROJECTS`} title="Projects" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {portfolio.projects.map((project) => (

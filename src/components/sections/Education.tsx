@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { portfolio } from "@/lib/portfolio";
 import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/motion/SectionReveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -18,7 +17,7 @@ export function Education() {
     <section id="education" className="py-28 px-4 relative grid-bg" aria-label="Education">
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
-          <SectionHeader sector="SECTOR 2/5" right="3 DEGREES" title="Education" />
+          <SectionHeader sector="SECTOR 2/5" right={`${portfolio.education.length} DEGREES`} title="Education" />
 
           <StaggerReveal staggerDelay={0.1} direction="up">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

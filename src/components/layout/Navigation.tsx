@@ -101,27 +101,7 @@ export function Navigation() {
             )}
           </button>
 
-          <button
-            onClick={() => {
-              const event = new KeyboardEvent("keydown", {
-                key: "k",
-                metaKey: true,
-                bubbles: true,
-              });
-              window.dispatchEvent(event);
-            }}
-            className="ml-1 px-2.5 py-1 text-[12px] font-mono text-[var(--text-dim)] border border-[var(--border-default)] rounded-sm hover:text-[var(--text-secondary)] hover:border-[var(--border-strong)] transition-all"
-            aria-label="Open command palette"
-            title="Ctrl+K to open command palette"
-          >
-            <span className="flex items-center gap-1">
-              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-              K
-            </span>
-          </button>
+
         </div>
 
         <div className="flex md:hidden items-center gap-1">

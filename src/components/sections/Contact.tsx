@@ -29,7 +29,7 @@ export function Contact() {
     <section id="contact" className="py-20 px-4 relative grid-bg" aria-label="Contact">
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
-          <SectionHeader sector="SECTOR 5/5" right="8 CHANNELS" title="Communication" />
+          <SectionHeader sector="SECTOR 5/5" right={`${Object.keys(portfolio.links).length} CHANNELS`} title="Communication" />
 
           {/* Direct Line */}
           <div className="glass shadow-card p-5 mb-4">

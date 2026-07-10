@@ -35,7 +35,7 @@ export function TelemetrySkills() {
         <div className="max-w-[1400px] mx-auto">
           <div className="flex items-start gap-3 mb-12">
             <div className="flex-1">
-              <SectionHeader sector="SECTOR 4/5" right="12 SKILLS" title="System Diagnostics" />
+              <SectionHeader sector="SECTOR 4/5" right={`${portfolio.skills.flatMap(g => g.items).length} SKILLS`} title="System Diagnostics" />
               <AnimatePresence mode="wait">
                 <motion.span
                   key={modeIdx}
