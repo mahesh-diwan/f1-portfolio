@@ -15,12 +15,12 @@ export function Footer() {
             <EasterEgg message="Ping: 0.001ms — Server is alive!" icon="💚" trigger="click">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse cursor-pointer" aria-hidden="true" />
             </EasterEgg>
-            <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-[var(--text-muted)]">
+            <span className="text-[12px] font-mono uppercase tracking-[0.12em] text-[var(--text-muted)]">
               {portfolio.name} &mdash; {portfolio.role}
             </span>
           </div>
           <EasterEgg message="Built with Next.js, Tailwind, Framer Motion & F1 telemetry vibes" icon="🛠️" trigger="double-click">
-            <p className="text-[9px] font-mono text-[var(--text-dim)] cursor-pointer">
+            <p className="text-[12px] font-mono text-[var(--text-dim)] cursor-pointer">
               &copy; {year} ALL RIGHTS RESERVED
             </p>
           </EasterEgg>
