@@ -2,6 +2,16 @@
 set -uo pipefail
 
 OUTPUT="src/data/github-repos.json"
+
+CACHED_FORKED="src/data/github-repos-cached.json"
+CACHED_OWN="src/data/github-own-repos-cached.json"
+if [ -f "$CACHED_FORKED" ] && [ -f "$CACHED_OWN" ] && [ -s "$CACHED_FORKED" ] && [ -s "$CACHED_OWN" ]; then
+  cp "$CACHED_FORKED" "$OUTPUT"
+  cp "$CACHED_OWN" "src/data/github-own-repos.json"
+  echo "fetch-repos: using cached repo data"
+  exit 0
+fi
+
 mkdir -p "$(dirname "$OUTPUT")"
 
 DATA=$(curl -sf "https://api.github.com/users/mahesh-diwan/repos?per_page=50&sort=updated" 2>/dev/null)

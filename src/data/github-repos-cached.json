@@ -1,0 +1,82 @@
+[
+  {
+    "name": "kibana",
+    "description": "Your window into all of your data",
+    "language": null,
+    "stars": 1,
+    "forks": 0,
+    "updated_at": "2026-01-09T18:25:15Z",
+    "url": "https://github.com/mahesh-diwan/kibana",
+    "topics": []
+  },
+  {
+    "name": "linkedin-clone-mern",
+    "description": "Full-stack LinkedIn Clone using MongoDB, Express, React, and Node.js with JWT auth, user profiles, posts, likes, comments, connections, and modern UI.",
+    "language": "JavaScript",
+    "stars": 0,
+    "forks": 0,
+    "updated_at": "2026-03-20T12:15:32Z",
+    "url": "https://github.com/mahesh-diwan/linkedin-clone-mern",
+    "topics": []
+  },
+  {
+    "name": "CachyOS-PKGBUILDS",
+    "description": "PKGBUILDs for CachyOS",
+    "language": null,
+    "stars": 0,
+    "forks": 0,
+    "updated_at": "2026-01-18T13:01:25Z",
+    "url": "https://github.com/mahesh-diwan/CachyOS-PKGBUILDS",
+    "topics": []
+  },
+  {
+    "name": "flipkart-clone",
+    "description": "Full-stack e-commerce platform replicating Flipkart",
+    "language": null,
+    "stars": 0,
+    "forks": 0,
+    "updated_at": "2026-01-11T16:15:37Z",
+    "url": "https://github.com/mahesh-diwan/flipkart-clone",
+    "topics": []
+  },
+  {
+    "name": "dusky",
+    "description": "Arch-Hyprland dotfiles/distro. A true labor of Passion, Consider rewarding with a star. ",
+    "language": null,
+    "stars": 0,
+    "forks": 0,
+    "updated_at": "2026-01-11T13:46:32Z",
+    "url": "https://github.com/mahesh-diwan/dusky",
+    "topics": []
+  },
+  {
+    "name": "Mern-Blog-App",
+    "description": "This project is a blog web app built with MERN stack. I spiced up the design using Tailwind CSS and made the bundling efficient with Vite.js. Users can log in seamlessly with Google authentication via Firebase. The app offers both dark and light modes for a personalized experience.",
+    "language": "JavaScript",
+    "stars": 0,
+    "forks": 0,
+    "updated_at": "2026-01-07T14:20:00Z",
+    "url": "https://github.com/mahesh-diwan/Mern-Blog-App",
+    "topics": []
+  },
+  {
+    "name": "Terminal-Portfolio",
+    "description": " A Terminal Portfolio. ",
+    "language": "JavaScript",
+    "stars": 0,
+    "forks": 0,
+    "updated_at": "2025-11-01T13:17:26Z",
+    "url": "https://github.com/mahesh-diwan/Terminal-Portfolio",
+    "topics": []
+  },
+  {
+    "name": "first-contributions",
+    "description": "🚀✨ Help beginners to contribute to open source projects",
+    "language": null,
+    "stars": 0,
+    "forks": 0,
+    "updated_at": "2025-02-13T12:05:20Z",
+    "url": "https://github.com/mahesh-diwan/first-contributions",
+    "topics": []
+  }
+]

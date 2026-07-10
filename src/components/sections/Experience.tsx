@@ -69,7 +69,7 @@ export function Experience() {
             {/* Right: Work History */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 grid-rows-[1fr]">
                 {portfolio.experience.map((exp, idx) => (
-                    <div className="glass shadow-card hover-lift p-5 flex flex-col h-full">
+                    <div key={exp.id} className="glass shadow-card hover-lift p-5 flex flex-col h-full">
                       <div className="flex items-center gap-2 mb-3">
                         <span className={`text-[12px] font-mono px-2 py-0.5 ${
                           idx === 0
