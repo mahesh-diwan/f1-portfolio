@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback, useRef, type ReactNode } from "react";
+import { createContext, useContext, useState, useCallback, useRef, startTransition, type ReactNode } from "react";
 
 interface TransitionContextValue {
   isAnimating: boolean;
@@ -73,7 +73,7 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
       const id = pendingRef.current;
       pendingRef.current = null;
       if (id) {
-        setActiveSection(id);
+        startTransition(() => setActiveSection(id));
         if (id !== "hero") {
           window.scrollTo({ top: 0, behavior: "instant" });
         }

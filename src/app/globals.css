@@ -147,6 +147,7 @@
 }
 
 .light {
+    color-scheme: light;
     /* Ancient Script parchment base */
     --color-bg-base: #e6d5a8;
     --color-bg-surface: #f0e2c0;
@@ -293,9 +294,12 @@
         scroll-behavior: smooth;
         background-color: var(--bg-base);
         color: var(--text-primary);
+        color-scheme: dark;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
         transition: background-color 0.2s, color 0.2s;
     }
 
@@ -376,6 +380,12 @@
             animation-iteration-count: 1 !important;
             transition-duration: 0.01ms !important;
             scroll-behavior: auto !important;
+        }
+        ::view-transition-old(*),
+        ::view-transition-new(*),
+        ::view-transition-group(*) {
+            animation-duration: 0s !important;
+            animation-delay: 0s !important;
         }
     }
 }
@@ -616,4 +626,20 @@
 
 @utility animate-bounce-y {
     animation: bounce-y 1.5s ease-in-out infinite;
+}
+
+/* View Transitions */
+::view-transition-old(.fade-out) {
+  animation: 150ms ease-in fade-out both;
+}
+::view-transition-new(.fade-in) {
+  animation: 210ms ease-out 150ms both fade-in;
+}
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

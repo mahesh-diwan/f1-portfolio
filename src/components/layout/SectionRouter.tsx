@@ -1,5 +1,6 @@
 "use client";
 
+import { ViewTransition } from "react";
 import { usePageTransition } from "@/lib/transition-context";
 import { Hero } from "@/components/sections/Hero";
 import { Experience } from "@/components/sections/Experience";
@@ -22,5 +23,5 @@ const sections: Record<string, React.ReactNode> = {
 export function SectionRouter() {
   const { activeSection } = usePageTransition();
 
-  return <div>{sections[activeSection]}</div>;
+  return <ViewTransition default="none" enter="fade-in" exit="fade-out"><div>{sections[activeSection]}</div></ViewTransition>;
 }

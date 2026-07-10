@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
   },
   trailingSlash: true,
   devIndicators: false,
+  experimental: {
+    viewTransition: true,
+  },
 };
 
 export default nextConfig;

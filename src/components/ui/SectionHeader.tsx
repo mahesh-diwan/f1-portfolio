@@ -16,7 +16,7 @@ export function SectionHeader({ sector, right, title }: SectionHeaderProps) {
           {right}
         </span>
       </div>
-      <h2 className="text-3xl sm:text-4xl font-display font-bold text-[var(--text-primary)]">
+      <h2 className="text-3xl sm:text-4xl font-display font-bold text-[var(--text-primary)] text-balance">
         {title}
       </h2>
     </div>

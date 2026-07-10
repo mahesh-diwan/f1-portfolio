@@ -23,17 +23,17 @@ export function Contact() {
     { label: "INSTAGRAM", handle: "@mahesh_diwan1", url: portfolio.links.instagram, icon: "⬆" },
     { label: "X", handle: "@mahesh_diwan1", url: portfolio.links.twitter, icon: "⬆" },
     { label: "HASHNODE", handle: "@mahesh1215", url: portfolio.links.hashnode, icon: (
-      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polygon points="12 2 22 7 22 17 12 22 2 17 2 7 12 2"/>
       </svg>
     )},
     { label: "MEDIUM", handle: "mahesh1215", url: portfolio.links.medium, icon: (
-      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M4 20V4l6 8 6-8v16"/>
       </svg>
     )},
     { label: "LEETCODE", handle: "mahesh_diwan", url: portfolio.links.leetcode, icon: (
-      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M10 4l-8 8 8 8M14 4l8 8-8 8"/>
       </svg>
     )},
@@ -58,7 +58,7 @@ export function Contact() {
           <div className="glass shadow-card p-5 mb-4">
             <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">Location</p>
             <div className="flex items-center gap-3">
-              <svg className="w-4 h-4 shrink-0 text-[var(--text-muted)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="w-4 h-4 shrink-0 text-[var(--text-muted)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                 <circle cx="12" cy="10" r="3"/>
               </svg>
