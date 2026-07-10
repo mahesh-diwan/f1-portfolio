@@ -95,7 +95,7 @@ export const portfolioConfig = {
     leetcode: "https://leetcode.com/mahesh_diwan",
     instagram: "https://www.instagram.com/mahesh_diwan1",
     upi: "diwanmahesh11@ybl",
-    resume: "./Mahesh_Diwan_Resume.pdf",
+    resume: "./MAHESH_DIWAN.pdf",
     hashnode: "https://mahesh1215.hashnode.dev/",
     twitter: "https://x.com/mahesh_diwan1",
   },

@@ -27,6 +27,36 @@ const SECTION_LABELS: Record<string, string> = {
   contact: "CONTACT",
 };
 
+const radioMessages = [
+  "Box, box.",
+  "Push now.",
+  "Out lap complete.",
+  "Mode: Race.",
+  "DRS enabled.",
+  "Track limits — be aware.",
+  "Safety Car deployed.",
+  "Stay out, stay out.",
+  "Plan B.",
+  "All clear at T1.",
+  "That's a PB.",
+  "Gap: 0.4s.",
+  "We're racing.",
+  "Hammer time.",
+  "OK, box this lap.",
+  "Engine mode 7.",
+  "Target: +0.2s.",
+  "Rear tires — manage them.",
+  "Front left — graining.",
+  "He's faster than us.",
+  "Multi-function: A.",
+  "Negative. We're going for the win.",
+  "No radio. Copy.",
+  "Get in there, Lewis!",
+  "Message: for your information.",
+  "We're checking.",
+  "Copy, we'll box.",
+];
+
 export function TransitionProvider({ children }: { children: ReactNode }) {
   const [activeSection, setActiveSection] = useState("hero");
   const [overlay, setOverlay] = useState<{
@@ -36,6 +66,8 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
   }>({ visible: false, label: "", phase: "idle" });
   const pendingRef = useRef<string | null>(null);
   const busyRef = useRef(false);
+  const [radioMessage, setRadioMessage] = useState<string | null>(null);
+  const radioTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const navigateTo = useCallback((sectionId: string, label?: string) => {
     if (busyRef.current) return;
@@ -46,6 +78,11 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
     pendingRef.current = sectionId;
 
     setOverlay({ visible: true, label: displayLabel, phase: "enter" });
+
+    if (radioTimeoutRef.current) clearTimeout(radioTimeoutRef.current);
+    const randomMsg = radioMessages[Math.floor(Math.random() * radioMessages.length)];
+    setRadioMessage(randomMsg);
+    radioTimeoutRef.current = setTimeout(() => setRadioMessage(null), 3500);
 
     setTimeout(() => {
       const id = pendingRef.current;
@@ -96,6 +133,15 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]/30 animate-pulse" style={{ animationDelay: "0.3s" }} />
               </div>
             </div>
+          </div>
+        </div>
+      )}
+      {radioMessage && (
+        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[60] animate-fade-in-up">
+          <div className="bg-[var(--bg-elevated)] border border-[var(--border-default)] px-4 py-2 shadow-lg">
+            <span className="text-[12px] font-mono text-[var(--color-display-amber)] uppercase tracking-[0.1em]">
+              📡 {radioMessage}
+            </span>
           </div>
         </div>
       )}

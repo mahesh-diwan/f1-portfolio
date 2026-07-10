@@ -15,10 +15,21 @@ const navItems = [
   { label: "Contact", id: "contact" },
 ];
 
+const tireCompounds = [
+  { color: "var(--color-accent-primary)", label: "SOFT", ring: "rgba(220,0,0,0.4)" },
+  { color: "#e8b800", label: "MEDIUM", ring: "rgba(232,184,0,0.4)" },
+  { color: "#d4d4d4", label: "HARD", ring: "rgba(212,212,212,0.4)" },
+  { color: "#3aa63f", label: "INTER", ring: "rgba(58,166,63,0.4)" },
+  { color: "#2b6eb0", label: "WET", ring: "rgba(43,110,176,0.4)" },
+];
+
 export function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { navigateTo, isAnimating, activeSection } = usePageTransition();
   const { theme, toggleTheme } = useTheme();
+  const [compoundIdx, setCompoundIdx] = useState(0);
+  const [pitClicks, setPitClicks] = useState(0);
+  const [pitStop, setPitStop] = useState<number | null>(null);
 
   const handleNav = useCallback((e: React.MouseEvent, sectionId: string) => {
     e.preventDefault();
@@ -26,6 +37,19 @@ export function Navigation() {
     setMobileOpen(false);
     navigateTo(sectionId);
   }, [navigateTo, isAnimating]);
+
+  const handlePitClick = useCallback(() => {
+    setPitClicks((prev) => {
+      const next = prev + 1;
+      if (next >= 3) {
+        const time = (2.4 + Math.random() * 1.5).toFixed(1);
+        setPitStop(parseFloat(time));
+        setTimeout(() => setPitStop(null), 2000);
+        return 0;
+      }
+      return next;
+    });
+  }, []);
 
   return (
     <>
@@ -38,13 +62,17 @@ export function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-5 h-14 flex items-center justify-between">
         <button
-          onClick={(e) => handleNav(e, "hero")}
+          onClick={(e) => { handleNav(e, "hero"); handlePitClick(); }}
           className="flex items-center gap-2.5 text-xs font-mono uppercase tracking-[0.2em] text-[var(--accent)]/80 hover:text-[var(--accent)] transition-colors group"
           aria-label="Go to home"
         >
-          <span className="relative flex h-2 w-2 items-center justify-center">
-            <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75 animate-ping" aria-hidden="true" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[var(--accent)]" aria-hidden="true" />
+          <span
+            className="relative flex h-2 w-2 items-center justify-center"
+            onClick={(e) => { e.stopPropagation(); setCompoundIdx((prev) => (prev + 1) % tireCompounds.length); }}
+            title={tireCompounds[compoundIdx].label}
+          >
+            <span className="absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping" aria-hidden="true" style={{ backgroundColor: tireCompounds[compoundIdx].color }} />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full" aria-hidden="true" style={{ backgroundColor: tireCompounds[compoundIdx].color }} />
           </span>
           <EasterEgg message="Welcome to the pit wall, driver!" icon="🏎️" trigger="click">
             PIT WALL
@@ -169,6 +197,18 @@ export function Navigation() {
               );
             })}
           </nav>
+        </div>
+      )}
+      {pitStop !== null && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--bg-base)]/90 backdrop-blur-sm animate-fade-in" onClick={() => setPitStop(null)}>
+          <div className="text-center select-none">
+            <div className="text-6xl mb-2">🔧🏎️🔧</div>
+            <div className="text-xs font-mono uppercase tracking-[0.2em] text-[var(--color-display-amber)] mb-1">Pit Stop</div>
+            <div className="text-3xl font-mono font-bold text-[var(--color-display-green)] tabular-nums">{pitStop.toFixed(1)}s</div>
+            <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-[var(--text-muted)] mt-1">
+              {pitStop < 2.8 ? "World Class!" : pitStop < 3.5 ? "Solid Stop" : "Keep Practicing"}
+            </div>
+          </div>
         </div>
       )}
     </header>
