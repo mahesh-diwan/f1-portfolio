@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ExternalLink, GitBranch, Plus, Minus } from "lucide-react";
 import { portfolio, getProject } from "@/lib/portfolio";
-import { PerformanceMeter } from "@/components/ui/f1/PerformanceMeter";
+
 import { SectionReveal } from "@/components/ui/motion/SectionReveal";
 
 const statusConfig: Record<string, { label: string; color: string; bgClass: string }> = {
@@ -132,9 +132,20 @@ function ProjectCard({ project }: { project: ReturnType<typeof getProject> }) {
             {metrics.length > 0 && (
               <div className="space-y-1.5">
                 <p className="text-[12px] font-mono uppercase tracking-wider text-[var(--text-muted)]">Metrics</p>
-                {metrics.map((m) => (
-                  <PerformanceMeter key={m.label} value={m.value} label={m.label} color={m.color} size="sm" />
-                ))}
+                {metrics.map((m) => {
+                  const clamped = Math.min(Math.max(m.value, 0), 100);
+                  return (
+                    <div key={m.label} className="flex flex-col gap-1" role="progressbar" aria-valuenow={clamped} aria-valuemin={0} aria-valuemax={100} aria-label={m.label}>
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">{m.label}</span>
+                        <span className="font-mono tabular-nums text-xs text-[var(--text-primary)]">{clamped}%</span>
+                      </div>
+                      <div className="w-full bg-[var(--bg-inset)] rounded-sm overflow-hidden h-1">
+                        <div className="h-full rounded-sm transition-all duration-1000 ease-out" style={{ width: `${clamped}%`, backgroundColor: m.color, boxShadow: `0 0 8px ${m.color}44` }} />
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             )}
           </div>
