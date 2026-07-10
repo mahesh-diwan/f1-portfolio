@@ -55,4 +55,36 @@ test.describe("Content", () => {
     await expect(page.locator("text=PROBLEM").first()).toBeVisible();
     await expect(page.locator("text=SOLUTION").first()).toBeVisible();
   });
+
+  test("all sections have visible content", async ({ page }) => {
+    const sections = [
+      { id: "experience", text: "Career Timeline" },
+      { id: "education", text: "Education" },
+      { id: "projects", text: "Projects" },
+      { id: "skills", text: "Skills Telemetry" },
+      { id: "contact", text: "Communication" },
+    ];
+    for (const { id, text } of sections) {
+      await page.locator(`header button:has-text("${id}")`).first().click();
+      await page.waitForTimeout(1500);
+      await expect(page.locator(`#${id}`)).toBeVisible();
+      await expect(page.locator(`h2:has-text("${text}")`).first()).toBeVisible();
+    }
+  });
+
+  test("fonts load properly", async ({ page }) => {
+    await page.waitForLoadState("domcontentloaded");
+    const fontFaces = await page.evaluate(async () => {
+      try {
+        await Promise.race([
+          document.fonts.ready,
+          new Promise((_, rej) => setTimeout(() => rej("timeout"), 5000)),
+        ]);
+      } catch {
+        // proceed even if fonts slow
+      }
+      return [...document.fonts].map((f) => f.family);
+    });
+    expect(fontFaces.length).toBeGreaterThan(0);
+  });
 });

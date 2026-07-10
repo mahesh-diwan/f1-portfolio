@@ -28,4 +28,22 @@ test.describe("Responsive Design", () => {
     await toggle.click();
     await expect(page.locator('nav[aria-label="Mobile navigation"]')).toBeVisible();
   });
+
+  test("mobile theme toggle persists to desktop", async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto("/");
+    await page.waitForTimeout(500);
+
+    await page.getByRole("button", { name: /Switch to/ }).click();
+    await page.waitForTimeout(300);
+
+    const isLight = await page.locator("html").evaluate((el) => el.classList.contains("light"));
+    expect(isLight).toBe(true);
+
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.waitForTimeout(300);
+
+    const stillLight = await page.locator("html").evaluate((el) => el.classList.contains("light"));
+    expect(stillLight).toBe(true);
+  });
 });

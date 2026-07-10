@@ -52,4 +52,24 @@ test.describe("Keyboard Navigation", () => {
     const focused = page.locator(":focus-visible");
     await expect(focused.first()).toBeVisible();
   });
+
+  test("command palette visible in both themes", async ({ page }) => {
+    await page.keyboard.down("Control");
+    await page.keyboard.press("k");
+    await page.keyboard.up("Control");
+    await page.waitForTimeout(300);
+    await expect(page.locator('[aria-label="Command palette"]')).toBeVisible();
+
+    await page.keyboard.press("Escape");
+    await page.waitForTimeout(200);
+
+    await page.locator('button[aria-label*="Switch to"]').first().click();
+    await page.waitForTimeout(300);
+
+    await page.keyboard.down("Control");
+    await page.keyboard.press("k");
+    await page.keyboard.up("Control");
+    await page.waitForTimeout(300);
+    await expect(page.locator('[aria-label="Command palette"]')).toBeVisible();
+  });
 });

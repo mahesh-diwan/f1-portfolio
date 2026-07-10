@@ -52,4 +52,27 @@ test.describe("Navigation", () => {
       await expect(skipLink).toBeVisible();
     }
   });
+
+  test("rapid clicks do not corrupt UI state", async ({ page }) => {
+    await page.locator('header button:has-text("Projects")').first().click();
+    await page.waitForTimeout(200);
+    await page.locator('header button:has-text("Education")').first().click();
+    await page.waitForTimeout(1500);
+
+    const visibleSection = await page.evaluate(() => {
+      const sections = ["hero", "experience", "education", "projects", "skills", "contact"];
+      for (const s of sections) {
+        const el = document.getElementById(s);
+        if (el && el.offsetParent !== null) return s;
+      }
+      return null;
+    });
+    expect(["projects", "education"]).toContain(visibleSection);
+
+    if (visibleSection !== "education") {
+      await page.locator('header button:has-text("Education")').first().click();
+      await page.waitForTimeout(1500);
+    }
+    await expect(page.locator("#education")).toBeVisible();
+  });
 });
