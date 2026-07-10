@@ -5,9 +5,9 @@ import { portfolio } from "@/lib/portfolio";
 import { SectionReveal, StaggerReveal, StaggerItem } from "@/components/ui/motion/SectionReveal";
 
 const podiumColors = [
-  { border: "#f7d117", label: "P1 — FIRST", num: "#01" },
-  { border: "#c0c0c0", label: "P2 — SECOND", num: "#02" },
-  { border: "#e8a87c", label: "P3 — THIRD", num: "#03" },
+  { border: "var(--color-accent-gold)", label: "P1 — FIRST", num: "#01" },
+  { border: "var(--color-mercedes-silver)", label: "P2 — SECOND", num: "#02" },
+  { border: "var(--color-accent-orange)", label: "P3 — THIRD", num: "#03" },
 ];
 
 export function Education() {
