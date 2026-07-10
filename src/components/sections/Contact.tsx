@@ -41,7 +41,7 @@ export function Contact() {
             <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">Direct Line</p>
             <div className="flex items-center gap-3">
               <StatusIndicator status="active" label="AVAILABLE" />
-              <a href={`mailto:${portfolio.email}`} className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-mono transition-colors">
+              <a href={`mailto:${portfolio.email}`} className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-mono transition-colors break-all">
                 {portfolio.email}
               </a>
             </div>
