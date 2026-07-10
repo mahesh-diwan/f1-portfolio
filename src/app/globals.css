@@ -168,16 +168,16 @@
     --color-bg-inset: #e0d0a0;
 
     /* Desaturated dark borders — subtle but visible */
-    --color-border-subtle: #c8b888;
-    --color-border-default: #b8a070;
-    --color-border-strong: #a08850;
+    --color-border-subtle: #b0a070;
+    --color-border-default: #988050;
+    --color-border-strong: #806838;
     --color-border-focus: #a31815;
 
     /* Deep brown text — high contrast on parchment */
     --color-text-primary: #1a0e02;
     --color-text-secondary: #3a2510;
     --color-text-muted: #5a4020;
-    --color-text-dim: #7a6040;
+    --color-text-dim: #6a5030;
     --color-text-inverse: #e6d5a8;
 
     /* Desaturated red accent — refined for parchment */
@@ -188,22 +188,22 @@
     --color-accent-primary-muted: rgba(163, 24, 21, 0.06);
 
     /* Warm gold accent */
-    --color-accent-gold: #9a7a0a;
+    --color-accent-gold: #6a5208;
     --color-accent-gold-dim: #826808;
     --color-accent-gold-muted: rgba(154, 122, 10, 0.06);
 
     /* Warm teal */
-    --color-accent-teal: #087a60;
+    --color-accent-teal: #065a48;
     --color-accent-teal-dim: #066850;
     --color-accent-teal-muted: rgba(8, 122, 96, 0.06);
 
     /* Warm blue */
-    --color-accent-blue: #2068a8;
+    --color-accent-blue: #1a5a96;
     --color-accent-blue-dim: #1a5890;
     --color-accent-blue-muted: rgba(32, 104, 168, 0.06);
 
     /* Warm green */
-    --color-accent-green: #207a4a;
+    --color-accent-green: #166838;
     --color-accent-green-dim: #1a6840;
     --color-accent-green-muted: rgba(32, 122, 74, 0.06);
 
@@ -213,16 +213,16 @@
     --color-accent-purple-muted: rgba(106, 66, 168, 0.06);
 
     /* Warm orange */
-    --color-accent-orange: #b85a18;
+    --color-accent-orange: #8a4210;
     --color-accent-orange-dim: #a04c14;
     --color-accent-orange-muted: rgba(184, 90, 24, 0.06);
 
     /* F1 display accents — muted for parchment */
-    --color-display-green: #1a7a40;
+    --color-display-green: #146030;
     --color-display-green-dim: #14683a;
     --color-display-green-muted: rgba(26, 122, 64, 0.06);
 
-    --color-display-amber: #8a6a00;
+    --color-display-amber: #6a5200;
     --color-display-amber-dim: #785c00;
     --color-display-amber-muted: rgba(138, 106, 0, 0.06);
 
@@ -257,6 +257,8 @@
     --shadow-glow: 0 0 24px rgba(163, 24, 21, 0.12);
     --shadow-glow-gold: 0 0 24px rgba(154, 122, 10, 0.10);
     --shadow-glow-teal: 0 0 24px rgba(8, 122, 96, 0.10);
+
+    --color-mercedes-silver: #707070;
 }
 
 .light body {
