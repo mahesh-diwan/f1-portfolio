@@ -7,7 +7,7 @@ test.describe("Navigation", () => {
 
   test("should display nav with all sections", async ({ page }) => {
     await expect(page.locator('[role="banner"]')).toBeVisible();
-    const links = ["Profile", "Experience", "Education", "Projects", "Skills", "Contact"];
+    const links = ["Home", "Experience", "Education", "Projects", "Skills", "Contact"];
     for (const link of links) {
       await expect(page.locator(`header button:has-text("${link}")`).first()).toBeVisible();
     }

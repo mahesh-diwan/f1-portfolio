@@ -24,6 +24,7 @@ export function Education() {
                 const podium = podiumColors[idx] || podiumColors[0];
                 return (
                     <div
+                      key={edu.degree}
                       className="glass shadow-card hover-lift p-5 h-full"
                       style={{ borderTop: `3px solid ${podium.border}` }}
                     >

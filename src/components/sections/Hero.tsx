@@ -51,11 +51,13 @@ export function Hero() {
   const fullName = portfolio.titleName;
 
   useEffect(() => {
+    /* eslint-disable react-hooks/set-state-in-effect */
     if (reducedMotion) {
       setTypedName(fullName);
       setShowCursor(false);
       return;
     }
+    /* eslint-enable react-hooks/set-state-in-effect */
     let i = 0;
     const interval = setInterval(() => {
       if (i < fullName.length) {

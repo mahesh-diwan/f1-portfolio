@@ -7,7 +7,7 @@ import { useTheme } from "@/lib/theme-context";
 
 
 const navItems = [
-  { label: "Profile", id: "hero" },
+  { label: "Home", id: "hero" },
   { label: "Experience", id: "experience" },
   { label: "Education", id: "education" },
   { label: "Projects", id: "projects" },

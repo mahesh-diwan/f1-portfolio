@@ -4,7 +4,7 @@ import repos from "@/data/github-repos.json"
 import type { RepoSummary } from "@/data/repo-summary"
 import { SectionReveal } from "@/components/ui/motion/SectionReveal"
 import { SectionHeader } from "@/components/ui/SectionHeader"
-import { cn } from "@/lib/utils"
+
 
 const langColors: Record<string, string> = {
   TypeScript: "#3178c6",

@@ -18,7 +18,7 @@ export function TelemetrySkills() {
           <SectionHeader sector="SECTOR 4/6" right={`${portfolio.skills.flatMap(g => g.items).length} SKILLS`} title="System Diagnostics" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {portfolio.skills.map((group, idx) => {
+              {portfolio.skills.map((group) => {
                 const avg = Math.round(group.items.reduce((sum, s) => sum + s.pct, 0) / group.items.length);
                 return (
                   <div key={group.group} className="glass shadow-card hover-lift p-5 h-full">
