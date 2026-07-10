@@ -123,7 +123,7 @@ export function Hero() {
 
         {/* Telemetry strip — fades in after typing completes */}
         <motion.div
-          className="flex items-center justify-center gap-6 sm:gap-8 mb-10 glass shadow-card px-6 py-3 mx-auto w-fit"
+          className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 md:gap-8 mb-10 glass shadow-card px-4 sm:px-6 py-3 mx-auto max-w-full"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.6 }}
