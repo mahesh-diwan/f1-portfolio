@@ -24,13 +24,13 @@ async function main() {
 
   const [d, c] = res.map(r => r.value);
 
-  if (!d?.MRData?.StandingsTable?.StandingsLists?.[0] || !c?.MRData?.ConstructorStandings?.StandingsLists?.[0]) {
+  if (!d?.MRData?.StandingsTable?.StandingsLists?.[0] || !c?.MRData?.StandingsTable?.StandingsLists?.[0]) {
     console.warn('fetch-standings: API returned unexpected shape, keeping existing');
     return;
   }
 
   const sl = d.MRData.StandingsTable.StandingsLists[0];
-  const cl = c.MRData.ConstructorStandings.StandingsLists[0];
+  const cl = c.MRData.StandingsTable.StandingsLists[0];
   const round = sl.round;
 
   const drivers = (sl.DriverStandings || []).map(d => ({
