@@ -37,7 +37,7 @@ function ProjectCard({ project }: { project: Project | undefined }) {
 
   return (
     <div>
-      <div className="glass shadow-card hover-lift p-5 flex flex-col">
+      <div className="glass shadow-card hover-lift p-5 h-full flex flex-col">
         {/* Header */}
         <div className="flex items-start justify-between mb-2">
           <span className="text-sm uppercase tracking-[0.1em] text-[var(--text-muted)] font-mono">
@@ -97,7 +97,7 @@ function ProjectCard({ project }: { project: Project | undefined }) {
         )}
 
         {/* Footer */}
-        <div className="flex items-center gap-2 pt-3 border-t border-[var(--border-default)]">
+        <div className="flex items-center gap-2 mt-auto pt-3 border-t border-[var(--border-default)]">
           {project.link && (
             <a href={project.link} target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-1 px-2 py-1 text-xs font-mono text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"

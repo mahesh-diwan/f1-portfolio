@@ -90,7 +90,7 @@ export function PitStopCountdown() {
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="glass shadow-card p-6 text-center">
+            <div className="glass shadow-card p-6 text-center h-full">
               <p className="text-xs font-mono uppercase tracking-[0.15em] text-[var(--text-dim)] mb-2">
                 {isToday ? "RACE WEEKEND" : "NEXT RACE"}
               </p>
@@ -131,7 +131,7 @@ export function PitStopCountdown() {
             </div>
 
             {lastRace && (
-              <div className="glass shadow-card p-6 text-center">
+              <div className="glass shadow-card p-6 text-center h-full">
                 <p className="text-xs font-mono uppercase tracking-[0.15em] text-[var(--text-dim)] mb-2">
                   LAST RACE
                 </p>
