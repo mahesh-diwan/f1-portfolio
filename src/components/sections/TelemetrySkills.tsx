@@ -19,7 +19,7 @@ export function TelemetrySkills() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {portfolio.skills.map((group) => {
-                const avg = Math.round(group.items.reduce((sum, s) => sum + s.pct, 0) / group.items.length);
+                const avg = group.items.length > 0 ? Math.round(group.items.reduce((sum, s) => sum + s.pct, 0) / group.items.length) : 0;
                 return (
                   <div key={group.group} className="glass shadow-card hover-lift p-5 h-full">
                       <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">{group.group}</p>

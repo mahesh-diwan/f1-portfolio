@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 
 interface EasterEggProps {
   children: React.ReactNode;
@@ -19,12 +19,15 @@ export function EasterEgg({
 }: EasterEggProps) {
   const [found, setFound] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => { if (toastTimer.current) clearTimeout(toastTimer.current); }, []);
 
   const reveal = useCallback(() => {
     if (found) return;
     setFound(true);
     setShowToast(true);
-    setTimeout(() => setShowToast(false), 4000);
+    toastTimer.current = setTimeout(() => setShowToast(false), 4000);
   }, [found]);
 
   const handlers = {

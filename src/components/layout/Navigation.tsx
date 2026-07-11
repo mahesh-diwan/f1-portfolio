@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 import { usePageTransition } from "@/lib/transition-context";
 import { useTheme } from "@/lib/theme-context";
 
-
 const navItems = [
   { label: "Home", id: "hero" },
   { label: "Experience", id: "experience" },
@@ -14,14 +13,6 @@ const navItems = [
   { label: "Skills", id: "skills" },
   { label: "OSS", id: "open-source" },
   { label: "Contact", id: "contact" },
-];
-
-const tireCompounds: { color: string; label: string }[] = [
-  { color: "var(--color-accent-primary)", label: "SOFT" },
-  { color: "#e8b800", label: "MEDIUM" },
-  { color: "#d4d4d4", label: "HARD" },
-  { color: "#3aa63f", label: "INTER" },
-  { color: "#2b6eb0", label: "WET" },
 ];
 
 function ThemeIcon({ theme, className }: { theme: "dark" | "light"; className?: string }) {
@@ -48,13 +39,12 @@ export function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { navigateTo, isAnimating, activeSection } = usePageTransition();
   const { theme, toggleTheme } = useTheme();
-  const [compoundIdx, setCompoundIdx] = useState(0);
 
   useEffect(() => {
     if (!mobileOpen) return;
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setMobileOpen(false); };
-    addEventListener("keydown", onKey);
-    return () => removeEventListener("keydown", onKey);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, [mobileOpen]);
 
   const handleNav = useCallback((e: React.MouseEvent, sectionId: string) => {
@@ -79,13 +69,9 @@ export function Navigation() {
           className="flex items-center gap-2.5 text-xs font-mono uppercase tracking-[0.2em] text-[var(--accent)]/80 hover:text-[var(--accent)] transition-colors group"
           aria-label="Go to home"
         >
-          <span
-            className="relative flex h-2 w-2 items-center justify-center"
-            onClick={(e) => { e.stopPropagation(); setCompoundIdx((prev) => (prev + 1) % tireCompounds.length); }}
-            title={tireCompounds[compoundIdx].label}
-          >
-            <span className="absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping" aria-hidden="true" style={{ backgroundColor: tireCompounds[compoundIdx].color }} />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full" aria-hidden="true" style={{ backgroundColor: tireCompounds[compoundIdx].color }} />
+          <span className="relative flex h-2 w-2 items-center justify-center">
+            <span className="absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping" aria-hidden="true" style={{ backgroundColor: "var(--color-accent-primary)" }} />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full" aria-hidden="true" style={{ backgroundColor: "var(--color-accent-primary)" }} />
           </span>
           <span>PIT WALL</span>
         </button>
@@ -131,7 +117,7 @@ export function Navigation() {
         <div className="flex md:hidden items-center gap-1">
           <button
             onClick={toggleTheme}
-            className="p-2 text-[var(--text-muted)] hover:text-[var(--text-secondary)] transition-colors"
+            className="p-3 text-[var(--text-muted)] hover:text-[var(--text-secondary)] transition-colors"
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
             title={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
           >
@@ -139,7 +125,7 @@ export function Navigation() {
           </button>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+            className="p-3 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
             aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={mobileOpen}
           >

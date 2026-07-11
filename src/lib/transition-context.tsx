@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback, useRef, startTransition, type ReactNode } from "react";
+import { createContext, useContext, useState, useCallback, useRef, useEffect, startTransition, type ReactNode } from "react";
 
 interface TransitionContextValue {
   isAnimating: boolean;
@@ -48,6 +48,12 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
   const busyRef = useRef(false);
   const [radioMessage, setRadioMessage] = useState<string | null>(null);
   const radioTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const navTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => {
+    if (radioTimeoutRef.current) clearTimeout(radioTimeoutRef.current);
+    if (navTimeoutRef.current) clearTimeout(navTimeoutRef.current);
+  }, []);
 
   const navigateTo = useCallback((sectionId: string, label?: string) => {
     if (busyRef.current) return;
@@ -64,7 +70,8 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
     setRadioMessage(randomMsg);
     radioTimeoutRef.current = setTimeout(() => setRadioMessage(null), 3500);
 
-    setTimeout(() => {
+    navTimeoutRef.current = setTimeout(() => {
+      navTimeoutRef.current = null;
       const id = pendingRef.current;
       pendingRef.current = null;
       if (id) {
@@ -75,7 +82,8 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
       }
       setOverlay((s) => ({ ...s, phase: "exit" }));
 
-      setTimeout(() => {
+      navTimeoutRef.current = setTimeout(() => {
+        navTimeoutRef.current = null;
         setOverlay({ visible: false, label: "", phase: "idle" });
         busyRef.current = false;
       }, 300);

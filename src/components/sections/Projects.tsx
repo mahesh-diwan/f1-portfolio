@@ -32,20 +32,6 @@ function ProjectCard({ project }: { project: Project | undefined }) {
   const [expanded, setExpanded] = useState(false);
   if (!project) return null;
 
-  const metrics: { label: string; value: number; color: string }[] = [];
-  if (project.metrics && Array.isArray(project.metrics)) {
-    project.metrics.forEach((m) => {
-      if (typeof m === "string") {
-        const [key, val] = m.split(":").map((s) => s.trim());
-        if (key && val) {
-          const v = parseInt(val);
-          const c = key.toLowerCase().includes("perf") ? "var(--color-display-green)" : key.toLowerCase().includes("rel") ? "var(--color-accent-teal)" : "var(--color-accent-blue)";
-          metrics.push({ label: key, value: isNaN(v) ? 85 : v, color: c });
-        }
-      }
-    });
-  }
-
   const status = project.status ? statusConfig[project.status] : null;
 
 
@@ -69,8 +55,8 @@ function ProjectCard({ project }: { project: Project | undefined }) {
         </div>
 
         {/* Title + icon */}
-        <div className="flex items-start gap-3 mb-3">
-          <span className="text-2xl">{project.icon}</span>
+        <div className="flex items-start gap-3 mb-3 group">
+          <span className="text-2xl" aria-hidden="true">{project.icon}</span>
           <div className="min-w-0 flex-1">
             <h3 className="text-sm font-bold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">{project.name}</h3>
             <p className="text-[12px] text-[var(--text-secondary)] mt-1 line-clamp-2 leading-relaxed">{project.desc}</p>
@@ -102,7 +88,7 @@ function ProjectCard({ project }: { project: Project | undefined }) {
               <ExternalLink className="w-3 h-3" /> Demo
             </a>
           )}
-          {(project.problem || project.solution || project.architecture || metrics.length > 0) && (
+          {(project.problem || project.solution || project.architecture) && (
             <button onClick={() => setExpanded(!expanded)}
               className="ml-auto flex items-center gap-0.5 px-2 py-1 text-[12px] font-mono text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
               aria-expanded={expanded}>
@@ -133,25 +119,7 @@ function ProjectCard({ project }: { project: Project | undefined }) {
                 <pre className="text-[12px] font-mono text-[var(--text-secondary)] bg-[var(--bg-elevated)] p-2 rounded border border-[var(--border-default)] overflow-x-auto whitespace-pre leading-relaxed">{project.architecture}</pre>
               </div>
             )}
-            {metrics.length > 0 && (
-              <div className="space-y-1.5">
-                <p className="text-[12px] font-mono uppercase tracking-wider text-[var(--text-muted)]">Metrics</p>
-                {metrics.map((m) => {
-                  const clamped = Math.min(Math.max(m.value, 0), 100);
-                  return (
-                    <div key={m.label} className="flex flex-col gap-1" role="progressbar" aria-valuenow={clamped} aria-valuemin={0} aria-valuemax={100} aria-label={m.label}>
-                      <div className="flex items-center justify-between">
-                        <span className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">{m.label}</span>
-                        <span className="font-mono tabular-nums text-xs text-[var(--text-primary)]">{clamped}%</span>
-                      </div>
-                      <div className="w-full bg-[var(--bg-inset)] rounded-sm overflow-hidden h-1">
-                        <div className="h-full rounded-sm transition-all duration-1000 ease-out" style={{ width: `${clamped}%`, backgroundColor: m.color, boxShadow: `0 0 8px ${m.color}44` }} />
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
+
           </div>
         )}
       </div>

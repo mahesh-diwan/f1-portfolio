@@ -32,7 +32,7 @@ export function Contact() {
     <section id="contact" className="py-20 px-4 relative grid-bg" aria-label="Contact">
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
-          <SectionHeader sector="SECTOR 6/6" right={`${Object.keys(portfolio.links).length} CHANNELS`} title="Communication" />
+          <SectionHeader sector="SECTOR 6/6" right={`${channels.length} CHANNELS`} title="Communication" />
 
           <div className="glass shadow-card p-5 mb-4">
             <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">Direct Line</p>
@@ -64,7 +64,7 @@ export function Contact() {
                     <span className="text-[12px] text-[var(--text-muted)] font-mono">{ch.label}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-sm text-[var(--text-muted)] group-hover:text-[var(--text-primary)] transition-colors">{ch.icon}</span>
+                    <span className="text-sm text-[var(--text-muted)] group-hover:text-[var(--text-primary)] transition-colors" aria-hidden="true">{ch.icon}</span>
                     <span className="text-[13px] text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors font-mono">{ch.handle}</span>
                   </div>
 

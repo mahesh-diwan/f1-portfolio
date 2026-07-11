@@ -37,11 +37,7 @@ export function Education() {
                       <h3 className="text-[13px] font-bold text-[var(--text-primary)] mb-1 leading-tight">{edu.degree}</h3>
                       <p className="text-[12px] text-[var(--text-secondary)] mb-2">{edu.institution}</p>
                       <p className="text-[12px] text-[var(--text-muted)]">
-                        {edu.period} · {edu.gpa && (
-                          <span style={{ color: podium.border, fontWeight: "bold" }}>
-                            {edu.gpa}
-                          </span>
-                        )}
+                        {edu.period}{edu.gpa ? <span> · <span style={{ color: podium.border, fontWeight: "bold" }}>{edu.gpa}</span></span> : null}
                       </p>
                       {edu.details && (
                         <p className="text-[13px] text-[var(--text-secondary)] mt-3 pt-3 border-t border-[var(--border-default)] leading-relaxed">
