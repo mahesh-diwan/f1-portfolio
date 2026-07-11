@@ -9,6 +9,7 @@ import type { RepoSummary } from "@/data/repo-summary";
 
 import { SectionReveal } from "@/components/ui/motion/SectionReveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { SectorTimes } from "@/components/ui/f1/SectorTimes";
 
 const statusConfig: Record<string, { label: string; color: string; bgClass: string }> = {
   "in-production": {
@@ -101,6 +102,7 @@ function ProjectCard({ project }: { project: Project | undefined }) {
         {/* Expanded content */}
         {expanded && (
           <div className="mt-3 pt-3 border-t border-[var(--border-default)] space-y-3 animate-fade-in">
+            <SectorTimes project={project} allProjects={allProjects} />
             {project.problem && (
               <div>
                 <p className="text-[12px] font-mono uppercase tracking-wider text-[var(--accent)] mb-1">Problem</p>
