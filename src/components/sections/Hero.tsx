@@ -13,12 +13,17 @@ function HeroStat({ label, value, accent }: { label: string; value: number; acce
 
   useEffect(() => {
     if (shouldReduceMotion) return;
+    startTime.current = null;
     const animate = (timestamp: number) => {
       if (!startTime.current) startTime.current = timestamp;
       const elapsed = timestamp - startTime.current;
       const progress = Math.min(elapsed / 1200, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Math.round(eased * value));
+      if (progress < 0.4 && Math.random() < 0.35) {
+        setDisplay(Math.floor(Math.random() * value * 2));
+      } else {
+        setDisplay(Math.round(eased * value));
+      }
       if (progress < 1) animFrame.current = requestAnimationFrame(animate);
     };
     animFrame.current = requestAnimationFrame(animate);
