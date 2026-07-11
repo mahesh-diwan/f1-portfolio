@@ -5,7 +5,7 @@ export default function NotFound() {
     <div className="min-h-screen bg-[var(--bg-base)] flex flex-col items-center justify-center px-4">
       <div className="flex flex-col items-center text-center max-w-md">
         <div className="w-1 h-12 bg-[var(--accent-primary)] mb-6" aria-hidden="true" />
-        <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-[var(--accent-primary)] mb-3">
+        <p className="text-xs font-mono uppercase tracking-[0.2em] text-[var(--accent-primary)] mb-3">
           ERROR 404
         </p>
         <h1 className="font-heading text-6xl font-bold text-[var(--text-primary)] mb-2">

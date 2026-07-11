@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { usePageTransition } from "@/lib/transition-context";
 import { useTheme } from "@/lib/theme-context";
@@ -50,6 +50,13 @@ export function Navigation() {
   const { theme, toggleTheme } = useTheme();
   const [compoundIdx, setCompoundIdx] = useState(0);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setMobileOpen(false); };
+    addEventListener("keydown", onKey);
+    return () => removeEventListener("keydown", onKey);
+  }, [mobileOpen]);
+
   const handleNav = useCallback((e: React.MouseEvent, sectionId: string) => {
     e.preventDefault();
     if (isAnimating) return;
@@ -91,7 +98,7 @@ export function Navigation() {
                   key={item.id}
                   onClick={(e) => handleNav(e, item.id)}
                   className={cn(
-                    "relative px-3 py-1.5 text-[11px] font-mono uppercase tracking-[0.12em] transition-all duration-200 rounded-sm",
+                    "relative px-2.5 py-1.5 text-xs font-mono uppercase tracking-[0.12em] transition-all duration-200 rounded-sm",
                     isActive
                       ? "text-[var(--accent)] bg-[var(--accent-muted)]"
                       : "text-[var(--text-muted)] hover:text-[var(--text-secondary)] hover:bg-[var(--bg-elevated)]",

@@ -20,7 +20,7 @@ export function Footer() {
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1.5">
               <span className="w-1 h-1 rounded-full bg-[var(--color-display-green)] animate-pulse" aria-hidden="true" />
-              <span className="text-[11px] font-mono uppercase tracking-[0.1em] text-[var(--text-muted)]">
+              <span className="text-xs font-mono uppercase tracking-[0.1em] text-[var(--text-muted)]">
                 PIT WALL &mdash; STANDING BY
               </span>
             </div>
