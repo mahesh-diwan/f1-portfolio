@@ -37,7 +37,7 @@ function ProjectCard({ project }: { project: Project | undefined }) {
 
   return (
     <div>
-      <div className="glass shadow-card hover-lift p-5 h-full flex flex-col">
+      <div className="glass shadow-card hover-lift p-5 flex flex-col">
         {/* Header */}
         <div className="flex items-start justify-between mb-2">
           <span className="text-sm uppercase tracking-[0.1em] text-[var(--text-muted)] font-mono">
@@ -72,8 +72,32 @@ function ProjectCard({ project }: { project: Project | undefined }) {
           ))}
         </div>
 
+        {/* Expanded content before footer */}
+        {expanded && (
+          <div className="mb-3 pt-3 border-t border-[var(--border-default)] space-y-3 animate-fade-in">
+            {project.problem && (
+              <div>
+                <p className="text-xs font-mono uppercase tracking-wider text-[var(--accent)] mb-1">Problem</p>
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{project.problem}</p>
+              </div>
+            )}
+            {project.solution && (
+              <div>
+                <p className="text-xs font-mono uppercase tracking-wider text-[var(--color-display-green)] mb-1">Solution</p>
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{project.solution}</p>
+              </div>
+            )}
+            {project.architecture && (
+              <div>
+                <p className="text-xs font-mono uppercase tracking-wider text-[var(--color-accent-teal)] mb-1">Architecture</p>
+                <pre className="text-xs font-mono text-[var(--text-secondary)] bg-[var(--bg-elevated)] p-2 rounded border border-[var(--border-default)] overflow-x-auto whitespace-pre leading-relaxed">{project.architecture}</pre>
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Footer */}
-        <div className="flex items-center gap-2 mt-auto pt-3 border-t border-[var(--border-default)]">
+        <div className="flex items-center gap-2 pt-3 border-t border-[var(--border-default)]">
           {project.link && (
             <a href={project.link} target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-1 px-2 py-1 text-xs font-mono text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
@@ -97,31 +121,6 @@ function ProjectCard({ project }: { project: Project | undefined }) {
             </button>
           )}
         </div>
-
-        {/* Expanded content */}
-        {expanded && (
-          <div className="mt-3 pt-3 border-t border-[var(--border-default)] space-y-3 animate-fade-in">
-            {project.problem && (
-              <div>
-                <p className="text-xs font-mono uppercase tracking-wider text-[var(--accent)] mb-1">Problem</p>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{project.problem}</p>
-              </div>
-            )}
-            {project.solution && (
-              <div>
-                <p className="text-xs font-mono uppercase tracking-wider text-[var(--color-display-green)] mb-1">Solution</p>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{project.solution}</p>
-              </div>
-            )}
-            {project.architecture && (
-              <div>
-                <p className="text-xs font-mono uppercase tracking-wider text-[var(--color-accent-teal)] mb-1">Architecture</p>
-                <pre className="text-xs font-mono text-[var(--text-secondary)] bg-[var(--bg-elevated)] p-2 rounded border border-[var(--border-default)] overflow-x-auto whitespace-pre leading-relaxed">{project.architecture}</pre>
-              </div>
-            )}
-
-          </div>
-        )}
       </div>
     </div>
   );
@@ -158,7 +157,7 @@ export function Projects() {
         <div className="max-w-[1400px] mx-auto">
           <SectionHeader sector="SECTOR 3/6" right={`${allProjects.length} PROJECTS`} title="Projects" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {allProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
