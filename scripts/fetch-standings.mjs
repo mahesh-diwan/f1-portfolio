@@ -12,38 +12,53 @@ const TEAM_MAP = {
 const team = (t) => TEAM_MAP[t] || t;
 
 async function main() {
-  const [d, c] = await Promise.all([
+  const res = await Promise.allSettled([
     fetch(`${BASE}/driverStandings.json`).then(r => r.json()),
     fetch(`${BASE}/constructorStandings.json`).then(r => r.json()),
   ]);
 
+  if (res.some(r => r.status !== 'fulfilled')) {
+    console.warn('fetch-standings: API unreachable, keeping existing standings.json');
+    return;
+  }
+
+  const [d, c] = res.map(r => r.value);
+
+  if (!d?.MRData?.StandingsTable?.StandingsLists?.[0] || !c?.MRData?.ConstructorStandings?.StandingsLists?.[0]) {
+    console.warn('fetch-standings: API returned unexpected shape, keeping existing');
+    return;
+  }
+
   const sl = d.MRData.StandingsTable.StandingsLists[0];
-  const cl = c.MRData.StandingsTable.StandingsLists[0];
+  const cl = c.MRData.ConstructorStandings.StandingsLists[0];
   const round = sl.round;
 
-  const drivers = sl.DriverStandings.map(d => ({
+  const drivers = (sl.DriverStandings || []).map(d => ({
     pos: +d.position,
-    name: `${d.Driver.givenName} ${d.Driver.familyName}`,
-    team: team(d.Constructors[0].name),
+    name: `${d.Driver?.givenName || ''} ${d.Driver?.familyName || ''}`,
+    team: team(d.Constructors?.[0]?.name || ''),
     points: +d.points,
     wins: +d.wins,
   }));
 
-  const constructors = cl.ConstructorStandings.map(c => ({
+  const constructors = (cl.ConstructorStandings || []).map(c => ({
     pos: +c.position,
-    name: team(c.Constructor.name),
+    name: team(c.Constructor?.name || ''),
     points: +c.points,
   }));
 
   const data = {
     lastUpdated: new Date().toISOString().split('T')[0],
-    seasonProgress: { completed: +round, total: 22 },
+    seasonProgress: { completed: +round, total: 24 },
     drivers,
     constructors,
   };
 
   writeFileSync(OUT, JSON.stringify(data, null, 2) + '\n');
-  console.log(`Updated standings.json — Round ${round}/22`);
+  console.log(`Updated standings.json — Round ${round}/24`);
 }
 
-main().catch(e => { console.error(e); process.exit(1); });
+main().catch(e => {
+  console.warn('fetch-standings: unexpected error, keeping existing standings.json');
+  console.warn(e?.message || e);
+});

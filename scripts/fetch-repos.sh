@@ -14,7 +14,11 @@ fi
 
 mkdir -p "$(dirname "$OUTPUT")"
 
-DATA=$(curl -sf "https://api.github.com/users/mahesh-diwan/repos?per_page=50&sort=updated" 2>/dev/null)
+AUTH=""
+if [ -n "${GITHUB_TOKEN:-}" ]; then
+  AUTH="-H \"Authorization: Bearer $GITHUB_TOKEN\""
+fi
+DATA=$(curl -sf $AUTH "https://api.github.com/users/mahesh-diwan/repos?per_page=50&sort=updated" 2>/dev/null)
 
 if [ -z "$DATA" ]; then
   echo '[]' > "$OUTPUT"
