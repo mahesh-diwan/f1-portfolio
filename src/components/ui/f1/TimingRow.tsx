@@ -29,7 +29,7 @@ export function TimingRow({ repo, rank }: { repo: RepoSummary; rank: number }) {
         <span className={`w-6 text-center ${isTop3 ? rankColors[rank - 1] : "text-[var(--text-dim)]"}`}>
           #{rank}
         </span>
-        <span className="flex-1 truncate text-left text-[var(--text-primary)]">{repo.name}</span>
+        <span id={`repo-name-${rank}`} className="flex-1 truncate text-left text-[var(--text-primary)]">{repo.name}</span>
         <span className="w-14 text-right tabular-nums text-[var(--text-primary)]">{repo.stars}</span>
         <span className="w-14 text-right tabular-nums text-[var(--text-dim)] hidden md:block">{gap}</span>
         <span className="w-10 text-right tabular-nums text-[var(--text-muted)] hidden md:block">{repo.forks}</span>
@@ -46,7 +46,7 @@ export function TimingRow({ repo, rank }: { repo: RepoSummary; rank: number }) {
 
       {expanded && (
         <div className="px-3 pb-3 animate-fade-in" role="region" aria-labelledby={`repo-name-${rank}`}>
-          <div className="ml-8 pl-2 border-l-2 border-[var(--accent)]/30 pl-4 py-2 space-y-2">
+            <div className="ml-8 border-l-2 border-[var(--accent)]/30 pl-4 py-2 space-y-2">
             <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
               {repo.description || "No description"}
             </p>
