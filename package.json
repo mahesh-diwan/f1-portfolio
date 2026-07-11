@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "fetch-repos": "./scripts/fetch-repos.sh",
-    "prebuild": "npm run fetch-repos",
+    "prebuild": "node scripts/fetch-standings.mjs && npm run fetch-repos",
+    "predev": "node scripts/fetch-standings.mjs && npm run fetch-repos",
     "update-repos": "scripts/fetch-repos.sh && cp src/data/github-repos.json src/data/github-repos-cached.json && cp src/data/github-own-repos.json src/data/github-own-repos-cached.json",
     "dev": "next dev",
     "build": "next build",
