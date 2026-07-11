@@ -11,6 +11,9 @@ interface Race {
   circuit: string;
   date: string;
   flag: string;
+  winner?: string;
+  team?: string;
+  cancelled?: boolean;
 }
 
 const races = calendar as Race[];
@@ -25,43 +28,39 @@ function calcDiff(target: Date) {
   return { days, hours, minutes };
 }
 
-function findNextRace() {
+function getRaceData() {
   const now = new Date();
+  const completed = races
+    .filter((r) => new Date(r.date) < now && !r.cancelled && r.winner)
+    .sort((a, b) => b.round - a.round);
+  const lastRace = completed[0] ?? null;
   const upcoming = races
     .map((r) => ({ ...r, dateObj: new Date(r.date) }))
     .sort((a, b) => a.dateObj.getTime() - b.dateObj.getTime())
-    .find((r) => r.dateObj >= now);
+    .find((r) => r.dateObj >= now && !r.cancelled);
+  return { lastRace, upcoming, now };
+}
 
-  if (!upcoming) return null;
-
-  const raceDate = new Date(upcoming.date);
-  const today = new Date();
-  const isToday =
-    raceDate.getDate() === today.getDate() &&
-    raceDate.getMonth() === today.getMonth() &&
-    raceDate.getFullYear() === today.getFullYear();
-
-  return { race: upcoming, raceDate, status: (isToday ? "today" : "upcoming") as "upcoming" | "today" };
+function formatDate(d: Date) {
+  return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
 }
 
 export function PitStopCountdown() {
-  const initial = findNextRace();
-  const [nextRace] = useState<Race | null>(initial?.race ?? null);
-  const [status] = useState<"upcoming" | "today" | "over">(initial?.status ?? "over");
+  const { lastRace, upcoming, now } = getRaceData();
   const [countdown, setCountdown] = useState<{ days: number; hours: number; minutes: number } | null>(
-    initial ? calcDiff(initial.raceDate) : null
+    upcoming ? calcDiff(new Date(upcoming.date)) : null
   );
 
   useEffect(() => {
-    const fresh = findNextRace();
-    if (!fresh) return;
+    if (!upcoming) return;
     const id = setInterval(() => {
-      setCountdown(calcDiff(fresh.raceDate));
+      setCountdown(calcDiff(new Date(upcoming.date)));
     }, 60000);
     return () => clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!nextRace || status === "over") {
+  if (!upcoming) {
     return (
       <section id="pit-stop" className="py-20 px-4 relative grid-bg" aria-label="Race countdown">
         <SectionReveal>
@@ -75,47 +74,76 @@ export function PitStopCountdown() {
     );
   }
 
+  const raceDate = new Date(upcoming.date);
+  const isToday =
+    raceDate.getDate() === now.getDate() &&
+    raceDate.getMonth() === now.getMonth() &&
+    raceDate.getFullYear() === now.getFullYear();
+
   return (
     <section id="pit-stop" className="py-20 px-4 relative grid-bg" aria-label="Race countdown">
       <SectionReveal>
         <div className="max-w-[1400px] mx-auto">
-          <div className="glass shadow-card p-6 md:p-8 text-center">
-            <p className="text-xs font-mono uppercase tracking-[0.15em] text-[var(--text-dim)] mb-2">
-              {status === "today" ? "RACE WEEKEND" : "NEXT RACE"}
-            </p>
-            <h2 className="text-lg md:text-xl font-bold text-[var(--text-primary)] mb-1">
-              {nextRace.flag} {nextRace.name}
-            </h2>
-            <p className="text-xs text-[var(--text-secondary)] mb-6 font-mono">
-              {nextRace.circuit} · {nextRace.country}
-            </p>
-            {status === "today" ? (
-              <p className="text-2xl font-mono uppercase tracking-[0.2em] text-[var(--accent)]">
-                GRAND PRIX DAY
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="glass shadow-card p-6 text-center">
+              <p className="text-xs font-mono uppercase tracking-[0.15em] text-[var(--text-dim)] mb-2">
+                {isToday ? "RACE WEEKEND" : "NEXT RACE"}
               </p>
-            ) : countdown ? (
-              <div className="flex items-center justify-center gap-4 md:gap-6 font-mono">
-                {[
-                  { value: countdown.days, label: "DAYS" },
-                  { value: countdown.hours, label: "HRS" },
-                  { value: countdown.minutes, label: "MIN" },
-                ].map((unit, i) => (
-                  <div key={unit.label} className="flex items-center gap-4 md:gap-6">
-                    <div className="text-center">
-                      <div className="text-3xl md:text-4xl font-bold tabular-nums text-[var(--text-primary)]">
-                        {String(unit.value).padStart(2, "0")}
+              <h2 className="text-lg md:text-xl font-bold text-[var(--text-primary)] mb-1">
+                {upcoming.flag} {upcoming.name}
+              </h2>
+              <p className="text-xs text-[var(--text-secondary)] mb-4 font-mono">
+                {upcoming.circuit} · {upcoming.country}
+              </p>
+              {isToday ? (
+                <p className="text-2xl font-mono uppercase tracking-[0.2em] text-[var(--accent)]">
+                  GRAND PRIX DAY
+                </p>
+              ) : countdown ? (
+                <div className="flex items-center justify-center gap-4 md:gap-6 font-mono">
+                  {[
+                    { value: countdown.days, label: "DAYS" },
+                    { value: countdown.hours, label: "HRS" },
+                    { value: countdown.minutes, label: "MIN" },
+                  ].map((unit, i) => (
+                    <div key={unit.label} className="flex items-center gap-4 md:gap-6">
+                      <div className="text-center">
+                        <div className="text-3xl md:text-4xl font-bold tabular-nums text-[var(--text-primary)]">
+                          {String(unit.value).padStart(2, "0")}
+                        </div>
+                        <div className="text-xs uppercase tracking-[0.15em] text-[var(--text-dim)]">
+                          {unit.label}
+                        </div>
                       </div>
-                      <div className="text-xs uppercase tracking-[0.15em] text-[var(--text-dim)]">
-                        {unit.label}
-                      </div>
+                      {i < 2 && (
+                        <span className="text-2xl text-[var(--text-dim)] self-start mt-1">:</span>
+                      )}
                     </div>
-                    {i < 2 && (
-                      <span className="text-2xl text-[var(--text-dim)] self-start mt-1">:</span>
-                    )}
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            {lastRace && (
+              <div className="glass shadow-card p-6 text-center">
+                <p className="text-xs font-mono uppercase tracking-[0.15em] text-[var(--text-dim)] mb-2">
+                  LAST RACE
+                </p>
+                <h2 className="text-lg md:text-xl font-bold text-[var(--text-primary)] mb-1">
+                  {lastRace.flag} {lastRace.name}
+                </h2>
+                <p className="text-xs text-[var(--text-secondary)] mb-4 font-mono">
+                  {lastRace.circuit} · {formatDate(new Date(lastRace.date))}
+                </p>
+                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-sm border border-[var(--color-display-green)]/20 bg-[var(--color-display-green-muted)]">
+                  <span className="text-2xl">🏆</span>
+                  <div className="text-left">
+                    <p className="text-sm font-bold text-[var(--text-primary)]">{lastRace.winner}</p>
+                    <p className="text-xs font-mono text-[var(--text-secondary)]">{lastRace.team}</p>
                   </div>
-                ))}
+                </div>
               </div>
-            ) : null}
+            )}
           </div>
         </div>
       </SectionReveal>

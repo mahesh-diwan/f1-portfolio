@@ -14,7 +14,6 @@ const navItems = [
   { label: "Grid", id: "pit-stop" },
   { label: "OSS", id: "open-source" },
   { label: "Contact", id: "contact" },
-  { label: "Podium", id: "podium" },
 ];
 
 function ThemeIcon({ theme, className }: { theme: "dark" | "light"; className?: string }) {

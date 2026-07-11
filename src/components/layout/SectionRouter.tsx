@@ -9,7 +9,6 @@ import { TelemetrySkills } from "@/components/sections/TelemetrySkills";
 import { OpenSource } from "@/components/sections/OpenSource";
 import { Contact } from "@/components/sections/Contact";
 import { PitStopCountdown } from "@/components/sections/PitStopCountdown";
-import { Podium } from "@/components/sections/Podium";
 
 const sections: Record<string, React.ReactNode> = {
   hero: <Hero />,
@@ -20,7 +19,6 @@ const sections: Record<string, React.ReactNode> = {
   "pit-stop": <PitStopCountdown />,
   "open-source": <OpenSource />,
   contact: <Contact />,
-  podium: <Podium />,
 };
 
 export function SectionRouter() {
