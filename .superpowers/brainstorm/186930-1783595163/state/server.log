@@ -1,7 +1,0 @@
-{"type":"server-started","port":59419,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:59419/?key=41715e3158747aa1c93bea2e6c0793d43d6190119b6d433bc65629b367b0620c","screen_dir":"/home/mahesh-diwan/SPECTRE/Projects/F1/.superpowers/brainstorm/186930-1783595163/content","state_dir":"/home/mahesh-diwan/SPECTRE/Projects/F1/.superpowers/brainstorm/186930-1783595163/state","idle_timeout_ms":14400000}
-{"type":"screen-added","file":"/home/mahesh-diwan/SPECTRE/Projects/F1/.superpowers/brainstorm/186930-1783595163/content/hero-design.html"}
-{"type":"screen-added","file":"/home/mahesh-diwan/SPECTRE/Projects/F1/.superpowers/brainstorm/186930-1783595163/content/experience-design.html"}
-{"type":"screen-added","file":"/home/mahesh-diwan/SPECTRE/Projects/F1/.superpowers/brainstorm/186930-1783595163/content/projects-design.html"}
-{"type":"screen-added","file":"/home/mahesh-diwan/SPECTRE/Projects/F1/.superpowers/brainstorm/186930-1783595163/content/skills-design.html"}
-{"type":"screen-added","file":"/home/mahesh-diwan/SPECTRE/Projects/F1/.superpowers/brainstorm/186930-1783595163/content/contact-education-design.html"}
-{"type":"server-stopped","reason":"idle timeout"}
