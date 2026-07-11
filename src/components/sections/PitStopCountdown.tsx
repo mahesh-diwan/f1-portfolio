@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import calendar from "@/data/f1-calendar.json";
+import standingsData from "@/data/standings.json";
 import { SectionReveal } from "@/components/ui/motion/SectionReveal";
 
 interface Race {
@@ -21,27 +22,6 @@ interface Race {
 }
 
 const races = calendar as Race[];
-
-const completedRaces = races.filter(r => r.winner && !r.cancelled);
-const completedCount = completedRaces.length;
-const totalRaces = races.filter(r => !r.cancelled).length;
-
-interface StandingRow { name: string; points: number }
-interface Standings { drivers: StandingRow[]; constructors: StandingRow[] }
-
-const standings: Standings = (() => {
-  const drv: Record<string, number> = {};
-  const con: Record<string, number> = {};
-  for (const r of completedRaces) {
-    if (r.winner) { drv[r.winner] = (drv[r.winner] || 0) + 25; con[r.team!] = (con[r.team!] || 0) + 25; }
-    if (r.p2) { drv[r.p2] = (drv[r.p2] || 0) + 18; con[r.p2Team!] = (con[r.p2Team!] || 0) + 18; }
-    if (r.p3) { drv[r.p3] = (drv[r.p3] || 0) + 15; con[r.p3Team!] = (con[r.p3Team!] || 0) + 15; }
-  }
-  return {
-    drivers: Object.entries(drv).map(([n, p]) => ({ name: n, points: p })).sort((a, b) => b.points - a.points),
-    constructors: Object.entries(con).map(([n, p]) => ({ name: n, points: p })).sort((a, b) => b.points - a.points),
-  };
-})();
 
 function calcDiff(target: Date) {
   const now = Date.now();
@@ -199,12 +179,12 @@ export function PitStopCountdown() {
           <div className="mt-6 mb-2">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-mono uppercase tracking-[0.15em] text-[var(--text-dim)]">2026 SEASON</span>
-              <span className="text-xs font-mono text-[var(--text-secondary)]">Round {completedCount} of {totalRaces}</span>
+              <span className="text-xs font-mono text-[var(--text-secondary)]">Round {standingsData.seasonProgress.completed} of {standingsData.seasonProgress.total}</span>
             </div>
             <div className="h-1.5 rounded-full bg-[var(--color-display-green-muted)] overflow-hidden">
               <div
                 className="h-full rounded-full bg-[var(--color-display-green)] transition-all"
-                style={{ width: `${(completedCount / totalRaces) * 100}%` }}
+                style={{ width: `${(standingsData.seasonProgress.completed / standingsData.seasonProgress.total) * 100}%` }}
               />
             </div>
           </div>
@@ -213,7 +193,7 @@ export function PitStopCountdown() {
             <div className="md:col-span-2 glass shadow-card p-6">
               <p className="text-xs font-mono uppercase tracking-[0.15em] text-[var(--text-dim)] mb-4">DRIVER STANDINGS</p>
               <div className="flex flex-col gap-1">
-                {standings.drivers.map((d, i) => (
+                {standingsData.drivers.map((d, i) => (
                   <div key={d.name} className="flex items-center justify-between px-3 py-2 rounded-sm hover:bg-[var(--color-display-green-muted)] transition-colors">
                     <div className="flex items-center gap-3">
                       <span className={`w-6 text-center text-sm font-mono ${i === 0 ? 'text-yellow-400' : i === 1 ? 'text-gray-400' : i === 2 ? 'text-amber-600' : 'text-[var(--text-dim)]'}`}>
@@ -229,7 +209,7 @@ export function PitStopCountdown() {
             <div className="glass shadow-card p-6">
               <p className="text-xs font-mono uppercase tracking-[0.15em] text-[var(--text-dim)] mb-4">CONSTRUCTORS</p>
               <div className="flex flex-col gap-1">
-                {standings.constructors.map((c, i) => (
+                {standingsData.constructors.map((c, i) => (
                   <div key={c.name} className="flex items-center justify-between px-3 py-2 rounded-sm hover:bg-[var(--color-display-green-muted)] transition-colors">
                     <div className="flex items-center gap-3">
                       <span className={`w-6 text-center text-sm font-mono ${i === 0 ? 'text-yellow-400' : i === 1 ? 'text-gray-400' : i === 2 ? 'text-amber-600' : 'text-[var(--text-dim)]'}`}>
