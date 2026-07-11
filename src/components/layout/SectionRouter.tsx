@@ -10,19 +10,19 @@ import { OpenSource } from "@/components/sections/OpenSource";
 import { Contact } from "@/components/sections/Contact";
 import { PitStopCountdown } from "@/components/sections/PitStopCountdown";
 
-const sections: Record<string, React.ReactNode> = {
-  hero: <Hero />,
-  experience: <Experience />,
-  education: <Education />,
-  projects: <Projects />,
-  skills: <TelemetrySkills />,
-  "pit-stop": <PitStopCountdown />,
-  "open-source": <OpenSource />,
-  contact: <Contact />,
+const sectionFactories: Record<string, () => React.ReactNode> = {
+  hero: () => <Hero />,
+  experience: () => <Experience />,
+  education: () => <Education />,
+  projects: () => <Projects />,
+  skills: () => <TelemetrySkills />,
+  "pit-stop": () => <PitStopCountdown />,
+  "open-source": () => <OpenSource />,
+  contact: () => <Contact />,
 };
 
 export function SectionRouter() {
   const { activeSection } = usePageTransition();
 
-  return <div>{sections[activeSection] ?? null}</div>;
+  return <div>{sectionFactories[activeSection]?.() ?? null}</div>;
 }

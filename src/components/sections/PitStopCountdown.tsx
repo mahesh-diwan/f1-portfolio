@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import calendar from "@/data/f1-calendar.json";
 import standingsData from "@/data/standings.json";
 import { SectionReveal } from "@/components/ui/motion/SectionReveal";
@@ -52,19 +52,20 @@ function formatDate(d: Date) {
 }
 
 export function PitStopCountdown() {
-  const { lastRace, upcoming, now } = getRaceData();
+  const { lastRace, upcoming, now } = useMemo(() => getRaceData(), []);
   const [countdown, setCountdown] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(
     upcoming ? calcDiff(new Date(upcoming.date)) : null
   );
 
+  const raceDateStr = upcoming?.date ?? null;
+
   useEffect(() => {
-    if (!upcoming) return;
+    if (!raceDateStr) return;
     const id = setInterval(() => {
-      setCountdown(calcDiff(new Date(upcoming.date)));
+      setCountdown(calcDiff(new Date(raceDateStr)));
     }, 1000);
     return () => clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [raceDateStr]);
 
   if (!upcoming) {
     return (

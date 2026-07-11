@@ -27,6 +27,7 @@ export function EasterEgg({
     if (found) return;
     setFound(true);
     setShowToast(true);
+    if (toastTimer.current) clearTimeout(toastTimer.current);
     toastTimer.current = setTimeout(() => setShowToast(false), 4000);
   }, [found]);
 

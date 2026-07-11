@@ -5,14 +5,19 @@ import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { portfolio } from "@/lib/portfolio";
 import { EasterEgg } from "@/components/ui/primitives/EasterEgg";
 
+const DISPLAY_CACHE = new Map<string, number>();
+
 function HeroStat({ label, value, accent }: { label: string; value: number; accent: string }) {
+  const cached = DISPLAY_CACHE.get(label);
   const shouldReduceMotion = useReducedMotion();
-  const [display, setDisplay] = useState(shouldReduceMotion ? value : 0);
+  const [display, setDisplay] = useState(cached ?? (shouldReduceMotion ? value : 0));
   const startTime = useRef<number | null>(null);
   const animFrame = useRef<number>(0);
+  const hasAnimated = useRef(cached !== undefined);
 
   useEffect(() => {
-    if (shouldReduceMotion) return;
+    if (hasAnimated.current || shouldReduceMotion) return;
+    hasAnimated.current = true;
     startTime.current = null;
     const animate = (timestamp: number) => {
       if (!startTime.current) startTime.current = timestamp;
@@ -24,11 +29,15 @@ function HeroStat({ label, value, accent }: { label: string; value: number; acce
       } else {
         setDisplay(Math.round(eased * value));
       }
-      if (progress < 1) animFrame.current = requestAnimationFrame(animate);
+      if (progress < 1) {
+        animFrame.current = requestAnimationFrame(animate);
+      } else {
+        DISPLAY_CACHE.set(label, value);
+      }
     };
     animFrame.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animFrame.current);
-  }, [value, shouldReduceMotion]);
+  }, [value, shouldReduceMotion, label]);
 
   return (
     <div className="text-center">
@@ -54,6 +63,7 @@ export function Hero() {
   const [typedName, setTypedName] = useState("");
   const [showCursor, setShowCursor] = useState(true);
   const fullName = portfolio.titleName;
+  const cursorTimeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => {
     /* eslint-disable react-hooks/set-state-in-effect */
@@ -70,10 +80,10 @@ export function Hero() {
         i++;
       } else {
         clearInterval(interval);
-        setTimeout(() => setShowCursor(false), 400);
+        cursorTimeoutRef.current = setTimeout(() => setShowCursor(false), 400);
       }
     }, 80);
-    return () => clearInterval(interval);
+    return () => { clearInterval(interval); clearTimeout(cursorTimeoutRef.current); };
   }, [fullName, reducedMotion]);
 
   return (

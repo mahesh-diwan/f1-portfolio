@@ -27,6 +27,8 @@ export function Gauge({
   const [animatedValue, setAnimatedValue] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const startTime = useRef<number | null>(null);
+  const animFrame = useRef<number>(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -44,22 +46,20 @@ export function Gauge({
 
   useEffect(() => {
     if (!isVisible || prefersReducedMotion) return;
-    let start = 0;
-    const duration = 1000;
-    const step = 16;
-    const totalSteps = duration / step;
-    let currentStep = 0;
-
-    const timer = setInterval(() => {
-      currentStep++;
-      const progress = Math.min(currentStep / totalSteps, 1);
+    startTime.current = null;
+    const animate = (timestamp: number) => {
+      if (!startTime.current) startTime.current = timestamp;
+      const elapsed = timestamp - startTime.current;
+      const duration = 1000;
+      const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      start = eased * clamped;
-      setAnimatedValue(Math.round(start));
-      if (progress >= 1) clearInterval(timer);
-    }, step);
-
-    return () => clearInterval(timer);
+      setAnimatedValue(Math.round(eased * clamped));
+      if (progress < 1) {
+        animFrame.current = requestAnimationFrame(animate);
+      }
+    };
+    animFrame.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animFrame.current);
   }, [isVisible, clamped, prefersReducedMotion]);
 
   return (

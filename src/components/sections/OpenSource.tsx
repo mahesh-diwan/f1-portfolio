@@ -29,7 +29,7 @@ function daysAgo(date: string): string {
 }
 
 export function OpenSource() {
-  const data = repos as RepoSummary[]
+  const data: RepoSummary[] = Array.isArray(repos) ? (repos as RepoSummary[]) : []
   const totalStars = data.reduce((s, r) => s + r.stars, 0)
   const totalForks = data.reduce((s, r) => s + r.forks, 0)
   const topLang = Object.entries(

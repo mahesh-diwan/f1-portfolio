@@ -23,10 +23,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("f1-theme") as Theme | null;
-    if (stored === "light" || stored === "dark") {
+    const raw = localStorage.getItem("f1-theme");
+    if (raw === "light" || raw === "dark") {
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      setTheme(stored);
+      setTheme(raw);
     }
     setMounted(true);
   }, []);

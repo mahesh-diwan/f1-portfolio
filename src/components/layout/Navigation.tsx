@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { usePageTransition } from "@/lib/transition-context";
 import { useTheme } from "@/lib/theme-context";
@@ -40,11 +40,36 @@ export function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { navigateTo, isAnimating, activeSection } = usePageTransition();
   const { theme, toggleTheme } = useTheme();
+  const focusTrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!mobileOpen) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setMobileOpen(false); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileOpen(false);
+      if (e.key === "Tab" && focusTrapRef.current) {
+        const focusable = focusTrapRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
     window.addEventListener("keydown", onKey);
+    // Focus first button on open
+    requestAnimationFrame(() => {
+      if (focusTrapRef.current) {
+        const btn = focusTrapRef.current.querySelector("button");
+        btn?.focus();
+      }
+    });
     return () => window.removeEventListener("keydown", onKey);
   }, [mobileOpen]);
 

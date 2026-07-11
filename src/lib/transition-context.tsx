@@ -49,6 +49,8 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
   const [radioMessage, setRadioMessage] = useState<string | null>(null);
   const radioTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const navTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const activeRef = useRef(activeSection);
+  useEffect(() => { activeRef.current = activeSection; }, [activeSection]);
 
   useEffect(() => () => {
     if (radioTimeoutRef.current) clearTimeout(radioTimeoutRef.current);
@@ -57,7 +59,7 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
 
   const navigateTo = useCallback((sectionId: string, label?: string) => {
     if (busyRef.current) return;
-    if (sectionId === activeSection) return;
+    if (sectionId === activeRef.current) return;
     busyRef.current = true;
 
     const displayLabel = label || SECTION_LABELS[sectionId] || sectionId.toUpperCase();
@@ -88,7 +90,7 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
         busyRef.current = false;
       }, 300);
     }, 400);
-  }, [activeSection]);
+  }, []);
 
   return (
     <TransitionContext.Provider value={{ isAnimating: overlay.phase !== "idle", navigateTo, activeSection }}>
