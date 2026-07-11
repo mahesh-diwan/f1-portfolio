@@ -22,7 +22,7 @@ export function TelemetrySkills() {
                 const avg = group.items.length > 0 ? Math.round(group.items.reduce((sum, s) => sum + s.pct, 0) / group.items.length) : 0;
                 return (
                   <div key={group.group} className="glass shadow-card hover-lift p-5 h-full">
-                      <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">{group.group}</p>
+                      <p className="text-xs uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">{group.group}</p>
                       <div className="flex items-start gap-3">
                         <Gauge value={avg} label="AVG" color={avg >= 85 ? "var(--color-accent-purple)" : avg >= 70 ? "var(--color-accent-green)" : "var(--color-accent-gold)"} size={56} />
                         <div className="space-y-1.5 flex-1 min-w-0">
@@ -45,10 +45,10 @@ export function TelemetrySkills() {
             <div className="mt-6">
               <SectionReveal delay={0.2}>
                 <div className="glass shadow-card p-5">
-                  <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">SECONDARY SYSTEMS</p>
+                  <p className="text-xs uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">SECONDARY SYSTEMS</p>
                   <div className="flex flex-wrap gap-1.5">
                     {portfolio.otherSkills.map((skill) => (
-                      <span key={skill} className="px-2 py-0.5 text-[12px] font-mono uppercase tracking-wider text-[var(--text-secondary)] border border-[var(--border-default)] bg-[var(--bg-surface)] hover:border-[var(--accent)]/20 hover:text-[var(--text-primary)] transition-all cursor-default">
+                      <span key={skill} className="px-2 py-0.5 text-xs font-mono uppercase tracking-wider text-[var(--text-secondary)] border border-[var(--border-default)] bg-[var(--bg-surface)] hover:border-[var(--accent)]/20 hover:text-[var(--text-primary)] transition-all cursor-default">
                         {skill}
                       </span>
                     ))}

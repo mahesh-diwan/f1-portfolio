@@ -110,9 +110,9 @@ export function Gauge({
         >
           {animatedValue}
         </span>
-        <span className="text-[10px] text-[var(--text-dim)] font-mono">%</span>
+        <span className="text-xs text-[var(--text-dim)] font-mono">%</span>
       </div>
-      <span className="text-[10px] uppercase tracking-[0.12em] text-[var(--text-muted)] font-mono text-center leading-tight">
+      <span className="text-xs uppercase tracking-[0.12em] text-[var(--text-muted)] font-mono text-center leading-tight">
         {label}
       </span>
     </div>

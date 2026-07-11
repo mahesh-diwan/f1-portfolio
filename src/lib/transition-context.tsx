@@ -109,7 +109,7 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
             }`}
           >
             <div className="text-center">
-              <div className="font-mono text-[10px] tracking-[0.3em] text-[var(--accent)]/80 mb-3">
+              <div className="font-mono text-xs tracking-[0.3em] text-[var(--accent)]/80 mb-3">
                 MODE
               </div>
               <div className="font-mono text-3xl sm:text-4xl font-bold tracking-wider text-[var(--text-primary)]">
@@ -127,7 +127,7 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
       {radioMessage && (
         <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[60] animate-fade-in-up">
           <div className="bg-[var(--bg-elevated)] border border-[var(--border-default)] px-4 py-2 shadow-lg">
-            <span className="text-[12px] font-mono text-[var(--color-display-amber)] uppercase tracking-[0.1em]">
+            <span className="text-xs font-mono text-[var(--color-display-amber)] uppercase tracking-[0.1em]">
               📡 {radioMessage}
             </span>
           </div>

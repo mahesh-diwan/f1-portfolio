@@ -24,7 +24,7 @@ export function ScrollProgress() {
       aria-valuemax={100}
       aria-label="Page scroll progress"
     >
-      <span className="font-mono text-[12px] tabular-nums text-[var(--text-muted)]">
+      <span className="font-mono text-xs tabular-nums text-[var(--text-muted)]">
         {Math.round(progress)}%
       </span>
       <div className="w-1.5 h-20 bg-[var(--border-default)] rounded-full overflow-hidden">
@@ -33,7 +33,7 @@ export function ScrollProgress() {
           style={{ height: `${progress}%` }}
         />
       </div>
-      <span className="font-mono text-[12px] tracking-wider text-[var(--text-dim)]" title="Page scroll progress">
+      <span className="font-mono text-xs tracking-wider text-[var(--text-dim)]" title="Page scroll progress">
         LAP
       </span>
     </div>

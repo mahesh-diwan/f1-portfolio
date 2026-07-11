@@ -14,7 +14,7 @@ export function DRSIndicator({ active, className, detected }: DRSIndicatorProps)
     <div className={cn("flex items-center gap-1.5", className)} role="status" aria-label={`DRS ${active ? "active" : "inactive"}`}>
       <span
         className={cn(
-          "text-[12px] font-mono uppercase tracking-wider font-bold transition-all duration-300",
+          "text-xs font-mono uppercase tracking-wider font-bold transition-all duration-300",
           active ? "text-[var(--color-accent-green)]" : isDetected ? "text-[var(--color-accent-gold)]" : "text-[var(--text-dim)]",
         )}
       >
@@ -37,7 +37,7 @@ export function DRSIndicator({ active, className, detected }: DRSIndicatorProps)
       </span>
       <span
         className={cn(
-          "text-[12px] font-mono uppercase tracking-wider transition-all duration-300",
+          "text-xs font-mono uppercase tracking-wider transition-all duration-300",
           active ? "text-[var(--color-accent-green)]" : "text-[var(--text-dim)]",
         )}
       >

@@ -70,16 +70,16 @@ export function OpenSource() {
                     {repo.name}
                   </h3>
                   <div className="flex items-center gap-2 shrink-0 ml-3">
-                    <span className="text-[12px] font-mono tabular-nums text-[var(--text-dim)]">
+                    <span className="text-xs font-mono tabular-nums text-[var(--text-dim)]">
                       ★ {repo.stars}
                     </span>
-                    <span className="text-[12px] font-mono tabular-nums text-[var(--text-dim)]">
+                    <span className="text-xs font-mono tabular-nums text-[var(--text-dim)]">
                       ⌥ {repo.forks}
                     </span>
                   </div>
                 </div>
                 {repo.description && (
-                  <p className="text-[12px] text-[var(--text-muted)] font-mono mb-3 line-clamp-2">
+                  <p className="text-xs text-[var(--text-muted)] font-mono mb-3 line-clamp-2">
                     {repo.description}
                   </p>
                 )}
@@ -90,12 +90,12 @@ export function OpenSource() {
                         className="w-2 h-2 rounded-full"
                         style={{ backgroundColor: langColors[repo.language] || "#888" }}
                       />
-                      <span className="text-[12px] font-mono text-[var(--text-dim)]">
+                      <span className="text-xs font-mono text-[var(--text-dim)]">
                         {repo.language}
                       </span>
                     </span>
                   )}
-                  <span className="text-[12px] font-mono text-[var(--text-dim)] ml-auto">
+                  <span className="text-xs font-mono text-[var(--text-dim)] ml-auto">
                     {daysAgo(repo.updated_at)}
                   </span>
                 </div>
@@ -111,7 +111,7 @@ export function OpenSource() {
 function Stat({ label, value }: { label: string; value: number | string }) {
   return (
     <div className="text-center min-w-[100px]">
-      <div className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-1">
+      <div className="text-xs uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-1">
         {label}
       </div>
       <div className="text-xl font-bold font-mono tabular-nums text-[var(--text-primary)]">

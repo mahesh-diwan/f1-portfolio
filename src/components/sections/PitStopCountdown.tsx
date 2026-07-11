@@ -13,6 +13,10 @@ interface Race {
   flag: string;
   winner?: string;
   team?: string;
+  p2?: string;
+  p2Team?: string;
+  p3?: string;
+  p3Team?: string;
   cancelled?: boolean;
 }
 
@@ -25,7 +29,8 @@ function calcDiff(target: Date) {
   const days = Math.floor(diff / 86400000);
   const hours = Math.floor((diff % 86400000) / 3600000);
   const minutes = Math.floor((diff % 3600000) / 60000);
-  return { days, hours, minutes };
+  const seconds = Math.floor((diff % 60000) / 1000);
+  return { days, hours, minutes, seconds };
 }
 
 function getRaceData() {
@@ -47,7 +52,7 @@ function formatDate(d: Date) {
 
 export function PitStopCountdown() {
   const { lastRace, upcoming, now } = getRaceData();
-  const [countdown, setCountdown] = useState<{ days: number; hours: number; minutes: number } | null>(
+  const [countdown, setCountdown] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(
     upcoming ? calcDiff(new Date(upcoming.date)) : null
   );
 
@@ -55,7 +60,7 @@ export function PitStopCountdown() {
     if (!upcoming) return;
     const id = setInterval(() => {
       setCountdown(calcDiff(new Date(upcoming.date)));
-    }, 60000);
+    }, 1000);
     return () => clearInterval(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -105,6 +110,7 @@ export function PitStopCountdown() {
                     { value: countdown.days, label: "DAYS" },
                     { value: countdown.hours, label: "HRS" },
                     { value: countdown.minutes, label: "MIN" },
+                    { value: countdown.seconds, label: "SEC" },
                   ].map((unit, i) => (
                     <div key={unit.label} className="flex items-center gap-4 md:gap-6">
                       <div className="text-center">
@@ -115,7 +121,7 @@ export function PitStopCountdown() {
                           {unit.label}
                         </div>
                       </div>
-                      {i < 2 && (
+                      {i < 3 && (
                         <span className="text-2xl text-[var(--text-dim)] self-start mt-1">:</span>
                       )}
                     </div>
@@ -135,12 +141,35 @@ export function PitStopCountdown() {
                 <p className="text-xs text-[var(--text-secondary)] mb-4 font-mono">
                   {lastRace.circuit} · {formatDate(new Date(lastRace.date))}
                 </p>
-                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-sm border border-[var(--color-display-green)]/20 bg-[var(--color-display-green-muted)]">
-                  <span className="text-2xl">🏆</span>
-                  <div className="text-left">
-                    <p className="text-sm font-bold text-[var(--text-primary)]">{lastRace.winner}</p>
-                    <p className="text-xs font-mono text-[var(--text-secondary)]">{lastRace.team}</p>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-3 px-4 py-2 rounded-sm border border-[var(--color-display-green)]/20 bg-[var(--color-display-green-muted)]">
+                    <span className="text-xl">🏆</span>
+                    <div className="text-left">
+                      <p className="text-xs font-mono text-[var(--text-dim)]">P1</p>
+                      <p className="text-sm font-bold text-[var(--text-primary)]">{lastRace.winner}</p>
+                      <p className="text-xs font-mono text-[var(--text-secondary)]">{lastRace.team}</p>
+                    </div>
                   </div>
+                  {lastRace.p2 && (
+                    <div className="flex items-center gap-3 px-4 py-2 rounded-sm border border-[var(--color-display-green)]/20 bg-[var(--color-display-green-muted)]">
+                      <span className="text-xl">🥈</span>
+                      <div className="text-left">
+                        <p className="text-xs font-mono text-[var(--text-dim)]">P2</p>
+                        <p className="text-sm font-bold text-[var(--text-primary)]">{lastRace.p2}</p>
+                        <p className="text-xs font-mono text-[var(--text-secondary)]">{lastRace.p2Team}</p>
+                      </div>
+                    </div>
+                  )}
+                  {lastRace.p3 && (
+                    <div className="flex items-center gap-3 px-4 py-2 rounded-sm border border-[var(--color-display-green)]/20 bg-[var(--color-display-green-muted)]">
+                      <span className="text-xl">🥉</span>
+                      <div className="text-left">
+                        <p className="text-xs font-mono text-[var(--text-dim)]">P3</p>
+                        <p className="text-sm font-bold text-[var(--text-primary)]">{lastRace.p3}</p>
+                        <p className="text-xs font-mono text-[var(--text-secondary)]">{lastRace.p3Team}</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             )}

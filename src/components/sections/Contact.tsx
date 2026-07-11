@@ -35,7 +35,7 @@ export function Contact() {
           <SectionHeader sector="SECTOR 6/6" right={`${channels.length} CHANNELS`} title="Communication" />
 
           <div className="glass shadow-card p-5 mb-4">
-            <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">Direct Line</p>
+            <p className="text-xs uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">Direct Line</p>
             <div className="flex items-center gap-3">
               <StatusIndicator status="active" label="AVAILABLE" />
               <a href={`mailto:${portfolio.email}`} aria-label="Send email" className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-mono transition-colors break-all">
@@ -45,13 +45,13 @@ export function Contact() {
           </div>
 
           <div className="glass shadow-card p-5 mb-4">
-            <p className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">Location</p>
+            <p className="text-xs uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono mb-3">Location</p>
             <div className="flex items-center gap-3">
               <svg className="w-4 h-4 shrink-0 text-[var(--text-muted)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                 <circle cx="12" cy="10" r="3"/>
               </svg>
-              <span className="text-[13px] text-[var(--text-secondary)] font-mono">{portfolio.location}</span>
+              <span className="text-sm text-[var(--text-secondary)] font-mono">{portfolio.location}</span>
             </div>
           </div>
 
@@ -60,12 +60,12 @@ export function Contact() {
               <a key={ch.label} href={ch.url} target="_blank" rel="noopener noreferrer"
                   className="glass shadow-card hover-lift p-5 block hover:bg-[var(--bg-elevated)] transition-colors group relative overflow-hidden">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">Channel</span>
-                    <span className="text-[12px] text-[var(--text-muted)] font-mono">{ch.label}</span>
+                    <span className="text-xs uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">Channel</span>
+                    <span className="text-xs text-[var(--text-muted)] font-mono">{ch.label}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-sm text-[var(--text-muted)] group-hover:text-[var(--text-primary)] transition-colors" aria-hidden="true">{ch.icon}</span>
-                    <span className="text-[13px] text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors font-mono">{ch.handle}</span>
+                    <span className="text-sm text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors font-mono">{ch.handle}</span>
                   </div>
 
                 </a>

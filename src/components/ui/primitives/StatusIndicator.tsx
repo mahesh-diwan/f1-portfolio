@@ -37,7 +37,7 @@ export function StatusIndicator({
           )}
         />
       </span>
-      <span className="text-[12px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">
+      <span className="text-xs uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">
         {label}
       </span>
     </div>

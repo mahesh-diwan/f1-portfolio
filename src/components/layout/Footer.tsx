@@ -13,7 +13,7 @@ export function Footer() {
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse" aria-hidden="true" />
-            <span className="text-[12px] font-mono uppercase tracking-[0.12em] text-[var(--text-muted)]">
+            <span className="text-xs font-mono uppercase tracking-[0.12em] text-[var(--text-muted)]">
               {portfolio.name} &mdash; {portfolio.role}
             </span>
           </div>
@@ -25,7 +25,7 @@ export function Footer() {
               </span>
             </div>
             <EasterEgg message="Built with Next.js, Tailwind & F1 telemetry vibes" icon="🛠️" trigger="double-click">
-              <p className="text-[12px] font-mono text-[var(--text-dim)] cursor-pointer">
+              <p className="text-xs font-mono text-[var(--text-dim)] cursor-pointer">
                 &copy; {year} ALL RIGHTS RESERVED
               </p>
             </EasterEgg>

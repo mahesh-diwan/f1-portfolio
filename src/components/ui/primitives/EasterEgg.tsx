@@ -55,7 +55,7 @@ export function EasterEgg({
         </span>
       )}
       {found && !showToast && (
-        <span className="ml-1 text-[10px] animate-pulse" aria-hidden="true">🏆</span>
+        <span className="ml-1 text-xs animate-pulse" aria-hidden="true">🏆</span>
       )}
     </span>
   );

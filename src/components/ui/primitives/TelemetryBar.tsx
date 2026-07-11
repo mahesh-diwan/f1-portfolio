@@ -73,7 +73,7 @@ export function TelemetryBar({
       aria-label={`${label}: ${value}%`}
     >
       <div className="flex items-center justify-between">
-        <span className="text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">
+        <span className="text-xs uppercase tracking-[0.15em] text-[var(--text-muted)] font-mono">
           {label}
         </span>
         <span

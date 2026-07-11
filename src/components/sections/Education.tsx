@@ -29,18 +29,18 @@ export function Education() {
                       style={{ borderTop: `3px solid ${podium.border}` }}
                     >
                       <div className="flex items-center justify-between mb-3">
-                        <span className="text-[12px] uppercase tracking-[0.1em] font-mono" style={{ color: podium.border }}>
+                        <span className="text-xs uppercase tracking-[0.1em] font-mono" style={{ color: podium.border }}>
                           {podium.label}
                         </span>
-                        <span className="text-[12px] text-[var(--text-muted)] font-mono">{podium.num}</span>
+                        <span className="text-xs text-[var(--text-muted)] font-mono">{podium.num}</span>
                       </div>
-                      <h3 className="text-[13px] font-bold text-[var(--text-primary)] mb-1 leading-tight">{edu.degree}</h3>
-                      <p className="text-[12px] text-[var(--text-secondary)] mb-2">{edu.institution}</p>
-                      <p className="text-[12px] text-[var(--text-muted)]">
+                      <h3 className="text-sm font-bold text-[var(--text-primary)] mb-1 leading-tight">{edu.degree}</h3>
+                      <p className="text-xs text-[var(--text-secondary)] mb-2">{edu.institution}</p>
+                      <p className="text-xs text-[var(--text-muted)]">
                         {edu.period}{edu.gpa ? <span> · <span style={{ color: podium.border, fontWeight: "bold" }}>{edu.gpa}</span></span> : null}
                       </p>
                       {edu.details && (
-                        <p className="text-[13px] text-[var(--text-secondary)] mt-3 pt-3 border-t border-[var(--border-default)] leading-relaxed">
+                        <p className="text-sm text-[var(--text-secondary)] mt-3 pt-3 border-t border-[var(--border-default)] leading-relaxed">
                           {edu.details}
                         </p>
                       )}
